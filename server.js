@@ -23,7 +23,7 @@ router.get('/login',require('./routes/login.js').get);
 router.get('/logout', require('./routes/logout.js').get);
 router.get('/checkout', require('./routes/checkout.js').get);
 router.post('/payment', require('./routes/payment.js').post);
-
+router.get('/test-login', require('./routes/test-login.js').get);
 
 app.use(router.routes());
 

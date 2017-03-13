@@ -1,5 +1,5 @@
 var rp = require('request-promise');
-
+var User = require('../models/user');
 
 exports.get = async (ctx) => {
   try {
@@ -23,7 +23,7 @@ exports.get = async (ctx) => {
       },
       json: true
     }
-    var userName;
+    var user = null;
     await rp(options).then(response => {
       var options2 = {
         method: 'GET',
@@ -41,14 +41,35 @@ exports.get = async (ctx) => {
         try {
              userName = response.response[0].first_name;
          } catch(e) {
-           console.log('failed to set userName');
+            console.log('failed to set userName');
          }
          if(userName) {
-           ctx.session.user = response.response[0]
-           console.log(ctx.session.user);
-         }
+
+          user = {
+            firstName: response.response[0].first_name,
+            lastName: response.response[0].last_name,
+            vkId: response.response[0].id.toString(),
+            balance: 0.0
+          }
+          return User.findOne({
+            vkId: user.vkId
+          })
+        }
+        else {
+          console.log('VK response data format is incorrect!');
+        }
+    }).then(function(){
+      console.log('user is registered');
+      console.log(user);
+      ctx.session.user = user
+    }).catch(function (err){
+      if(err.received === 0) {
+       throw User.save(user)
+      }
+    }).catch(function(){
+        ctx.session.user = user;
+        console.log('user is writtn in the session');
     });
-    //ctx.body = ctx.session.user;
     ctx.redirect('/');
   }
 

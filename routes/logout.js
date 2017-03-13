@@ -1,4 +1,4 @@
 exports.get = async (ctx) => {
-  ctx.session.user = null;
+  ctx.session = null;
   ctx.redirect('/');
 }

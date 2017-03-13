@@ -1,5 +1,11 @@
 exports.get = async (ctx) => {
 
-  ctx.body = ctx.render('checkout');
+  if (ctx.session.user != null) {
+    var user = ctx.session.user
+    ctx.body = ctx.render('checkout', {user12: user});
+  }
+  else {
+    ctx.redirect('/');
+  }
 
 }

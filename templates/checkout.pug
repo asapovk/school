@@ -13,25 +13,30 @@ block content
           a.navbar-brand(href="/") akadplus.ru
         .collapse.navbar-collapse(id="bs-example-navbar-collapse-1")
             ul.nav.navbar-nav.navbar-right
-              li
-                a(href="#")#fillBalance Баланс: &nbsp
               if user12
+                li
+                  a(href="/checkout") Баланс: #{user12.balance} руб.
                 li.dropdown
                   a( class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
-                    i(class="fa fa-user" aria-hidden="true") &nbsp #{user12.first_name}
+                    i(class="fa fa-user" aria-hidden="true") &nbsp #{user12.firstName}
                     span.caret
                   ul.dropdown-menu
                     li
-                      a(href="#") User profile
+                      a(href="/checkout") Пополнить баланс
                     li
-                      a(href="/logout") Logout
+                      a(href="/logout") Выйти
               else
                 li
-                  a(href ="https://oauth.vk.com/authorize?client_id=5895475&display=page&redirect_uri=http://oknojapan.com:3000/login&scope=friends&response_type=code&v=5.62")#signin Sign In
+                  a(href ="https://oauth.vk.com/authorize?client_id=5895475&display=page&redirect_uri=http://oknojapan.com:3000/login&scope=friends&response_type=code&v=5.62") Войти
+    
     
    
     .container
-      form(action="/payment" method="POST")#checkoutForm
+      form(action="/payment" method="POST" name="myform" id="myform")
+        input(type="hidden" id="paymentType" name="paymentType" class="form-control" value="")
+        input(type="hidden" id="shopId" name="shopId" class="form-control" value="1234")
+        input(type="hidden" id="scid" name="scid" class="form-control" value="111")  
+        input(type="hidden" id="customerNumber" name="customerNumber" class="form-control" value = user12.vkId )        
         .form-group.row
           label(for="email" class="col-sm-2 col-form-label") Email
           .col-sm-8
@@ -41,12 +46,14 @@ block content
           label(for="phone" class="col-sm-2 col-form-label") Телефон
           .col-sm-8
             input(type="phone" id="phone" name="phone" placeholder="+71234567890" class="form-control")
-            small(class="form-text text-muted") Мобильный телефон для уведомления об оплате.    
+            small(class="form-text text-muted") Мобильный телефон для подтверждения оплаты.    
         .form-group.row
           label(for="sum" class="col-sm-2 col-form-label") Сумма
           .col-sm-3
             input(type="sum" id="sum"  name="sum" class="form-control")
             small(class="form-text text-muted") Сумма в рублях зачисляемая на счет.
-        button(type="submit").btn.btn-default Пополнить баланс     
-      
+        button(type="submit").btn.btn-default Пополнить баланс
+    #myform_errorloc.error_strings         
+    script(src = "/js/form-validator.js")
+
         
