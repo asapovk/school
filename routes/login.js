@@ -18,13 +18,13 @@ exports.get = async (ctx) => {
       qs: {
         client_id: '5895475',
         client_secret: 'CWWUwXFXOOw1UCJXIjef',
-        redirect_uri: 'http://oknojapan.com:3000/login',
+        redirect_uri: 'http://akadplus.astapovk.ru/login',
         code: code
       },
       json: true
     }
     var user = null;
-    await rp(options).then(response => {
+    var response = await rp(options).then(response => {
       var options2 = {
         method: 'GET',
         uri: 'https://api.vk.com/method/users.get',
@@ -36,40 +36,38 @@ exports.get = async (ctx) => {
         json: true
       }
      return rp(options2);
-    }).then(response => {
-        console.log(response)
-        try {
-             userName = response.response[0].first_name;
-         } catch(e) {
-            console.log('failed to set userName');
-         }
-         if(userName) {
+    });
 
-          user = {
-            firstName: response.response[0].first_name,
-            lastName: response.response[0].last_name,
-            vkId: response.response[0].id.toString(),
-            balance: 0.0
-          }
-          return User.findOne({
-            vkId: user.vkId
-          })
-        }
-        else {
-          console.log('VK response data format is incorrect!');
-        }
-    }).then(function(){
-      console.log('user is registered');
-      console.log(user);
-      ctx.session.user = user
-    }).catch(function (err){
-      if(err.received === 0) {
-       throw User.save(user)
+    var userObject = {
+      firstName: response.response[0].first_name,
+      lastName: response.response[0].last_name,
+      vkId: response.response[0].id.toString(),
+      balance: 0.0
+    }
+
+    if (userObject) {
+      var user = new User(userObject);
+    }
+
+    await User.findOne({vkId: user.vkId}).then( async function(result){
+      if(!result) {
+        console.log('user is not in database');
+
+      await user.save().catch(function(){
+          console.log('unable to save in database');
+          ctx.redirect('/');
+        });
+        ctx.session.user = userObject;
+      }
+      else {
+        console.log('User is registered');
+        ctx.session.user = result;
       }
     }).catch(function(){
-        ctx.session.user = user;
-        console.log('user is writtn in the session');
+      console.log('Failed seach user in database');
     });
+
+
     ctx.redirect('/');
   }
 

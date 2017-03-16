@@ -28,6 +28,6 @@ router.get('/test-login', require('./routes/test-login.js').get);
 app.use(router.routes());
 
 app.keys = ['some secret hurr'];
-app.listen('3000', ()=>{
-    console.log('listening port 3000');
+app.listen('80', ()=>{
+    console.log('listening port 80');
 });
