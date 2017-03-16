@@ -24,6 +24,8 @@ router.get('/logout', require('./routes/logout.js').get);
 router.get('/checkout', require('./routes/checkout.js').get);
 router.post('/payment', require('./routes/payment.js').post);
 router.get('/test-login', require('./routes/test-login.js').get);
+router.post('/check', require('./routes/check.js').post);
+router.post('/aviso', require('./routes/aviso.js').post);
 
 app.use(router.routes());
 
