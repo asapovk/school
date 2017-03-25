@@ -1,0 +1,59 @@
+extends layout
+
+block content
+  body
+    nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false")
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href="/") akadplus.ru
+        .collapse.navbar-collapse(id="bs-example-navbar-collapse-1")
+            ul.nav.navbar-nav.navbar-right
+              if user12
+                li
+                  a(href="/checkout") Баланс: #{user12.balance} руб.
+                li.dropdown
+                  a( class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
+                    i(class="fa fa-user" aria-hidden="true") &nbsp #{user12.firstName}
+                    span.caret
+                  ul.dropdown-menu
+                    li
+                      a(href="/checkout") Пополнить баланс
+                    li
+                      a(href="/logout") Выйти
+              else
+                li   
+                  a(href ="https://oauth.vk.com/authorize?client_id=5895475&display=page&redirect_uri=http://oknojapan.com:3000/login&scope=friends&response_type=code&v=5.62") Войти
+  
+    form(name="TinkoffPayForm")
+        input(class="tinkoffPayRow" type="text" placeholder="Сумма заказа" name="paySum")
+        input(class="tinkoffPayRow" type="text" placeholder="Номер заказа" name="payOrder")
+        input(class="tinkoffPayRow" type="text" placeholder="Описание заказа" name="payDesc")
+        input(class="tinkoffPayRow" type="text" placeholder="ФИО плательщика" name="payName")
+        input(class="tinkoffPayRow" type="text" placeholder="E-mail" name="payEmail")
+        input(class="tinkoffPayRow" type="text" placeholder="Контактный телефон" name="payPhone")
+        input(class="tinkoffPayRow" type="button" onclick="makePayment(document.TinkoffPayForm.paySum.value.replace(/,/ig,'.') * 100, document.TinkoffPayForm.payOrder.value, document.TinkoffPayForm.payDesc.value, document.TinkoffPayForm.payName.value, document.TinkoffPayForm.payEmail.value, document.TinkoffPayForm.payPhone.value)" value="Оплатить")
+             
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

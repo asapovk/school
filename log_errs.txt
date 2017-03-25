@@ -1,0 +1,983 @@
+listening port 80
+  <-- GET /
+null
+  --> GET / 200 492ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 1ms -
+  <-- GET /login?code=0d7f12b813eb5601f5
+0d7f12b813eb5601f5
+User is registered
+  --> GET /login?code=0d7f12b813eb5601f5 302 205ms 33b
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 435ms 1.78kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 7ms -
+  <-- GET /checkout
+  --> GET /checkout 200 677ms 3.38kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 12ms -
+  <-- GET /logout
+  --> GET /logout 302 6ms 33b
+  <-- GET /
+null
+  --> GET / 200 263ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 93ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 0ms -
+  <-- GET /
+null
+  --> GET / 200 67ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 38ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 4ms -
+  <-- GET /login?code=4c2ddeb5c3c20a74f8
+4c2ddeb5c3c20a74f8
+User is registered
+  --> GET /login?code=4c2ddeb5c3c20a74f8 302 128ms 33b
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 41ms 1.78kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 7ms -
+  <-- GET /logout
+  --> GET /logout 302 3ms 33b
+  <-- GET /
+null
+  --> GET / 200 43ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 1ms -
+  <-- GET /login?code=5d4e30a7656a54252d
+5d4e30a7656a54252d
+User is registered
+  --> GET /login?code=5d4e30a7656a54252d 302 107ms 33b
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 31ms 1.78kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 7ms -
+  <-- GET /logout
+  --> GET /logout 302 6ms 33b
+  <-- GET /
+null
+  --> GET / 200 119ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 0ms -
+  <-- GET /login?code=0ad80c577be6d3092d
+0ad80c577be6d3092d
+User is registered
+  --> GET /login?code=0ad80c577be6d3092d 302 183ms 33b
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 40ms 1.78kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 4ms -
+  <-- GET /logout
+  --> GET /logout 302 15ms 33b
+  <-- GET /
+null
+  --> GET / 200 37ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 32ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 1ms -
+  <-- GET /login?code=86abc072fc6eb6ccd0
+86abc072fc6eb6ccd0
+User is registered
+  --> GET /login?code=86abc072fc6eb6ccd0 302 126ms 33b
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 36ms 1.78kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 5ms -
+  <-- GET /checkout
+  --> GET /checkout 200 92ms 3.38kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 4ms -
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 262ms 1.78kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 4ms -
+  <-- GET /
+null
+  --> GET / 200 217ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 131ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 45ms 1.56kb
+  <-- GET /wp-login.php
+  --> GET /wp-login.php 404 1ms -
+  <-- GET /robots.txt
+  --> GET /robots.txt 404 0ms -
+  <-- GET /manual/fr/mod/event.html
+  --> GET /manual/fr/mod/event.html 404 0ms -
+  <-- GET /
+null
+  --> GET / 200 39ms 1.56kb
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 48ms 1.78kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 4ms -
+  <-- GET /
+null
+  --> GET / 200 40ms 1.56kb
+  <-- GET /438416/persoonlijk/desutter%20marianne/documents/baff%20study/FW%20CBAF312A2304%20EXPAND%20-%20MCT%20%20Updated%20Patient%20enrollment%20form%20to%20be%20used%20.htm
+  --> GET /438416/persoonlijk/desutter%20marianne/documents/baff%20study/FW%20CBAF312A2304%20EXPAND%20-%20MCT%20%20Updated%20Patient%20enrollment%20form%20to%20be%20used%20.htm 404 1ms -
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 47ms 1.78kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 12ms -
+  <-- GET /logout
+  --> GET /logout 302 3ms 33b
+  <-- GET /
+null
+  --> GET / 200 45ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 45ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 1ms -
+  <-- GET /login?code=d5a64f79bb7cf4111c
+d5a64f79bb7cf4111c
+User is registered
+  --> GET /login?code=d5a64f79bb7cf4111c 302 147ms 33b
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 26ms 1.78kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 5ms -
+  <-- GET /checkout
+  --> GET /checkout 200 68ms 3.38kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 4ms -
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 37ms 1.78kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 42ms -
+  <-- GET /manual/zh-cn/custom-error.html
+  --> GET /manual/zh-cn/custom-error.html 404 2ms -
+  <-- GET /wp-login.php
+  --> GET /wp-login.php 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 210ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 147ms 1.56kb
+  <-- GET /phpmyadmin/scripts/setup.php
+  --> GET /phpmyadmin/scripts/setup.php 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 132ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 86ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 48ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 50ms 1.56kb
+  <-- GET /manual/tr/getting-started.html
+  --> GET /manual/tr/getting-started.html 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 45ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 46ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 48ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 79ms 1.56kb
+  <-- GET /login.php?login=cmd
+  --> GET /login.php?login=cmd 404 4ms -
+  <-- GET /manual/ko/new_features_2_4.html
+  --> GET /manual/ko/new_features_2_4.html 404 1ms -
+  <-- GET /wp-content/plugins/front-end-editor/lib/aloha-editor/plugins/extra/draganddropfiles/demo/index.css
+  --> GET /wp-content/plugins/front-end-editor/lib/aloha-editor/plugins/extra/draganddropfiles/demo/index.css 404 1ms -
+  <-- GET /wp-content/uploads/2015/09/new_up.php
+  --> GET /wp-content/uploads/2015/09/new_up.php 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 35ms 1.56kb
+  <-- GET /robots.txt
+  --> GET /robots.txt 404 1ms -
+  <-- GET /manual/style/css/manual.css
+  --> GET /manual/style/css/manual.css 404 1ms -
+  <-- GET /manual/style/css/manual-loose-100pc.css
+  --> GET /manual/style/css/manual-loose-100pc.css 404 1ms -
+  <-- GET /manual/style/css/prettify.css
+  --> GET /manual/style/css/prettify.css 404 1ms -
+  <-- GET /manual/style/css/manual-print.css
+  --> GET /manual/style/css/manual-print.css 404 0ms -
+  <-- GET /manual/en/mod/mod_authz_owner.html
+  --> GET /manual/en/mod/mod_authz_owner.html 404 2ms -
+  <-- GET /manual/tr/dns-caveats.html
+  --> GET /manual/tr/dns-caveats.html 404 2ms -
+  <-- GET /manual/ko/dns-caveats.html
+  --> GET /manual/ko/dns-caveats.html 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 37ms 1.56kb
+  <-- GET /manual/zh-cn/misc/perf-tuning.html
+  --> GET /manual/zh-cn/misc/perf-tuning.html 404 0ms -
+  <-- GET /manual/style/css/manual.css
+  --> GET /manual/style/css/manual.css 404 0ms -
+  <-- GET /manual/style/css/manual-print.css
+  --> GET /manual/style/css/manual-print.css 404 1ms -
+  <-- GET /manual/style/css/manual-loose-100pc.css
+  --> GET /manual/style/css/manual-loose-100pc.css 404 1ms -
+  <-- GET /manual/style/css/prettify.css
+  --> GET /manual/style/css/prettify.css 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 34ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 38ms 1.56kb
+  <-- HEAD http://88.212.253.198:80/mysql/admin/
+  --> HEAD http://88.212.253.198:80/mysql/admin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/mysql/dbadmin/
+  --> HEAD http://88.212.253.198:80/mysql/dbadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/mysql/sqlmanager/
+  --> HEAD http://88.212.253.198:80/mysql/sqlmanager/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/mysql/mysqlmanager/
+  --> HEAD http://88.212.253.198:80/mysql/mysqlmanager/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/phpmyadmin/
+  --> HEAD http://88.212.253.198:80/phpmyadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phpMyadmin/
+  --> HEAD http://88.212.253.198:80/phpMyadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phpMyAdmin/
+  --> HEAD http://88.212.253.198:80/phpMyAdmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/phpmyAdmin/
+  --> HEAD http://88.212.253.198:80/phpmyAdmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phpmyadmin2/
+  --> HEAD http://88.212.253.198:80/phpmyadmin2/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phpmyadmin3/
+  --> HEAD http://88.212.253.198:80/phpmyadmin3/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/phpmyadmin4/
+  --> HEAD http://88.212.253.198:80/phpmyadmin4/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/2phpmyadmin/
+  --> HEAD http://88.212.253.198:80/2phpmyadmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/phpmy/
+  --> HEAD http://88.212.253.198:80/phpmy/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phppma/
+  --> HEAD http://88.212.253.198:80/phppma/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/myadmin/
+  --> HEAD http://88.212.253.198:80/myadmin/ 404 8ms -
+  <-- HEAD http://88.212.253.198:80/shopdb/
+  --> HEAD http://88.212.253.198:80/shopdb/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/MyAdmin/
+  --> HEAD http://88.212.253.198:80/MyAdmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/program/
+  --> HEAD http://88.212.253.198:80/program/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/PMA/
+  --> HEAD http://88.212.253.198:80/PMA/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/dbadmin/
+  --> HEAD http://88.212.253.198:80/dbadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/pma/
+  --> HEAD http://88.212.253.198:80/pma/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/db/
+  --> HEAD http://88.212.253.198:80/db/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/admin/
+  --> HEAD http://88.212.253.198:80/admin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/mysql/
+  --> HEAD http://88.212.253.198:80/mysql/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/database/
+  --> HEAD http://88.212.253.198:80/database/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/db/phpmyadmin/
+  --> HEAD http://88.212.253.198:80/db/phpmyadmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/db/phpMyAdmin/
+  --> HEAD http://88.212.253.198:80/db/phpMyAdmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sqlmanager/
+  --> HEAD http://88.212.253.198:80/sqlmanager/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/mysqlmanager/
+  --> HEAD http://88.212.253.198:80/mysqlmanager/ 404 5ms -
+  <-- HEAD http://88.212.253.198:80/php-myadmin/
+  --> HEAD http://88.212.253.198:80/php-myadmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/phpmy-admin/
+  --> HEAD http://88.212.253.198:80/phpmy-admin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/mysqladmin/
+  --> HEAD http://88.212.253.198:80/mysqladmin/ 404 2ms -
+  <-- HEAD http://88.212.253.198:80/mysql-admin/
+  --> HEAD http://88.212.253.198:80/mysql-admin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/admin/phpmyadmin/
+  --> HEAD http://88.212.253.198:80/admin/phpmyadmin/ 404 9ms -
+  <-- HEAD http://88.212.253.198:80/admin/phpMyAdmin/
+  --> HEAD http://88.212.253.198:80/admin/phpMyAdmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/admin/sysadmin/
+  --> HEAD http://88.212.253.198:80/admin/sysadmin/ 404 2ms -
+  <-- HEAD http://88.212.253.198:80/admin/sqladmin/
+  --> HEAD http://88.212.253.198:80/admin/sqladmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/admin/db/
+  --> HEAD http://88.212.253.198:80/admin/db/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/admin/web/
+  --> HEAD http://88.212.253.198:80/admin/web/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/admin/pMA/
+  --> HEAD http://88.212.253.198:80/admin/pMA/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/mysql/pma/
+  --> HEAD http://88.212.253.198:80/mysql/pma/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/mysql/db/
+  --> HEAD http://88.212.253.198:80/mysql/db/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/mysql/web/
+  --> HEAD http://88.212.253.198:80/mysql/web/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/mysql/pMA/
+  --> HEAD http://88.212.253.198:80/mysql/pMA/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/phpmanager/
+  --> HEAD http://88.212.253.198:80/sql/phpmanager/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/php-myadmin/
+  --> HEAD http://88.212.253.198:80/sql/php-myadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/phpmy-admin/
+  --> HEAD http://88.212.253.198:80/sql/phpmy-admin/ 404 3ms -
+  <-- HEAD http://88.212.253.198:80/sql/sql/
+  --> HEAD http://88.212.253.198:80/sql/sql/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/myadmin/
+  --> HEAD http://88.212.253.198:80/sql/myadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/webadmin/
+  --> HEAD http://88.212.253.198:80/sql/webadmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/sql/sqlweb/
+  --> HEAD http://88.212.253.198:80/sql/sqlweb/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/sql/websql/
+  --> HEAD http://88.212.253.198:80/sql/websql/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/sql/webdb/
+  --> HEAD http://88.212.253.198:80/sql/webdb/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/sqladmin/
+  --> HEAD http://88.212.253.198:80/sql/sqladmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/sql/sql-admin/
+  --> HEAD http://88.212.253.198:80/sql/sql-admin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/phpmyadmin2/
+  --> HEAD http://88.212.253.198:80/sql/phpmyadmin2/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/phpMyAdmin2/
+  --> HEAD http://88.212.253.198:80/sql/phpMyAdmin2/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/phpMyAdmin/
+  --> HEAD http://88.212.253.198:80/sql/phpMyAdmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/db/myadmin/
+  --> HEAD http://88.212.253.198:80/db/myadmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/db/webadmin/
+  --> HEAD http://88.212.253.198:80/db/webadmin/ 404 2ms -
+  <-- HEAD http://88.212.253.198:80/db/dbweb/
+  --> HEAD http://88.212.253.198:80/db/dbweb/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/db/websql/
+  --> HEAD http://88.212.253.198:80/db/websql/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/db/webdb/
+  --> HEAD http://88.212.253.198:80/db/webdb/ 404 2ms -
+  <-- HEAD http://88.212.253.198:80/db/dbadmin/
+  --> HEAD http://88.212.253.198:80/db/dbadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/db/db-admin/
+  --> HEAD http://88.212.253.198:80/db/db-admin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/db/phpmyadmin3/
+  --> HEAD http://88.212.253.198:80/db/phpmyadmin3/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/db/phpMyAdmin3/
+  --> HEAD http://88.212.253.198:80/db/phpMyAdmin3/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/db/phpMyAdmin-3/
+  --> HEAD http://88.212.253.198:80/db/phpMyAdmin-3/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/administrator/phpmyadmin/
+  --> HEAD http://88.212.253.198:80/administrator/phpmyadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/administrator/phpMyAdmin/
+  --> HEAD http://88.212.253.198:80/administrator/phpMyAdmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/administrator/db/
+  --> HEAD http://88.212.253.198:80/administrator/db/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/administrator/web/
+  --> HEAD http://88.212.253.198:80/administrator/web/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/administrator/pma/
+  --> HEAD http://88.212.253.198:80/administrator/pma/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/administrator/PMA/
+  --> HEAD http://88.212.253.198:80/administrator/PMA/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/administrator/admin/
+  --> HEAD http://88.212.253.198:80/administrator/admin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phpMyAdmin2/
+  --> HEAD http://88.212.253.198:80/phpMyAdmin2/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phpMyAdmin3/
+  --> HEAD http://88.212.253.198:80/phpMyAdmin3/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phpMyAdmin4/
+  --> HEAD http://88.212.253.198:80/phpMyAdmin4/ 404 2ms -
+  <-- HEAD http://88.212.253.198:80/phpMyAdmin-3/
+  --> HEAD http://88.212.253.198:80/phpMyAdmin-3/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/php-my-admin/
+  --> HEAD http://88.212.253.198:80/php-my-admin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/PMA2012/
+  --> HEAD http://88.212.253.198:80/PMA2012/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/pma2012/
+  --> HEAD http://88.212.253.198:80/pma2012/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/PMA2011/
+  --> HEAD http://88.212.253.198:80/PMA2011/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/pma2011/
+  --> HEAD http://88.212.253.198:80/pma2011/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phpmanager/
+  --> HEAD http://88.212.253.198:80/phpmanager/ 404 0ms -
+  <-- GET /
+null
+  --> GET / 200 35ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 1ms -
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 37ms 1.78kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 6ms -
+  <-- HEAD /
+null
+  --> HEAD / 200 157ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 127ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 1ms -
+  <-- GET /manual/es/new_features_2_4.html
+  --> GET /manual/es/new_features_2_4.html 404 2ms -
+  <-- GET /
+null
+  --> GET / 200 76ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 54ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 44ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 0ms -
+  <-- GET /login?error=access_denied&error_reason=user_denied&error_description=User+denied+your+request
+  --> GET /login?error=access_denied&error_reason=user_denied&error_description=User+denied+your+request 200 1ms 23b
+  <-- GET /
+null
+  --> GET / 200 46ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 1ms -
+  <-- GET /manual/fr/new_features_2_0.html
+  --> GET /manual/fr/new_features_2_0.html 404 5ms -
+  <-- GET /
+null
+  --> GET / 200 39ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 70ms 1.56kb
+  <-- HEAD http://88.212.253.198:80/mysql/admin/
+  --> HEAD http://88.212.253.198:80/mysql/admin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/mysql/dbadmin/
+  --> HEAD http://88.212.253.198:80/mysql/dbadmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/mysql/sqlmanager/
+  --> HEAD http://88.212.253.198:80/mysql/sqlmanager/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/mysql/mysqlmanager/
+  --> HEAD http://88.212.253.198:80/mysql/mysqlmanager/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phpmyadmin/
+  --> HEAD http://88.212.253.198:80/phpmyadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phpMyadmin/
+  --> HEAD http://88.212.253.198:80/phpMyadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phpMyAdmin/
+  --> HEAD http://88.212.253.198:80/phpMyAdmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/phpmyAdmin/
+  --> HEAD http://88.212.253.198:80/phpmyAdmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phpmyadmin2/
+  --> HEAD http://88.212.253.198:80/phpmyadmin2/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/phpmyadmin3/
+  --> HEAD http://88.212.253.198:80/phpmyadmin3/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/phpmyadmin4/
+  --> HEAD http://88.212.253.198:80/phpmyadmin4/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/2phpmyadmin/
+  --> HEAD http://88.212.253.198:80/2phpmyadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phpmy/
+  --> HEAD http://88.212.253.198:80/phpmy/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phppma/
+  --> HEAD http://88.212.253.198:80/phppma/ 404 8ms -
+  <-- HEAD http://88.212.253.198:80/myadmin/
+  --> HEAD http://88.212.253.198:80/myadmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/shopdb/
+  --> HEAD http://88.212.253.198:80/shopdb/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/MyAdmin/
+  --> HEAD http://88.212.253.198:80/MyAdmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/program/
+  --> HEAD http://88.212.253.198:80/program/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/PMA/
+  --> HEAD http://88.212.253.198:80/PMA/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/dbadmin/
+  --> HEAD http://88.212.253.198:80/dbadmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/pma/
+  --> HEAD http://88.212.253.198:80/pma/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/db/
+  --> HEAD http://88.212.253.198:80/db/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/admin/
+  --> HEAD http://88.212.253.198:80/admin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/mysql/
+  --> HEAD http://88.212.253.198:80/mysql/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/database/
+  --> HEAD http://88.212.253.198:80/database/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/db/phpmyadmin/
+  --> HEAD http://88.212.253.198:80/db/phpmyadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/db/phpMyAdmin/
+  --> HEAD http://88.212.253.198:80/db/phpMyAdmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/sqlmanager/
+  --> HEAD http://88.212.253.198:80/sqlmanager/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/mysqlmanager/
+  --> HEAD http://88.212.253.198:80/mysqlmanager/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/php-myadmin/
+  --> HEAD http://88.212.253.198:80/php-myadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phpmy-admin/
+  --> HEAD http://88.212.253.198:80/phpmy-admin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/mysqladmin/
+  --> HEAD http://88.212.253.198:80/mysqladmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/mysql-admin/
+  --> HEAD http://88.212.253.198:80/mysql-admin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/admin/phpmyadmin/
+  --> HEAD http://88.212.253.198:80/admin/phpmyadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/admin/phpMyAdmin/
+  --> HEAD http://88.212.253.198:80/admin/phpMyAdmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/admin/sysadmin/
+  --> HEAD http://88.212.253.198:80/admin/sysadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/admin/sqladmin/
+  --> HEAD http://88.212.253.198:80/admin/sqladmin/ 404 2ms -
+  <-- HEAD http://88.212.253.198:80/admin/db/
+  --> HEAD http://88.212.253.198:80/admin/db/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/admin/web/
+  --> HEAD http://88.212.253.198:80/admin/web/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/admin/pMA/
+  --> HEAD http://88.212.253.198:80/admin/pMA/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/mysql/pma/
+  --> HEAD http://88.212.253.198:80/mysql/pma/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/mysql/db/
+  --> HEAD http://88.212.253.198:80/mysql/db/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/mysql/web/
+  --> HEAD http://88.212.253.198:80/mysql/web/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/mysql/pMA/
+  --> HEAD http://88.212.253.198:80/mysql/pMA/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/phpmanager/
+  --> HEAD http://88.212.253.198:80/sql/phpmanager/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/sql/php-myadmin/
+  --> HEAD http://88.212.253.198:80/sql/php-myadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/phpmy-admin/
+  --> HEAD http://88.212.253.198:80/sql/phpmy-admin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/sql/
+  --> HEAD http://88.212.253.198:80/sql/sql/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/sql/myadmin/
+  --> HEAD http://88.212.253.198:80/sql/myadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/webadmin/
+  --> HEAD http://88.212.253.198:80/sql/webadmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/sql/sqlweb/
+  --> HEAD http://88.212.253.198:80/sql/sqlweb/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/sql/websql/
+  --> HEAD http://88.212.253.198:80/sql/websql/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/sql/webdb/
+  --> HEAD http://88.212.253.198:80/sql/webdb/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/sqladmin/
+  --> HEAD http://88.212.253.198:80/sql/sqladmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/sql-admin/
+  --> HEAD http://88.212.253.198:80/sql/sql-admin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/phpmyadmin2/
+  --> HEAD http://88.212.253.198:80/sql/phpmyadmin2/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/phpMyAdmin2/
+  --> HEAD http://88.212.253.198:80/sql/phpMyAdmin2/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/sql/phpMyAdmin/
+  --> HEAD http://88.212.253.198:80/sql/phpMyAdmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/db/myadmin/
+  --> HEAD http://88.212.253.198:80/db/myadmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/db/webadmin/
+  --> HEAD http://88.212.253.198:80/db/webadmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/db/dbweb/
+  --> HEAD http://88.212.253.198:80/db/dbweb/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/db/websql/
+  --> HEAD http://88.212.253.198:80/db/websql/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/db/webdb/
+  --> HEAD http://88.212.253.198:80/db/webdb/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/db/dbadmin/
+  --> HEAD http://88.212.253.198:80/db/dbadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/db/db-admin/
+  --> HEAD http://88.212.253.198:80/db/db-admin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/db/phpmyadmin3/
+  --> HEAD http://88.212.253.198:80/db/phpmyadmin3/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/db/phpMyAdmin3/
+  --> HEAD http://88.212.253.198:80/db/phpMyAdmin3/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/db/phpMyAdmin-3/
+  --> HEAD http://88.212.253.198:80/db/phpMyAdmin-3/ 404 2ms -
+  <-- HEAD http://88.212.253.198:80/administrator/phpmyadmin/
+  --> HEAD http://88.212.253.198:80/administrator/phpmyadmin/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/administrator/phpMyAdmin/
+  --> HEAD http://88.212.253.198:80/administrator/phpMyAdmin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/administrator/db/
+  --> HEAD http://88.212.253.198:80/administrator/db/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/administrator/web/
+  --> HEAD http://88.212.253.198:80/administrator/web/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/administrator/pma/
+  --> HEAD http://88.212.253.198:80/administrator/pma/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/administrator/PMA/
+  --> HEAD http://88.212.253.198:80/administrator/PMA/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/administrator/admin/
+  --> HEAD http://88.212.253.198:80/administrator/admin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/phpMyAdmin2/
+  --> HEAD http://88.212.253.198:80/phpMyAdmin2/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phpMyAdmin3/
+  --> HEAD http://88.212.253.198:80/phpMyAdmin3/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/phpMyAdmin4/
+  --> HEAD http://88.212.253.198:80/phpMyAdmin4/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phpMyAdmin-3/
+  --> HEAD http://88.212.253.198:80/phpMyAdmin-3/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/php-my-admin/
+  --> HEAD http://88.212.253.198:80/php-my-admin/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/PMA2012/
+  --> HEAD http://88.212.253.198:80/PMA2012/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/pma2012/
+  --> HEAD http://88.212.253.198:80/pma2012/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/PMA2011/
+  --> HEAD http://88.212.253.198:80/PMA2011/ 404 0ms -
+  <-- HEAD http://88.212.253.198:80/pma2011/
+  --> HEAD http://88.212.253.198:80/pma2011/ 404 1ms -
+  <-- HEAD http://88.212.253.198:80/phpmanager/
+  --> HEAD http://88.212.253.198:80/phpmanager/ 404 0ms -
+  <-- POST /
+  --> POST / 404 15ms -
+  <-- POST /
+  --> POST / 404 3ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 2ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 49ms 1.56kb
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 48ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 50ms 1.56kb
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- GET /manual/fr/getting-started.html
+  --> GET /manual/fr/getting-started.html 404 0ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 5ms -
+  <-- POST /
+  --> POST / 404 5ms -
+  <-- GET /wp-login.php
+  --> GET /wp-login.php 404 0ms -
+  <-- POST /
+  --> POST / 404 0ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 5ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 2ms -
+  <-- POST /
+  --> POST / 404 2ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- POST /
+  --> POST / 404 1ms -
+  <-- GET /phpmyadmin
+  --> GET /phpmyadmin 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 67ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 34ms 1.56kb
+  <-- GET /wp-content/plugins/photo-gallery/filemanager/UploadHandler.php
+  --> GET /wp-content/plugins/photo-gallery/filemanager/UploadHandler.php 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 45ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 35ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 32ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 0ms -
+  <-- GET /manual/de/new_features_2_2.html
+  --> GET /manual/de/new_features_2_2.html 404 0ms -
+  <-- GET /
+null
+  --> GET / 200 37ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 0ms -
+  <-- GET /login?code=717f3281aeb03812bb
+717f3281aeb03812bb
+User is registered
+  --> GET /login?code=717f3281aeb03812bb 302 311ms 33b
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 57ms 1.78kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 44ms -
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 179ms 1.78kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 27ms -
+  <-- GET /checkout
+  --> GET /checkout 200 295ms 3.38kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 2ms -
+  <-- GET /checkout
+  --> GET /checkout 200 240ms 3.38kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 3ms -
+  <-- GET /logout
+  --> GET /logout 302 7ms 33b
+  <-- GET /
+null
+  --> GET / 200 74ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 1ms -
+  <-- GET /login?code=9526e30d846609b4bf
+9526e30d846609b4bf
+User is registered
+  --> GET /login?code=9526e30d846609b4bf 302 27s 33b
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 49ms 1.78kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 4ms -
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 48ms 1.78kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 4ms -
+  <-- GET /checkout
+  --> GET /checkout 200 138ms 3.38kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 4ms -
+  <-- GET /checkout
+  --> GET /checkout 200 117ms 3.38kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 6ms -
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 38ms 1.78kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 4ms -
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 36ms 1.78kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 3ms -
+  <-- GET /robots.txt
+  --> GET /robots.txt 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 41ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 36ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 1ms -
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 0ms -
+  <-- GET /
+null
+  --> GET / 200 39ms 1.56kb
+  <-- GET /apple-touch-icon-precomposed.png
+  --> GET /apple-touch-icon-precomposed.png 404 3ms -
+  <-- GET /apple-touch-icon.png
+  --> GET /apple-touch-icon.png 404 0ms -
+  <-- GET /
+null
+  --> GET / 200 39ms 1.56kb
+  <-- GET /apple-touch-icon-precomposed.png
+  --> GET /apple-touch-icon-precomposed.png 404 0ms -
+  <-- GET /apple-touch-icon.png
+  --> GET /apple-touch-icon.png 404 0ms -
+  <-- GET /
+null
+  --> GET / 200 37ms 1.56kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 197ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 87ms 1.56kb
+  <-- GET /
+null
+  --> GET / 200 74ms 1.62kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 1ms -
+  <-- GET /
+null
+  --> GET / 200 59ms 1.62kb
+  <-- GET /css/style.css
+  --> GET /css/style.css 404 0ms -
