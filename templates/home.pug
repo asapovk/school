@@ -15,16 +15,39 @@ block content
             ul.nav.navbar-nav.navbar-right
               if user12
                 li
-                  a(href="/checkout") Баланс: #{user12.balance} руб.
+                  a(href="/tinkoff-checkout") Баланс: #{user12.balance} руб.
                 li.dropdown
                   a( class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
                     i(class="fa fa-user" aria-hidden="true") &nbsp #{user12.firstName}
                     span.caret
                   ul.dropdown-menu
                     li
-                      a(href="/checkout") Пополнить баланс
+                      a(href="/tinkoff-checkout") Пополнить баланс
                     li
                       a(href="/logout") Выйти
               else
                 li
-                  a(href ="https://oauth.vk.com/authorize?client_id=5895475&display=page&redirect_uri=http://akadplus.astapovk.ru/login&scope=friends&response_type=code&v=5.62") Войти
+                  a(href ="https://oauth.vk.com/authorize?client_id=5895475&display=page&redirect_uri=https://lk.akadplus.ru/login&scope=friends&response_type=code&v=5.62") Войти
+
+
+    .container
+      .panel.panel-default
+        .panel-body
+          h4.header.
+            Добро пожаловать в личный кабинет пользователя школы АкадПЛЮС!
+          .content.  
+            Здесь Вы можете пополнять баланс своего лицевого счета для последующей 
+            удобной оплаты занятий. 
+            Для пополения лицевого счета вам необходимо пройти процедуру авторизацию,
+            для этого нажмите "Войти" в верхнем меню сайта и авторизуйтесь через "В контакте",
+            далее в выпадающем меню нажмите "Пополнить баланс" и перейдите на страницу с формой
+            для оплаты. После совершения оплаты баланс Вашего лицевого счета будет пополнен на сумму платежа.
+            После занятия с преподавателем с Вашего лицевого счета будет списана сумма в соответсвии с тарифами АкадПЛЮС.
+      
+    .navbar.navbar-fixed-bottom.navbar-inverse   
+        Footer
+             
+            
+            
+            
+            

@@ -7,7 +7,8 @@ exports.get = async (ctx) => {
   } catch(e) {}
   if (code == undefined ) {
 
-    ctx.body = 'No authetification code';
+    console.log('No authetification code');
+    ctx.redirect('/');
 
   }
   else {
@@ -18,7 +19,7 @@ exports.get = async (ctx) => {
       qs: {
         client_id: '5895475',
         client_secret: 'CWWUwXFXOOw1UCJXIjef',
-        redirect_uri: 'http://akadplus.astapovk.ru/login',
+        redirect_uri: 'https://lk.akadplus.ru/login',
         code: code
       },
       json: true
