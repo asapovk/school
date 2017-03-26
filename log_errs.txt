@@ -8,47 +8,56 @@ listening port 443
   vkId: '2385621',
   __v: 0,
   balance: 1000 }
-  --> GET / 200 751ms 3.32kb
+  --> GET / 200 658ms 3.39kb
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 398ms 3.39kb
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 320ms 3.39kb
   <-- GET /logout
-  --> GET /logout 302 11ms 33b
+  --> GET /logout 302 7ms 33b
   <-- GET /
 null
-  --> GET / 200 457ms 3.07kb
-  <-- GET /login?code=e385fa4a001d17b8a1
-e385fa4a001d17b8a1
-User is registered
-  --> GET /login?code=e385fa4a001d17b8a1 302 203ms 33b
-  <-- GET /
-{ _id: '58ca546249f1d4668ad7267f',
-  updatedAt: '2017-03-16T09:01:50.541Z',
-  createdAt: '2017-03-16T09:01:22.434Z',
-  firstName: 'Константин',
-  lastName: 'Астапов',
-  vkId: '2385621',
-  __v: 0,
-  balance: 1000 }
-  --> GET / 200 217ms 3.32kb
-  <-- GET /tinkoff-checkout
-  --> GET /tinkoff-checkout 200 192ms 3.88kb
-  <-- GET /
-{ _id: '58ca546249f1d4668ad7267f',
-  updatedAt: '2017-03-16T09:01:50.541Z',
-  createdAt: '2017-03-16T09:01:22.434Z',
-  firstName: 'Константин',
-  lastName: 'Астапов',
-  vkId: '2385621',
-  __v: 0,
-  balance: 1000 }
-  --> GET / 200 109ms 3.32kb
-  <-- GET /logout
-  --> GET /logout 302 3ms 33b
+  --> GET / 200 108ms 3.15kb
   <-- GET /
 null
-  --> GET / 200 57ms 3.07kb
-  <-- GET /login?code=a626709abf0a83444a
-a626709abf0a83444a
+  --> GET / 200 42ms 3.15kb
+  <-- GET /tinkoff-no
+  --> GET /tinkoff-no 404 1ms -
+  <-- GET /tinkoff-
+  --> GET /tinkoff- 404 3ms -
+  <-- GET /tinkoff-fa
+  --> GET /tinkoff-fa 404 3ms -
+  <-- GET /tinkoff-fail
+  --> GET /tinkoff-fail 404 1ms -
+  <-- GET /tinkoff-suc
+  --> GET /tinkoff-suc 404 0ms -
+  <-- GET /tinkoff-succsess
+  --> GET /tinkoff-succsess 404 1ms -
+  <-- GET /tinkoff-success
+  --> GET /tinkoff-success 404 0ms -
+  <-- GET /
+null
+  --> GET / 200 58ms 3.15kb
+  <-- GET /login?code=490272cb2ea731ede7
+490272cb2ea731ede7
 User is registered
-  --> GET /login?code=a626709abf0a83444a 302 266ms 33b
+  --> GET /login?code=490272cb2ea731ede7 302 338ms 33b
   <-- GET /
 { _id: '58ca546249f1d4668ad7267f',
   updatedAt: '2017-03-16T09:01:50.541Z',
@@ -58,9 +67,13 @@ User is registered
   vkId: '2385621',
   __v: 0,
   balance: 1000 }
-  --> GET / 200 51ms 3.32kb
+  --> GET / 200 148ms 3.39kb
   <-- GET /tinkoff-checkout
-  --> GET /tinkoff-checkout 200 89ms 3.88kb
+  --> GET /tinkoff-checkout 200 110ms 3.88kb
+  <-- GET /tinkoff-checkout
+  --> GET /tinkoff-checkout 200 123ms 3.88kb
+  <-- GET /tinkoff-checkout
+  --> GET /tinkoff-checkout 200 75ms 3.88kb
   <-- GET /
 { _id: '58ca546249f1d4668ad7267f',
   updatedAt: '2017-03-16T09:01:50.541Z',
@@ -70,4 +83,23 @@ User is registered
   vkId: '2385621',
   __v: 0,
   balance: 1000 }
-  --> GET / 200 309ms 3.32kb
+  --> GET / 200 48ms 3.39kb
+  <-- GET /tinkoff-checkout
+  --> GET /tinkoff-checkout 200 54ms 3.88kb
+  <-- GET /
+{ _id: '58ca546249f1d4668ad7267f',
+  updatedAt: '2017-03-16T09:01:50.541Z',
+  createdAt: '2017-03-16T09:01:22.434Z',
+  firstName: 'Константин',
+  lastName: 'Астапов',
+  vkId: '2385621',
+  __v: 0,
+  balance: 1000 }
+  --> GET / 200 51ms 3.39kb
+  <-- GET /
+null
+  --> GET / 200 335ms 3.15kb
+  <-- GET /tinkoff-aviso
+  --> GET /tinkoff-aviso 404 1ms -
+  <-- GET /tinkoff-success
+  --> GET /tinkoff-success 404 2ms -

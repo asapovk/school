@@ -36,13 +36,13 @@ router.post('/tinkoff-aviso', require('./routes/tinkoff-aviso.js').post);
 app.use(router.routes());
 
 app.keys = ['some secret hurr'];
-//app.listen('80', ()=>{
-//    console.log('listening port 80');
-//});
-
-
-
-
-https.createServer(credentials, app.callback()).listen('443', ()=>{
-  console.log('listening port 443');
+app.listen('80', ()=>{
+    console.log('listening port 80');
 });
+
+
+
+
+//https.createServer(credentials, app.callback()).listen('443', ()=>{
+//  console.log('listening port 443');
+//});
