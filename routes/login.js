@@ -58,6 +58,7 @@ exports.get = async (ctx) => {
           console.log('unable to save in database');
           ctx.redirect('/');
         });
+        console.log('now user is created');
         ctx.session.user = userObject;
       }
       else {

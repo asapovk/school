@@ -4,8 +4,8 @@ const path = require('path');
 const fs = require('fs');
 
 const https = require('https');
-const privateKey  = fs.readFileSync('/home/asapovk/certs/key.pem', 'utf8');
-const certificate = fs.readFileSync('/home/asapovk/certs/server.crt', 'utf8');
+const privateKey  = fs.readFileSync('/etc/letsencrypt/keys/0000_key-certbot.pem', 'utf8');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/lk.akadplus.ru/fullchain.pem', 'utf8');
 const credentials = {key: privateKey, cert: certificate};
 
 const app = new Koa();
@@ -33,6 +33,8 @@ router.post('/aviso', require('./routes/aviso.js').post);
 router.get('/tinkoff-checkout', require('./routes/tinkoff-checkout.js').get);
 router.post('/tinkoff-aviso', require('./routes/tinkoff-aviso.js').post);
 
+router.get('/tinkoff-success', require('./routes/tinkoff-success.js').get);
+
 app.use(router.routes());
 
 app.keys = ['some secret hurr'];
@@ -40,7 +42,7 @@ app.keys = ['some secret hurr'];
 //    console.log('listening port 80');
 //});
 
-
+//hello!
 
 
 https.createServer(credentials, app.callback()).listen('443', ()=>{

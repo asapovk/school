@@ -2,29 +2,12 @@ extends layout
 
 block content
   body
-    nav.navbar.navbar-default
-      .container-fluid
-        .navbar-header
-          button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false")
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand(href="/") akadplus.ru
-        .collapse.navbar-collapse(id="bs-example-navbar-collapse-1")
-            ul.nav.navbar-nav.navbar-right
-              if user12
-                li
-                  a(href="/tinkoff-checkout") Баланс: #{user12.balance} руб.
-                li.dropdown
-                  a( class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
-                    i(class="fa fa-user" aria-hidden="true") &nbsp #{user12.firstName}
-                    span.caret
-                  ul.dropdown-menu
-                    li
-                      a(href="/tinkoff-checkout") Пополнить баланс
-                    li
-                      a(href="/logout") Выйти
-              else
-                li
-                  a(href ="https://oauth.vk.com/authorize?client_id=5895475&display=page&redirect_uri=https://lk.akadplus.ru/login&scope=friends&response_type=code&v=5.62") Войти
+    .container
+      .panel.panel-default
+        .panel-body
+          h4.header.
+            Произошла ошибка!
+          .content
+             a(href ="/" )  Вернуться в личный кабинет. 
+        
+      

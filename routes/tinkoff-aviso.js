@@ -1,4 +1,5 @@
 var crypto = require('crypto');
+var User = require('../models/user');
 
 exports.post = async (ctx) => {
   ctx.set('Content-Type', 'application/json');
@@ -30,7 +31,39 @@ exports.post = async (ctx) => {
   }
 
 
-   console.log('Notification successful')
+   console.log('Notification successful');
+   console.log(Status);
+   console.log(PaymentId);
+   console.log(Amount);
+   console.log(Token);
+   console.log(OrderId);
+
+  var userId = OrderId.substr(0, OrderId.indexOf('@'));
+  var orderSumAmount = Amount/100.0;
+  console.log(userId);
+  console.log(orderSumAmount);
+
+  if(Status === 'CONFIRMED') {
+
+    await User.findOneAndUpdate({vkId: userId}, {$inc: {balance: orderSumAmount}}, {new: true}).then(function (result){
+        if(result) {
+
+          //Can not update session with post request!!!
+          ctx.session.user = result;
+          console.log(result);
+          console.log('Successful written to database!')
+          ctx.body = 'OK';
+        }
+        else {
+          console.log('Failed check. No result from database!');
+          ctx.body = 'NOT_GOOD';
+        }
+    }).catch(function(err){
+        console.log('Failed check. Mongoose error. Unable to write payment to database!');
+        ctx.body ='NOT_GOOD';
+    });
+  }
+
   ctx.body = 'OK';
 
 }

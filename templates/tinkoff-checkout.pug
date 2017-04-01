@@ -33,7 +33,7 @@ block content
     .container
       form( name="TinkoffPayForm" )
         input(type="hidden" name="payDesc" placeholder="ФИО плательщика" class="form-control tinkoffPayRow" value="Test order")
-        input(type="hidden" name="payOrder" placeholder="ФИО плательщика" class="form-control tinkoffPayRow" value="") 
+        input(type="hidden" name="payOrder" placeholder="ФИО плательщика" class="form-control tinkoffPayRow" value=user12.vkId+'@'+currentTime) 
         input(type="hidden" name="payName" placeholder="ФИО плательщика" class="form-control tinkoffPayRow" value=user12.vkId)
         .form-group.row
           label(for="payEmail" class="col-sm-2 col-form-label") Email
@@ -51,7 +51,15 @@ block content
             input(type="text"  name="paySum" class="form-control tinkoffPayRow")
             small(class="form-text text-muted") Сумма в рублях зачисляемая на счет.    
         inptut(type="button" onclick="makePayment(document.TinkoffPayForm.paySum.value.replace(/,/ig,'.') * 100, document.TinkoffPayForm.payOrder.value, document.TinkoffPayForm.payDesc.value, document.TinkoffPayForm.payName.value, document.TinkoffPayForm.payEmail.value, document.TinkoffPayForm.payPhone.value)").btn.btn-default.tinkoffPayRow Пополнить баланс
-    
+        
+    .navbar.navbar-fixed-bottom.navbar-inverse  
+      .container-fluid
+        .footer-address.footer-text Техподдержка 
+          br
+          a(href="mailto:#") konstantin.astapov@akadplus.ru  
+        .footer-text-right 
+          a(href="https://akadplus.ru") © 2017 ООО АКАД ПЛЮС     
+              
 
   
   

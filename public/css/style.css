@@ -5,6 +5,21 @@
 }
 
 .content {
-  
+
   margin: auto;
+}
+
+.footer-address {
+  display: inline-block;
+}
+
+.footer-text {
+
+  color: white;
+}
+
+.footer-text-right {
+  display: inline-block;
+  color: white;
+  float: right;
 }
