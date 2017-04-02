@@ -1,5 +1,5 @@
 var crypto = require('crypto');
-var User = require('../models/user');
+var User = require('../../models/user');
 
 exports.post = async (ctx) => {
   ctx.set('Content-Type', 'application/json');

@@ -1,7 +1,7 @@
 var crypto = require('crypto');
-const sendMail = require('../libs/sendMail');
-const mongoose = require('../libs/mongoose');
-var User = require('../models/user');
+const sendMail = require('../../libs/sendMail');
+const mongoose = require('../../libs/mongoose');
+var User = require('../../models/user');
 
 exports.post = async (ctx) => {
   var phone = ctx.request.body.phone;

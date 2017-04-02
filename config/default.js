@@ -44,5 +44,11 @@ module.exports = {
       return path.join(cfg.root, 'templates');
     })
   },
-  root:     process.cwd()
+  root:     process.cwd(),
+  view: {
+
+    root: defer(function(cfg) {
+      return path.join(cfg.root, 'views');
+    })
+  }
 };

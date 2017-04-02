@@ -8,39 +8,39 @@ const path = require('path');
 exports.init = app => app.use(async (ctx, next) => {
 
   /* default helpers */
-  ctx.locals = {
-    /* at the time of ctx middleware, user is unknown, so we make it a getter */
-    get user() {
-      return ctx.req.user; // passport sets ctx
-    },
+//  ctx.locals = {
+//    /* at the time of ctx middleware, user is unknown, so we make it a getter */
+//    get user() {
+//      return ctx.req.user; // passport sets ctx
+//    },
+//
+//    get flash() {
+//      return ctx.flash();
+//    }
+//  };
+//
+//  ctx.locals.csrf = function() {
+//    // async function, not a property to prevent autogeneration
+//    // pug touches all local properties
+//    return ctx.req.user ? ctx.csrf : null;
+//  };
 
-    get flash() {
-      return ctx.flash();
-    }
-  };
+//  ctx.renderPug = function(templatePath, locals) {
+//    locals = locals || {};
+//    // use inheritance for all getters to work
+//    const localsFull = Object.create(ctx.locals);
 
-  ctx.locals.csrf = function() {
-    // async function, not a property to prevent autogeneration
-    // pug touches all local properties
-    return ctx.req.user ? ctx.csrf : null;
-  };
-
-  ctx.render = function(templatePath, locals) {
-    locals = locals || {};
-    // use inheritance for all getters to work
-    const localsFull = Object.create(ctx.locals);
-
-    for(const key in locals) {
-      localsFull[key] = locals[key];
-    }
+//    for(const key in locals) {
+//      localsFull[key] = locals[key];
+//    }
 /////////////// I AM HERE NOW!
 
 
-    const templatePathResolved = path.join(config.template.root, templatePath + '.pug');
+//    const templatePathResolved = path.join(config.template.root, templatePath + '.pug');
 
 
-    return pug.renderFile(templatePathResolved, localsFull);
-};
+//    return pug.renderFile(templatePathResolved, localsFull);
+//};
 
 await next();
 

@@ -25,26 +25,33 @@ Code here ...
 router.get('/', require('./routes/home.js').get);
 router.get('/login',require('./routes/login.js').get);
 router.get('/logout', require('./routes/logout.js').get);
-router.get('/checkout', require('./routes/checkout.js').get);
-router.post('/payment', require('./routes/payment.js').post);
-router.get('/test-login', require('./routes/test-login.js').get);
-router.post('/check', require('./routes/check.js').post);
-router.post('/aviso', require('./routes/aviso.js').post);
-router.get('/tinkoff-checkout', require('./routes/tinkoff-checkout.js').get);
-router.post('/tinkoff-aviso', require('./routes/tinkoff-aviso.js').post);
 
-router.get('/tinkoff-success', require('./routes/tinkoff-success.js').get);
+//Test routes
+router.post('/payment', require('./routes/test-routes/payment.js').post);
+router.get('/test-login', require('./routes/test-routes/test-login.js').get);
+router.get('/hbs-test', require('./routes/test-routes/hbs-test.js').get);
+
+//Yandex payment group
+router.get('/checkout', require('./routes/yandex-pay/checkout.js').get);
+router.post('/check', require('./routes/yandex-pay/check.js').post);
+router.post('/aviso', require('./routes/yandex-pay/aviso.js').post);
+
+//Tinkoff paymet group
+router.get('/tinkoff-checkout', require('./routes/tinkoff-pay/tinkoff-checkout.js').get);
+router.post('/tinkoff-aviso', require('./routes/tinkoff-pay/tinkoff-aviso.js').post);
+router.get('/tinkoff-success', require('./routes/tinkoff-pay/tinkoff-success.js').get);
+router.get('/tinkoff-fail', require('./routes/tinkoff-pay/tinkoff-fail.js').get);
 
 app.use(router.routes());
 
 app.keys = ['some secret hurr'];
-//app.listen('80', ()=>{
-//    console.log('listening port 80');
-//});
+app.listen('80', ()=>{
+    console.log('listening port 80');
+});
 
 //hello!
 
 
-https.createServer(credentials, app.callback()).listen('443', ()=>{
-  console.log('listening port 443');
-});
+//https.createServer(credentials, app.callback()).listen('443', ()=>{
+//  console.log('listening port 443');
+//});
