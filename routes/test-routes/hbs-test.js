@@ -4,7 +4,7 @@ exports.get = async (ctx) => {
     ctx.state.user = user;
     console.log(user);
 
-    if (user.group && user.group === 'admin') {
+    if (user != null) {
       ctx.render('lk');
     }
     else {

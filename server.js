@@ -45,8 +45,8 @@ router.get('/tinkoff-fail', require('./routes/tinkoff-pay/tinkoff-fail.js').get)
 app.use(router.routes());
 
 app.keys = ['some secret hurr'];
-app.listen('80', ()=>{
-    console.log('listening port 80');
+app.listen('3000',"127.0.0.1" , ()=>{
+    console.log('listening port 3000');
 });
 
 //hello!
