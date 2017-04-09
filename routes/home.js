@@ -1,7 +1,11 @@
+var User = require('../models/user');
+
 exports.get = async (ctx) => {
 
-    var user = ctx.session.user || null;
+    var userSession = ctx.session.user || null;
 
-    console.log(user);
-    ctx.body = ctx.renderPug('home', {user12: user});
+  //  var user = await User.find({vkId: userSession.vkId});
+
+    console.log(userSession);
+    ctx.body = ctx.renderPug('home', {user12: userSession});
 }

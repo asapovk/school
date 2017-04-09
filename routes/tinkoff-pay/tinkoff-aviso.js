@@ -38,10 +38,15 @@ exports.post = async (ctx) => {
    console.log(Token);
    console.log(OrderId);
 
-  var userId = OrderId.substr(0, OrderId.indexOf('@'));
-  var orderSumAmount = Amount/100.0;
-  console.log(userId);
-  console.log(orderSumAmount);
+    var userId = OrderId.substr(0, OrderId.indexOf('@'));
+    var orderSumAmount = Amount/100.0;
+    console.log(userId);
+    console.log(orderSumAmount);
+
+  var Password = 'nxg1spkd144wgjop';
+  var string = Amount+CardId+ErrorCode+Pan+OrderId+Password+PaymentId+RebillId+Status+Success+TerminalKey;
+  var hash = crypto.createHash('sha256').update(string).digest('hex');
+  console.log(hash);
 
   if(Status === 'CONFIRMED') {
 

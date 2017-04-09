@@ -1,3 +1,4 @@
+var User = require('../../models/user');
 exports.get = async (ctx) => {
 
     var user = ctx.session.user || null;
@@ -5,7 +6,8 @@ exports.get = async (ctx) => {
     console.log(user);
 
     if (user != null) {
-      ctx.render('lk');
+      var users = await User.find();
+      ctx.render('lk', {users: users});
     }
     else {
       ctx.redirect('/');
