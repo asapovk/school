@@ -2,6 +2,8 @@ var rp = require('request-promise');
 var User = require('../models/user');
 
 exports.get = async (ctx) => {
+
+
   try {
      var code = ctx.request.query.code;
   } catch(e) {}
@@ -17,9 +19,9 @@ exports.get = async (ctx) => {
       method: 'GET',
       uri: 'https://oauth.vk.com/access_token',
       qs: {
-        client_id: '5895475',
-        client_secret: 'CWWUwXFXOOw1UCJXIjef',
-        redirect_uri: 'https://lk.akadplus.ru/login',
+        client_id: '5974445',
+        client_secret: 'Tgdhzq2AQuUn7l55smDu',
+        redirect_uri: 'http://astapovk.ru/login',
         code: code
       },
       json: true
@@ -47,30 +49,36 @@ exports.get = async (ctx) => {
     }
 
     if (userObject) {
-      var user = new User(userObject);
+      var user = null;
     }
 
-    await User.findOne({vkId: user.vkId}).then( async function(result){
+    await User.findOne({vkId: userObject.vkId}).then( async function(result){
       if(!result) {
         console.log('user is not in database');
-
+      user = new User(userObject);
       await user.save().catch(function(){
           console.log('unable to save in database');
           ctx.redirect('/');
         });
         console.log('now user is created');
-        ctx.session.user = userObject;
+        ctx.session.user = user;
+        var userId = user.id;
+        ctx.redirect('/'+userId);
+        return;
       }
       else {
         console.log('User is registered');
         ctx.session.user = result;
+        user = result;
+        ctx.redirect('/user/'+userId);
+        return;
       }
     }).catch(function(){
       console.log('Failed seach user in database');
     });
 
 
-    ctx.redirect('/');
+    ctx.redirect('/user/'+user.id);
   }
 
 }

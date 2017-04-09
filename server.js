@@ -29,7 +29,7 @@ router.get('/logout', require('./routes/logout.js').get);
 //Test routes
 router.post('/payment', require('./routes/test-routes/payment.js').post);
 router.get('/test-login', require('./routes/test-routes/test-login.js').get);
-router.get('/hbs-test', require('./routes/test-routes/hbs-test.js').get);
+router.get('/user/:id', require('./routes/test-routes/user.js').get);
 
 //Yandex payment group
 router.get('/checkout', require('./routes/yandex-pay/checkout.js').get);

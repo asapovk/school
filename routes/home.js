@@ -7,5 +7,11 @@ exports.get = async (ctx) => {
   //  var user = await User.find({vkId: userSession.vkId});
 
     console.log(userSession);
-    ctx.body = ctx.renderPug('home', {user12: userSession});
+
+    if(userSession) {
+      await ctx.redirect('/user/'+userSession._id);
+    }
+
+    //ctx.body = ctx.renderPug('home', {user12: userSession});
+    ctx.render('home');
 }
