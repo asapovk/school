@@ -33,11 +33,11 @@ const userSchema = new mongoose.Schema({
     type: String
   },
 
-  group: {
+  role: {
     type: String,
     default: 'student'
   }
-
+  
 }, {
   timestamps: true
 });

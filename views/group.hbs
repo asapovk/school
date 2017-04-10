@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <ul>
+      <li>
+        {{group.groupName}}
+      </li>
+      <li>
+        {{teacher.firstName}}
+      </li>
+      {{#each students}}
+          <li>
+            {{this.firstName}}
+          </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
