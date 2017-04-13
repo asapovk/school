@@ -42,8 +42,27 @@ const userSchema = new mongoose.Schema({
   groups: [ {type: Schema.Types.ObjectId, ref: Group} ]
 
 }, {
-  timestamps: true
+   timestamps: true,
+   toObject: {
+     virtuals: true
+   },
+   toJSON: {
+   virtuals: true
+  }
+}
+);
+
+
+userSchema.virtual('isAdmin').get(function() {
+
+   if(this.role === 'admin') {
+      return true;
+   }
+   else {
+     return false;
+   }
 });
+
 
 
 

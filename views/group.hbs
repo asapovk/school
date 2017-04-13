@@ -5,7 +5,7 @@
 </div>
 
 
-
+{{#if user.isAdmin}}
 
 <div class="panel panel-default">
   <div class="panel-body">
@@ -13,10 +13,10 @@
       {{#each students}}
           <li class="list-group-item">
             <a href = "/user/{{this._id}}">{{this.firstName}} {{this.lastName}}</a>
-            Баланс:  {{this.balance}}
-            <label class="btn btn-primary pull-right">
-              <input type="checkbox" autocomplete="off" id="{{this._id}}"> Charge
-            </label>
+              Баланс:  {{this.balance}}
+              <label class="btn btn-primary pull-right">
+                <input type="checkbox" autocomplete="off" id="{{this._id}}"> Charge
+              </label>
           </li>
       {{/each}}
     </ul>
@@ -28,6 +28,7 @@
   <button class="btn btn-default" onclick="charge()">Charge</button>
   <input type="text" class="form-control" id="chargeValue">
 <!--</form>-->
+
 
 <script>
   function charge () {
@@ -52,11 +53,31 @@
     xhr.onload = function () {
       if(xhr.status === 200) {
         var responseText = xhr.responseText;
-
+        console.log(responseText);
+        location.reload();
       }
-      console.log(responseText);
+      else {
+        console.log(responseText);
+      }
     };
 
 
   }
 </script>
+
+{{else}}
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <ul class="list-group">
+      {{#each students}}
+          <li class="list-group-item">
+            <a href = "/user/{{this._id}}">{{this.firstName}} {{this.lastName}}</a>
+          </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+
+{{/if}}

@@ -34,7 +34,7 @@ exports.get = async (ctx) => {
               console.log('Error happened when tried to find students in database!');
               ctx.body = 'Error! Try to reload the page';
             });
-            console.log(students);
+            //console.log(students);
             await ctx.render('group', {teacher: teacher, students: students});
       }
       else {

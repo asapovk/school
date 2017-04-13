@@ -9,5 +9,5 @@ exports.post = async (ctx) => {
       ctx.body = 'Error! Try to reload the page';
     });
 
-    ctx.body = 'Successful charge by'+chargeValue;
+    ctx.body = 'Successful charge by '+chargeValue;
 }
