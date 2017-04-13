@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-const crypto = require('crypto');
-const _ = require('lodash');
 const config = require('config');
+var Group = require('./group');
+var Schema = mongoose.Schema;
+
 
 const userSchema = new mongoose.Schema({
   firstName:   {
@@ -36,8 +37,10 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
     default: 'student'
-  }
-  
+  },
+
+  groups: [ {type: Schema.Types.ObjectId, ref: Group} ]
+
 }, {
   timestamps: true
 });

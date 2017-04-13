@@ -1,4 +1,5 @@
 var User = require('../../models/user');
+var Group = require('../../models/group');
 exports.get = async (ctx) => {
 
     var userSession = ctx.session.user || null;
@@ -14,13 +15,16 @@ exports.get = async (ctx) => {
       ctx.state.user = user;
       console.log(user);
       /*
-      CODE HERE
+        CODE HERE
       */
-      
+      var allGroups = await Group.find().catch(function(){
+        console.log('Error happened when tried to find groups in database!');
+        ctx.body = 'Error! Try to reload the page';
+      });
       /*
-      CODE HERE
+        CODE HERE
       */
-      await ctx.render('user');
+      await ctx.render('user', {allGroups: allGroups});
       return;
     }
     else {

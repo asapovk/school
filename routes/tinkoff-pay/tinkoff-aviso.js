@@ -31,12 +31,12 @@ exports.post = async (ctx) => {
   }
 
 
-   console.log('Notification successful');
-   console.log(Status);
-   console.log(PaymentId);
-   console.log(Amount);
-   console.log(Token);
-   console.log(OrderId);
+     console.log('Notification successful');
+     console.log(Status);
+     console.log(PaymentId);
+     console.log(Amount);
+     console.log(Token);
+     console.log(OrderId);
 
     var userId = OrderId.substr(0, OrderId.indexOf('@'));
     var orderSumAmount = Amount/100.0;
