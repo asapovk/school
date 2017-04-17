@@ -1,4 +1,5 @@
 var User = require('../../models/user');
+var config = require('config');
 
 exports.get = async (ctx) => {
 
@@ -12,6 +13,8 @@ exports.get = async (ctx) => {
     //ctx.body = ctx.renderPug('checkout', {user12: user});
     if (user) {
       ctx.state.user = user;
+      ctx.state.siteUrl = config.server.siteUrl;
+      ctx.state.client_id = config.server.client_id;
       await ctx.render('checkout');
     }
     else {

@@ -2,6 +2,7 @@ const Koa = require('koa');
 const Router = require('koa-router');
 const path = require('path');
 const fs = require('fs');
+var config = require('config');
 
 const https = require('https');
 //const privateKey  = fs.readFileSync('/etc/letsencrypt/keys/0000_key-certbot.pem', 'utf8');
@@ -47,8 +48,8 @@ router.get('/tinkoff-fail', require('./routes/tinkoff-pay/tinkoff-fail.js').get)
 app.use(router.routes());
 
 app.keys = ['some secret hurr'];
-app.listen('3000',"127.0.0.1" , ()=>{
-    console.log('listening port 3000');
+app.listen(config.server.appPort, config.server.appHost , ()=>{
+    console.log('listening port '+config.server.appPort);
 });
 
 //hello!

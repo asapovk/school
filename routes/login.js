@@ -1,5 +1,6 @@
 var rp = require('request-promise');
 var User = require('../models/user');
+var config = require('config');
 
 exports.get = async (ctx) => {
 
@@ -19,9 +20,9 @@ exports.get = async (ctx) => {
       method: 'GET',
       uri: 'https://oauth.vk.com/access_token',
       qs: {
-        client_id: '5895475',
-        client_secret: 'CWWUwXFXOOw1UCJXIjef',
-        redirect_uri: 'https://lk.akadplus.ru/login',
+        client_id: config.server.client_id,
+        client_secret: config.server.client_secret,
+        redirect_uri: config.server.siteUrl+'/login',
         code: code
       },
       json: true

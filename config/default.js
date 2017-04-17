@@ -2,8 +2,22 @@ const defer = require('config/defer').deferConfig;
 const path = require('path');
 
 module.exports = {
+/*Production server
   server: {
-    siteHost: 'http://localhost'
+    siteUrl: 'https://lk.akadplus.ru',
+    appHost: '127.0.0.1',
+    appPort: '3000',
+    client_secret: 'CWWUwXFXOOw1UCJXIjef',
+    client_id: '5895475'
+  },
+*/  
+//Test server
+  server: {
+    siteUrl: 'http://astapovk.ru',
+    appHost: '127.0.0.1',
+    appPort: '3001',
+    client_secret: 'Tgdhzq2AQuUn7l55smDu',
+    client_id: '5974445'
   },
   mailer: {
     transport: 'gmail',
