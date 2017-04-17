@@ -14,9 +14,9 @@
           <li class="list-group-item">
             <a href = "/user/{{this._id}}">{{this.firstName}} {{this.lastName}}</a>
               Баланс:  {{this.balance}}
-              <label class="btn btn-primary pull-right">
-                <input type="checkbox" autocomplete="off" id="{{this._id}}"> Charge
-              </label>
+            <!--  <label class="btn btn-primary pull-right"> -->
+                <input type="checkbox" autocomplete="off" id="{{this._id}}" class="pull-right"> 
+            <!--  </label> -->
           </li>
       {{/each}}
     </ul>

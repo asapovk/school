@@ -19,9 +19,9 @@ exports.get = async (ctx) => {
       method: 'GET',
       uri: 'https://oauth.vk.com/access_token',
       qs: {
-        client_id: '5974445',
-        client_secret: 'Tgdhzq2AQuUn7l55smDu',
-        redirect_uri: 'http://astapovk.ru/login',
+        client_id: '5895475',
+        client_secret: 'CWWUwXFXOOw1UCJXIjef',
+        redirect_uri: 'https://lk.akadplus.ru/login',
         code: code
       },
       json: true

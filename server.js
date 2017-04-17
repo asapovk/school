@@ -4,9 +4,9 @@ const path = require('path');
 const fs = require('fs');
 
 const https = require('https');
-const privateKey  = fs.readFileSync('/etc/letsencrypt/keys/0000_key-certbot.pem', 'utf8');
-const certificate = fs.readFileSync('/etc/letsencrypt/live/lk.akadplus.ru/fullchain.pem', 'utf8');
-const credentials = {key: privateKey, cert: certificate};
+//const privateKey  = fs.readFileSync('/etc/letsencrypt/keys/0000_key-certbot.pem', 'utf8');
+//const certificate = fs.readFileSync('/etc/letsencrypt/live/lk.akadplus.ru/fullchain.pem', 'utf8');
+//const credentials = {key: privateKey, cert: certificate};
 
 const app = new Koa();
 const router = new Router();
@@ -47,8 +47,8 @@ router.get('/tinkoff-fail', require('./routes/tinkoff-pay/tinkoff-fail.js').get)
 app.use(router.routes());
 
 app.keys = ['some secret hurr'];
-app.listen('3001',"127.0.0.1" , ()=>{
-    console.log('listening port 3001');
+app.listen('3000',"127.0.0.1" , ()=>{
+    console.log('listening port 3000');
 });
 
 //hello!
