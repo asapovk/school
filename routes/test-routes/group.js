@@ -12,7 +12,6 @@ exports.get = async (ctx) => {
 
     if (user) {
       ctx.state.user = user;
-      console.log(user);
       /*
       CODE HERE
       */
