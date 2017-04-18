@@ -1,6 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-body">
-        {{group.groupName}}. {{group.time}} Преподаватель: <a href="/user/{{teacher._id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
+        {{group.groupName}}. {{group.time}} Преподаватель: <a href="/user/{{teacher._id}}"  class="teacherLink" id="{{teacher._id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
   </div>
 </div>
 
@@ -15,7 +15,7 @@
             <a href = "/user/{{this._id}}">{{this.firstName}} {{this.lastName}}</a>
               Баланс:  {{this.balance}}
             <!--  <label class="btn btn-primary pull-right"> -->
-                <input type="checkbox" autocomplete="off" id="{{this._id}}" class="pull-right"> 
+                <input type="checkbox" autocomplete="off" id="{{this._id}}" class="pull-right">
             <!--  </label> -->
           </li>
       {{/each}}
@@ -43,12 +43,15 @@
       }
     });
 
+    var teacherToAccept = $('.teacherLink').attr("id");
+    console.log(teacherToAccept);
+
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/group-charge', true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     console.log(chargeValue);
-    xhr.send(JSON.stringify({usersToCharge: usersToCharge, chargeValue: chargeValue}));
-    console.log(JSON.stringify({usersToCharge: usersToCharge, chargeValue: chargeValue}));
+    xhr.send(JSON.stringify({usersToCharge: usersToCharge, chargeValue: chargeValue, teacherToAccept: teacherToAccept}));
+    console.log(JSON.stringify({usersToCharge: usersToCharge, chargeValue: chargeValue, teacherToAccept: teacherToAccept}));
 
     xhr.onload = function () {
       if(xhr.status === 200) {
