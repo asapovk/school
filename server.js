@@ -33,6 +33,8 @@ router.get('/test-login', require('./routes/test-routes/test-login.js').get);
 router.get('/user/:id', require('./routes/test-routes/user.js').get);
 router.get('/group/:id', require('./routes/test-routes/group.js').get);
 router.post('/group-charge', require('./routes/test-routes/group-charge.js').post);
+router.get('/group', require('./routes/test-routes/group-create-form.js').get);
+router.post('/group-create', require('./routes/test-routes/group-create.js').post);
 
 //Yandex payment group
 router.get('/checkout', require('./routes/yandex-pay/checkout.js').get);
