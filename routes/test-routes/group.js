@@ -22,8 +22,19 @@ exports.get = async (ctx) => {
         ctx.body = 'Error! Try to reload the page';
       });
 
+
       if(group) {
-            ctx.state.group = group;
+
+          ctx.state.group = group;
+          try {
+            var isGroupEdit = ctx.request.query.edit
+          } catch(e) {}
+          if(isGroupEdit) {
+            await ctx.render('group-create-edit-form');
+            return;
+          }
+
+          console.log(isGroupEdit);
             var teacher = await User.findById(group.teacher).catch(function(){
               console.log('Error happened when tried to find user in database!');
               ctx.body = 'Error! Try to reload the page';
