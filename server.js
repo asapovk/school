@@ -36,6 +36,7 @@ router.post('/group-charge', require('./routes/test-routes/group-charge.js').pos
 router.get('/group', require('./routes/test-routes/group-create-form.js').get);
 router.post('/group-create', require('./routes/test-routes/group-create.js').post);
 router.post('/group-edit', require('./routes/test-routes/group-edit.js').post);
+router.post('/group-delete', require('./routes/test-routes/group-delete.js').post);
 
 //Yandex payment group
 router.get('/checkout', require('./routes/yandex-pay/checkout.js').get);

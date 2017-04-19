@@ -28,9 +28,24 @@
   <button class="btn btn-primary" onclick="charge()">Charge</button>
   <input type="text" class="form-control" id="chargeValue">
 <!--</form>-->
- <a class="btn btn-default" href="/group/{{group._id}}?edit=true">Редактировать группу</a>
+<a class="btn btn-default" href="/group/{{group._id}}?edit=true">Редактировать группу</a>
+<button class="btn btn-danger deleteButton" id="{{group._id}}" onclick="deleteGroup()">Charge</button>
 
 <script>
+
+  function deleteGroup () {
+
+    var groupToDelete = $('.deleteButton').attr("id");
+    console.log(groupToDelete);
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/group-delete', true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify({groupToDelete: groupToDelete}));
+  }
+
+
+
+
   function charge () {
 
     var chargeValue = $('#chargeValue').val();
