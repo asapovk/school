@@ -3,6 +3,7 @@ const Router = require('koa-router');
 const path = require('path');
 const fs = require('fs');
 var config = require('config');
+var pjson = require('./package.json');
 
 const https = require('https');
 //const privateKey  = fs.readFileSync('/etc/letsencrypt/keys/0000_key-certbot.pem', 'utf8');
@@ -54,6 +55,7 @@ app.use(router.routes());
 app.keys = ['some secret hurr'];
 app.listen(config.server.appPort, config.server.appHost , ()=>{
     console.log('listening port '+config.server.appPort);
+    console.log('ver '+pjson.version);
 });
 
 //hello!

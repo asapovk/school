@@ -1,6 +1,9 @@
 var User = require('../models/user');
 var config = require('config');
+var pjson = require('../package.json');
+
 exports.get = async (ctx) => {
+    ctx.state.ver =  pjson.version;
 
     var userSession = ctx.session.user || null;
 

@@ -25,12 +25,19 @@
 
 
 <!--<form onsubmit="charge()">-->
-  <button class="btn btn-primary" onclick="charge()">Charge</button>
-  <input type="text" class="form-control" id="chargeValue">
+<div class="panel panel-default">
+  <div class="panel-body">
+    <button class="btn btn-primary" onclick="charge()">Charge</button>
+    <input type="text" class="form-control" id="chargeValue">
+  </div>
+</div>
 <!--</form>-->
-<a class="btn btn-default" href="/group/{{group._id}}?edit=true">Редактировать группу</a>
-<button class="btn btn-danger deleteButton" id="{{group._id}}" onclick="deleteGroup()">Charge</button>
-
+<div class="panel panel-default">
+  <div class="panel-body">
+    <a class="btn btn-default" href="/group/{{group._id}}?edit=true">Редактировать группу</a>
+    <button class="btn btn-danger deleteButton" id="{{group._id}}" onclick="deleteGroup()">Удалить группу</button>
+  </div>
+</div>  
 <script>
 
   function deleteGroup () {

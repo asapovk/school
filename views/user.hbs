@@ -18,5 +18,7 @@
 </div>
 
 {{#if user.isAdmin}}
+{{#if pageOwner.isAdmin}}
 <a href="/group" class="btn btn-default">Создать группу</a>
+{{/if}}
 {{/if}}
