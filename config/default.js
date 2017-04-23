@@ -7,23 +7,52 @@ module.exports = {
     siteUrl: 'https://lk.akadplus.ru',
     appHost: '127.0.0.1',
     appPort: '3000',
+    appDb: 'prodDb'
     client_secret: 'CWWUwXFXOOw1UCJXIjef',
-    client_id: '5895475'
+    client_id: '5895475',
+    mongoose: {
+      uri:     'mongodb://localhost/app',
+      options: {
+        user: 'lk.akadplus.ru',
+        pass: 'CWWUwXFXOOw1UCJXIjef',
+        auth: {authdb:"app"},
+        server: {
+        socketOptions: {
+            keepAlive: 1
+          },
+          poolSize:      5
+        }
+      }
+    }
   },
-*/  
+*/
 //Test server
   server: {
     siteUrl: 'http://astapovk.ru',
     appHost: '127.0.0.1',
     appPort: '3001',
     client_secret: 'Tgdhzq2AQuUn7l55smDu',
-    client_id: '5974445'
+    client_id: '5974445',
+    mongoose: {
+      uri:     'mongodb://localhost/appTest',
+      options: {
+        user: 'astapovk.ru',
+        pass: 'Tgdhzq2AQuUn7l55smDu',
+        auth: {authdb:"appTest"},
+        server: {
+        socketOptions: {
+            keepAlive: 1
+          },
+          poolSize:      5
+        }
+      }
+    }
   },
   mailer: {
     transport: 'gmail',
     gmail: {
-      user: 'asapovk@gmail.com',
-      password: 'eeeblulgam//tar16/211'
+      user: 'asapovk',
+      password: 'none'
     },
     senders:  {
       // transactional emails, register/forgot pass etc
@@ -44,8 +73,11 @@ module.exports = {
   mongoose: {
     uri:     'mongodb://localhost/app',
     options: {
+      user: 'lk.akadplus.ru',
+      pass: 'CWWUwXFXOOw1UCJXIjef',
+      auth: {authdb:"app"},
       server: {
-        socketOptions: {
+      socketOptions: {
           keepAlive: 1
         },
         poolSize:      5

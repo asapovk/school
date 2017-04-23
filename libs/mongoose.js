@@ -15,6 +15,6 @@ if (process.env.MONGOOSE_DEBUG) {
   mongoose.set('debug', true);
 }
 
-mongoose.connect(config.mongoose.uri, config.mongoose.options);
+mongoose.connect(config.server.mongoose.uri, config.server.mongoose.options);
 
 module.exports = mongoose;
