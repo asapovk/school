@@ -8,7 +8,6 @@ module.exports = {
     siteUrl: 'https://lk.akadplus.ru',
     appHost: '127.0.0.1',
     appPort: '3000',
-    appDb: 'prodDb'
     client_secret: 'CWWUwXFXOOw1UCJXIjef',
     client_id: '5895475',
     mongoose: {
