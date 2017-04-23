@@ -2,7 +2,8 @@ const defer = require('config/defer').deferConfig;
 const path = require('path');
 
 module.exports = {
-/*Production server
+//Production server
+
   server: {
     siteUrl: 'https://lk.akadplus.ru',
     appHost: '127.0.0.1',
@@ -25,8 +26,9 @@ module.exports = {
       }
     }
   },
-*/
+
 //Test server
+/*
   server: {
     siteUrl: 'http://astapovk.ru',
     appHost: '127.0.0.1',
@@ -67,9 +69,10 @@ module.exports = {
         fromName:  'Newsletters',
         signature: "<em>Have fun!</em>"
       }
-      */
+
     }
   },
+*/
   mongoose: {
     uri:     'mongodb://localhost/app',
     options: {
