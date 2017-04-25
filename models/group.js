@@ -19,7 +19,9 @@ const groupSchema = new mongoose.Schema({
     ref: User
   },
 
-  students: [ {type: Schema.Types.ObjectId, ref: User} ],
+  studentsIn: [ {type: Schema.Types.ObjectId, ref: User} ],
+  studentsInv: [ {type: Schema.Types.ObjectId, ref: User} ],
+  studentsAsk: [{type: Schema.Types.ObjectId, ref: User}]
 
 }, {
   timestamps: true
