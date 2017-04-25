@@ -4,6 +4,13 @@
       <a href="/group/{{manageGroup}}">{{manageGroup}}</a>
   </div>
 </div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <button class="btn btn-primary" onclick="applyChange()">Применить изменения</button>
+  </div>
+</div>
+
 {{/if}}
 
 <div class="panel panel-default">
@@ -11,9 +18,46 @@
     <ul class="list-group">
       {{#each allUsers}}
         <li class="list-group-item">
-          <a href="/user/{{this._id}}">{{this.firstName}} {{this.lastName}}</a>
+          <a href="/user/{{this._id}}">{{this.firstName}} {{this.lastName}} {{status}}</a>
+          <input type="checkbox" autocomplete="off" id="{{this._id}}" class="pull-right">
         </li>
       {{/each}}
     </ul>
   </div>
 </div>
+
+
+
+<script>
+  function applyChange () {;
+    var usersToInvite = [];
+    $("input[type='checkbox']").each(function(){
+      if($(this).is(":checked")) {
+        usersToInvite.push($(this).attr("id"))
+      }
+    });
+
+    var groupToAccept = '{{manageGroup}}';
+    console.log(groupToAccept);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/group-manage', true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+    xhr.send(JSON.stringify({usersToInvite: usersToInvite,  groupToAccept: groupToAccept}));
+    console.log(JSON.stringify({usersToInvite: usersToInvite, groupToAccept: groupToAccept}));
+
+    xhr.onload = function () {
+      if(xhr.status === 200) {
+        var responseText = xhr.responseText;
+        console.log(responseText);
+      //  location.reload();
+      }
+      else {
+        console.log(responseText);
+      }
+    };
+
+
+  }
+</script>
