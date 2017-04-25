@@ -11,9 +11,21 @@ exports.get = async (ctx) => {
 
     if(user  && user.isAdmin) {
       ctx.state.user = user;
+
+
       var allUsers =  await User.find();
+
+      try {
+        var manageGroup = ctx.request.query.manage
+      } catch(e) {}
+      if(manageGroup) {
+        await ctx.render('user-index', {allUsers: allUsers, manageGroup: manageGroup});
+        return;
+      }
+
       console.log(allUsers[5]);
       ctx.render('user-index', {allUsers: allUsers});
+
     }
     else {
       console.log('user whith such id does not exist');

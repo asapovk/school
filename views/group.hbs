@@ -34,10 +34,11 @@
 <!--</form>-->
 <div class="panel panel-default">
   <div class="panel-body">
+    <a class="btn btn-default" href="/user-index?manage={{group._id}}">Добавить студентов</a>
     <a class="btn btn-default" href="/group/{{group._id}}?edit=true">Редактировать группу</a>
     <button class="btn btn-danger deleteButton" id="{{group._id}}" onclick="deleteGroup()">Удалить группу</button>
   </div>
-</div>  
+</div>
 <script>
 
   function deleteGroup () {
