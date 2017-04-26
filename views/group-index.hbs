@@ -13,7 +13,7 @@
       {{#each allGroups}}
         <li class="list-group-item">
           <a href="/group/{{this._id}}">{{this.groupName}} {{this.time}} </a>
-          <input type="checkbox" autocomplete="off" id="{{this._id}}" class="pull-right">
+          {{#unless this.status}}<input type="checkbox" autocomplete="off" id="{{this._id}}" class="pull-right">{{/unless}}
           <span class ="pull-right"> &nbsp{{this.status}}  &nbsp </span>
         </li>
       {{/each}}

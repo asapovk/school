@@ -19,8 +19,8 @@
       {{#each allUsers}}
         <li class="list-group-item">
           <a href="/user/{{this._id}}">{{this.firstName}} {{this.lastName}} </a>
-          <input type="checkbox" autocomplete="off" id="{{this._id}}" class="pull-right">
-          <span class ="pull-right"> &nbsp{{this.role}}  &nbsp </span>
+          {{#unless this.status}}<input type="checkbox" autocomplete="off" id="{{this._id}}" class="pull-right">{{/unless}}
+          <span class ="pull-right"> &nbsp{{this.status}}  &nbsp </span>
         </li>
       {{/each}}
     </ul>

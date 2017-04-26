@@ -33,7 +33,15 @@ exports.get = async (ctx) => {
         /*
           CODE HERE
         */
-        await ctx.render('user', {pageOwner: pageOwner, groupsIn: groupsIn, groupsAsk: groupsAsk, groupsInv: groupsInv});
+        if(userId === pageOwnerId) {
+          var myPage = true
+        }
+
+        else {
+          var myPage = false
+        }
+
+        await ctx.render('user', {pageOwner: pageOwner, groupsIn: groupsIn, groupsAsk: groupsAsk, groupsInv: groupsInv, myPage: myPage});
         return;
       }
       else {

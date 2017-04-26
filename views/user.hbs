@@ -49,8 +49,10 @@
 </div>
 {{/if}}
 
+
+{{#if myPage}}
 {{#if user.isAdmin}}
-{{#if pageOwner.isAdmin}}
 <a href="/group" class="btn btn-default">Создать группу</a>
 {{/if}}
+<a href="/group-index" class="btn btn-default">Добавить группы</a>
 {{/if}}

@@ -12,9 +12,9 @@ exports.get = async (ctx) => {
       ctx.state.user = user;
       var allGroups =  await Group.find();
       allGroups.forEach(function(group){
-        if(group.statusForUser(user)) {
-          group.status = group.statusForUser(user);
-        }
+      //  if(group.statusForUser(userId)) {
+          group.status = group.statusForUser(userId);
+      //  }
       });
         //console.log('statused user is '+allUsers[1]);
       await ctx.render('group-index', {allGroups: allGroups});

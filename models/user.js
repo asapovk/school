@@ -39,6 +39,11 @@ const userSchema = new mongoose.Schema({
     default: 'student'
   },
 
+  status: {
+    type: String,
+    default: ' '
+  },
+
   groupsIn: [ {type: Schema.Types.ObjectId, ref: Group} ],
   groupsInv: [{type: Schema.Types.ObjectId, ref: Group} ],
   groupsAsk: [{type: Schema.Types.ObjectId, ref: Group} ]
