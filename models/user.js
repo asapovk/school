@@ -66,6 +66,24 @@ userSchema.virtual('isAdmin').get(function() {
 });
 
 
+userSchema.methods.statusInGroup = function (groupId) {
+  if(this.groupsAsk.indexOf(groupId) > -1) {
+    return 'Хочет вступить в группу';
+  }
+  if (this.groupsInv.indexOf(groupId) > -1) {
+    return 'Приглашен в группу';
+  }
+  if (this.groupsIn.indexOf(groupId) > -1) {
+    return 'Участник группы';
+  }
+  else {
+    return null;
+  }
+};
+
+
+
+
 
 
 module.exports = mongoose.model('User', userSchema);

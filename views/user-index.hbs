@@ -18,8 +18,9 @@
     <ul class="list-group">
       {{#each allUsers}}
         <li class="list-group-item">
-          <a href="/user/{{this._id}}">{{this.firstName}} {{this.lastName}} {{status}}</a>
+          <a href="/user/{{this._id}}">{{this.firstName}} {{this.lastName}} </a>
           <input type="checkbox" autocomplete="off" id="{{this._id}}" class="pull-right">
+          <span class ="pull-right"> &nbsp{{this.role}}  &nbsp </span>
         </li>
       {{/each}}
     </ul>
@@ -51,7 +52,7 @@
       if(xhr.status === 200) {
         var responseText = xhr.responseText;
         console.log(responseText);
-      //  location.reload();
+        location.reload();
       }
       else {
         console.log(responseText);

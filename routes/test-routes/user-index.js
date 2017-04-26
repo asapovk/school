@@ -19,6 +19,13 @@ exports.get = async (ctx) => {
         var manageGroup = ctx.request.query.manage
       } catch(e) {}
       if(manageGroup) {
+
+        allUsers.forEach(function(user){
+          if(user.statusInGroup(manageGroup)) {
+            user.role = user.statusInGroup(manageGroup);
+          }
+        });
+        console.log('statused user is '+allUsers[1]);
         await ctx.render('user-index', {allUsers: allUsers, manageGroup: manageGroup});
         return;
       }
