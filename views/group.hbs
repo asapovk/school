@@ -18,6 +18,7 @@
               Баланс:  {{this.balance}}
             <!--  <label class="btn btn-primary pull-right"> -->
                 <input type="checkbox" autocomplete="off" id="{{this._id}}" class="pull-right">
+                <button class="btn btn-danger pull-right kickoutButton" id="{{this._id}}">Исключить из группы</button>
             <!--  </label> -->
           </li>
       {{/each}}
@@ -42,6 +43,8 @@
           <li class="list-group-item">
             <a href = "/user/{{this._id}}">{{this.firstName}} {{this.lastName}}</a>
               Баланс:  {{this.balance}}
+            <button class="btn btn-warning pull-right rejectButton" id="{{this._id}}">Отклонить заявку</button>
+            <button class="btn btn-success pull-right approveButton" id="{{this._id}}">Принять в группу</button>
           </li>
       {{/each}}
     </ul>
@@ -58,6 +61,7 @@
           <li class="list-group-item">
             <a href = "/user/{{this._id}}">{{this.firstName}} {{this.lastName}}</a>
               Баланс:  {{this.balance}}
+            <button class="btn btn-warning pull-right cancelButton" id="{{this._id}}">Отменить приглашение</button>
           </li>
       {{/each}}
     </ul>
@@ -71,10 +75,91 @@
   <div class="panel-body">
     <a class="btn btn-default" href="/user-index?manage={{group._id}}">Пригласить студентов</a>
     <a class="btn btn-default" href="/group/{{group._id}}?edit=true">Редактировать группу</a>
-    <button class="btn btn-danger deleteButton" id="{{group._id}}" onclick="deleteGroup()">Удалить группу</button>
+    <button class="btn btn-danger deleteButton" id="{{group._id}}">Удалить группу</button>
   </div>
 </div>
 <script>
+
+  $('.kickoutButton').on('click', function(){
+    var userToKickout = $(this).attr("id");
+    var groupToManage = $('.deleteButton').attr("id");
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/group-manage', true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify({userToKickout: userToKickout, groupToManage: groupToManage}));
+    console.log(JSON.stringify({userToKickout: userToKickout, groupToManage: groupToManage}));
+    xhr.onload = function () {
+      if(xhr.status === 200) {
+        var responseText = xhr.responseText;
+        console.log(responseText);
+        location.reload();
+      }
+      else {
+        console.log(responseText);
+      }
+    };
+  });
+
+  $('.rejectButton').on('click', function(){
+    var userToReject = $(this).attr("id");
+    var groupToManage = $('.deleteButton').attr("id");
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/group-manage', true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify({userToReject: userToReject, groupToManage: groupToManage}));
+    console.log(JSON.stringify({userToReject: userToReject, groupToManage: groupToManage}));
+    xhr.onload = function () {
+      if(xhr.status === 200) {
+        var responseText = xhr.responseText;
+        console.log(responseText);
+        location.reload();
+      }
+      else {
+        console.log(responseText);
+      }
+    };
+  });
+
+  $('.approveButton').on('click', function (){
+    var userToApprove = $(this).attr("id");
+    var groupToManage = $('.deleteButton').attr("id");
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/group-manage', true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify({userToApprove: userToApprove, groupToManage: groupToManage}));
+    console.log(JSON.stringify({userToApprove: userToApprove, groupToManage: groupToManage}));
+    xhr.onload = function () {
+      if(xhr.status === 200) {
+        var responseText = xhr.responseText;
+        console.log(responseText);
+        location.reload();
+      }
+      else {
+        console.log(responseText);
+      }
+    };
+  });
+
+  $('.cancelButton').on('click', function (){
+    var userToCancel = $(this).attr("id");
+    var groupToManage = $('.deleteButton').attr("id");
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/group-manage', true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify({userToCancel: userToCancel, groupToManage: groupToManage}));
+    console.log(JSON.stringify({userToCancel: userToCancel, groupToManage: groupToManage}));
+    xhr.onload = function () {
+      if(xhr.status === 200) {
+        var responseText = xhr.responseText;
+        console.log(responseText);
+        location.reload();
+      }
+      else {
+        console.log(responseText);
+      }
+    };
+  });
+
 
   function deleteGroup () {
 
@@ -84,6 +169,7 @@
     xhr.open('POST', '/group-delete', true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.send(JSON.stringify({groupToDelete: groupToDelete}));
+
   }
 
 
