@@ -40,12 +40,21 @@ exports.get = async (ctx) => {
               ctx.body = 'Error! Try to reload the page';
             });
             console.log(teacher);
-            var students = await User.find({'_id' :{$in: group.students} }).catch(function(){
+            var studentsIn = await User.find({'_id' :{$in: group.studentsIn} }).catch(function(){
               console.log('Error happened when tried to find students in database!');
               ctx.body = 'Error! Try to reload the page';
             });
+            var studentsAsk = await User.find({'_id' :{$in: group.studentsAsk} }).catch(function(){
+              console.log('Error happened when tried to find students in database!');
+              ctx.body = 'Error! Try to reload the page';
+            });
+            var studentsInv = await User.find({'_id' :{$in: group.studentsInv} }).catch(function(){
+              console.log('Error happened when tried to find students in database!');
+              ctx.body = 'Error! Try to reload the page';
+            });
+
             //console.log(students);
-            await ctx.render('group', {teacher: teacher, students: students});
+            await ctx.render('group', {teacher: teacher, studentsIn: studentsIn, studentsAsk: studentsAsk, studentsInv: studentsInv});
       }
       else {
             console.log('group whith such id is not exist');
