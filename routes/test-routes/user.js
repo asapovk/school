@@ -18,14 +18,22 @@ exports.get = async (ctx) => {
         ctx.body = 'Error! Try to reload the page';
       });
       if (pageOwner) {
-        var allGroups = await Group.find().catch(function(){
-          console.log('Error happened when tried to find groups in database!');
+        var groupsIn = await Group.find({'_id' :{$in: pageOwner.groupsIn} }).catch(function(){
+          console.log('Error happened when tried to find students in database!');
+          ctx.body = 'Error! Try to reload the page';
+        });
+        var groupsAsk = await Group.find({'_id' :{$in: pageOwner.groupsAsk} }).catch(function(){
+          console.log('Error happened when tried to find students in database!');
+          ctx.body = 'Error! Try to reload the page';
+        });
+        var groupsInv = await Group.find({'_id' :{$in: pageOwner.groupsInv} }).catch(function(){
+          console.log('Error happened when tried to find students in database!');
           ctx.body = 'Error! Try to reload the page';
         });
         /*
           CODE HERE
         */
-        await ctx.render('user', {pageOwner: pageOwner, allGroups: allGroups});
+        await ctx.render('user', {pageOwner: pageOwner, groupsIn: groupsIn, groupsAsk: groupsAsk, groupsInv: groupsInv});
         return;
       }
       else {

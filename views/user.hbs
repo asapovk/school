@@ -4,11 +4,12 @@
   </div>
 </div>
 
-
+{{#if groupsIn}}
 <div class="panel panel-default">
   <div class="panel-body">
+    <p>Группы в которых Вы состоите</p>
     <ul class= "list-group">
-      {{#each allGroups}}
+      {{#each groupsIn}}
         <li class ="list-group-item">
           <a href="/group/{{this._id}}">{{this.groupName}}</a>
         </li>
@@ -16,6 +17,37 @@
     </ul>
   </div>
 </div>
+{{/if}}
+
+{{#if groupsInv}}
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>Группы в которые Вас пригласили</p>
+    <ul class= "list-group">
+      {{#each groupsInv}}
+        <li class ="list-group-item">
+          <a href="/group/{{this._id}}">{{this.groupName}}</a>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+{{/if}}
+
+{{#if groupsAsk}}
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>Группы в которые Вы отправили запросы на вступление</p>
+    <ul class= "list-group">
+      {{#each groupsAsk}}
+        <li class ="list-group-item">
+          <a href="/group/{{this._id}}">{{this.groupName}}</a>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+{{/if}}
 
 {{#if user.isAdmin}}
 {{#if pageOwner.isAdmin}}

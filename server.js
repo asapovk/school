@@ -40,6 +40,7 @@ router.post('/group-edit', require('./routes/test-routes/group-edit.js').post);
 router.post('/group-delete', require('./routes/test-routes/group-delete.js').post);
 router.get('/user-index', require('./routes/test-routes/user-index.js').get);
 router.post('/group-manage', require('./routes/test-routes/group-manage.js').post);
+router.get('/group-index', require('./routes/test-routes/group-index.js').get);
 
 
 //Yandex payment group

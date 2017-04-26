@@ -19,6 +19,11 @@ const groupSchema = new mongoose.Schema({
     ref: User
   },
 
+  status: {
+    type: String,
+    default: ' '
+  },
+
   studentsIn: [ {type: Schema.Types.ObjectId, ref: User} ],
   studentsInv: [ {type: Schema.Types.ObjectId, ref: User} ],
   studentsAsk: [{type: Schema.Types.ObjectId, ref: User}]
@@ -26,6 +31,23 @@ const groupSchema = new mongoose.Schema({
 }, {
   timestamps: true
 });
+
+
+groupSchema.methods.statusForUser = function (userId) {
+  if(this.studentsAsk.indexOf(userId) > -1) {
+    return 'Отправлена заявка на вступление в группу';
+  }
+  if (this.studentsInv.indexOf(userId) > -1) {
+    return 'Вас приглашают вступить в эту группу';
+  }
+  if (this.studentsIn.indexOf(userId) > -1) {
+    return 'Вы участник этой группы';
+  }
+  else {
+    return null;
+  }
+};
+
 
 
 
