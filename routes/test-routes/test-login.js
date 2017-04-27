@@ -2,12 +2,13 @@ var User = require('../../models/user');
 
 
 exports.get = async (ctx) => {
+  //  ctx.session = null;
 
     var userObject = {
-      firstName: 'Konstantin',
-      lastName: 'Astapov',
+      firstName: 'TEST',
+      lastName: 'STUDENT',
       vkId: '1234567890',
-      balance: 0.0
+      balance: 1000.0
     }
 
     var user = new User(userObject);
@@ -37,7 +38,9 @@ exports.get = async (ctx) => {
 
     console.log(dateString);
 
-    ctx.set('Content-Type', 'application/xml');
+    ctx.redirect('/');
 
-    ctx.body = '<checkOrderResponse performedDatetime="'+dateString+'" code="0" invoiceId="1234567" shopId="13"/>'
+    //ctx.set('Content-Type', 'application/xml');
+
+    //ctx.body = '<checkOrderResponse performedDatetime="'+dateString+'" code="0" invoiceId="1234567" shopId="13"/>'
 }

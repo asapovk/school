@@ -1,7 +1,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <button class="btn btn-primary" onclick="applyChange()">Применить изменения</button>
+    <button class="btn btn-primary" onclick="applyChange()">Отправить запрос на вступление</button>
   </div>
 </div>
 
@@ -46,7 +46,7 @@
       if(xhr.status === 200) {
         var responseText = xhr.responseText;
         console.log(responseText);
-        //location.reload();
+        location.reload();
       }
       else {
         console.log(responseText);

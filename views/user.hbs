@@ -1,8 +1,14 @@
 <div class="panel panel-default">
-  <div class="panel-body">
+  <div class="panel-body userInfo" id="{{pageOwner._id}}">
       {{pageOwner.firstName}} {{pageOwner.lastName}}
   </div>
 </div>
+
+{{#if myPage}}
+
+{{#if user.isAdmin}}
+<a href="/group" class="btn btn-default">Создать группу</a>
+{{else}}
 
 {{#if groupsIn}}
 <div class="panel panel-default">
@@ -12,6 +18,7 @@
       {{#each groupsIn}}
         <li class ="list-group-item">
           <a href="/group/{{this._id}}">{{this.groupName}}</a>
+          <button class="btn btn-danger pull-right leaveButton" id="{{this._id}}">Покинуть группу</button>
         </li>
       {{/each}}
     </ul>
@@ -27,6 +34,8 @@
       {{#each groupsInv}}
         <li class ="list-group-item">
           <a href="/group/{{this._id}}">{{this.groupName}}</a>
+          <button class="btn btn-warning pull-right rejectButton" id="{{this._id}}">Отклонить приглашение</button>
+          <button class="btn btn-success pull-right approveButton" id="{{this._id}}">Принять приглашение</button>
         </li>
       {{/each}}
     </ul>
@@ -42,6 +51,7 @@
       {{#each groupsAsk}}
         <li class ="list-group-item">
           <a href="/group/{{this._id}}">{{this.groupName}}</a>
+            <button class="btn btn-warning pull-right cancelButton" id="{{this._id}}">Отменить запрос</button>
         </li>
       {{/each}}
     </ul>
@@ -49,10 +59,90 @@
 </div>
 {{/if}}
 
-
-{{#if myPage}}
-{{#if user.isAdmin}}
-<a href="/group" class="btn btn-default">Создать группу</a>
-{{/if}}
 <a href="/group-index" class="btn btn-default">Добавить группы</a>
+
+
+
+<script>
+$('.leaveButton').on('click', function(){
+  var groupToleave = $(this).attr("id");
+  var userToManage = $('.userInfo').attr("id");
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/group-manage', true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.send(JSON.stringify({groupToleave: groupToleave, userToManage: userToManage}));
+  console.log(JSON.stringify({groupToleave: groupToleave, userToManage: userToManage}));
+  xhr.onload = function () {
+    if(xhr.status === 200) {
+      var responseText = xhr.responseText;
+      console.log(responseText);
+      //location.reload();
+    }
+    else {
+      console.log(responseText);
+    }
+  };
+});
+
+$('.rejectButton').on('click', function(){
+  var groupToReject = $(this).attr("id");
+  var userToManage = $('.userInfo').attr("id");
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/group-manage', true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.send(JSON.stringify({groupToReject: groupToReject, userToManage: userToManage}));
+  console.log(JSON.stringify({groupToReject: groupToReject, userToManage: userToManage}));
+  xhr.onload = function () {
+    if(xhr.status === 200) {
+      var responseText = xhr.responseText;
+      console.log(responseText);
+      //location.reload();
+    }
+    else {
+      console.log(responseText);
+    }
+  };
+});
+
+$('.approveButton').on('click', function (){
+  var groupToApprove = $(this).attr("id");
+  var userToManage = $('.userInfo').attr("id");
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/group-manage', true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.send(JSON.stringify({groupToApprove: groupToApprove, userToManage: userToManage}));
+  console.log(JSON.stringify({groupToApprove: groupToApprove, userToManage: userToManage}));
+  xhr.onload = function () {
+    if(xhr.status === 200) {
+      var responseText = xhr.responseText;
+      console.log(responseText);
+      //location.reload();
+    }
+    else {
+      console.log(responseText);
+    }
+  };
+});
+
+$('.cancelButton').on('click', function (){
+  var groupToCancel = $(this).attr("id");
+  var userToManage = $('.userInfo').attr("id");
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/group-manage', true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.send(JSON.stringify({groupToCancel: groupToCancel, userToManage: userToManage}));
+  console.log(JSON.stringify({groupToCancel: groupToCancel, userToManage: userToManage}));
+  xhr.onload = function () {
+    if(xhr.status === 200) {
+      var responseText = xhr.responseText;
+      console.log(responseText);
+      //location.reload();
+    }
+    else {
+      console.log(responseText);
+    }
+  };
+});
+</script>
+{{/if}} 
 {{/if}}

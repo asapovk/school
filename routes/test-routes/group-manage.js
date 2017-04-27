@@ -10,14 +10,16 @@ exports.post = async (ctx) => {
     var groupsToAsk = ctx.request.body.groupsToAsk;
 
     var groupToManage = ctx.request.body.groupToManage
-
     var userToKickout = ctx.request.body.userToKickout;
-
     var userToReject = ctx.request.body.userToReject;
-
     var userToApprove = ctx.request.body.userToApprove;
-
     var userToCancel = ctx.request.body.userToCancel;
+
+    var userToManage = ctx.request.body.userToManage;
+    var groupToLeave = ctx.request.body.groupToLeave;
+    var groupToReject = ctx.request.body.groupToReject;
+    var groupToApprove = ctx.request.body.groupToApprove;
+    var groupToCancel = ctx.request.body.groupToCancel;
 
 /*
     console.log(groupToAccept);
@@ -119,5 +121,69 @@ exports.post = async (ctx) => {
 
     }
 
-    ctx.body = 'Successful charge by ';
+    if(groupToLeave && userToManage)  {
+      console.log('groupToLeave : '+groupToLeave);
+      console.log('userToManage : '+userToManage);
+
+      var student = await User.findOneAndUpdate({ _id:  userToManage},  {$pull: {groupsIn: groupToLeave}}).catch(function(){
+        console.log('Unabled to push group to students');
+        ctx.body = 'Error! Try to reload the page';
+      });
+
+      var group = await Group.findOneAndUpdate({ _id: groupToLeave}, {$pull: {studentsIn: userToManage} }).catch(function(err){
+        console.log('Unable to push students to group!');
+        console.log(err);
+        ctx.body = 'Error! Try to reload the page';
+      });
+    }
+
+    if (groupToReject && userToManage) {
+      console.log('groupToReject : '+groupToReject);
+      console.log('userToManage : '+userToManage);
+
+      var student = await User.findOneAndUpdate({ _id:  userToManage},  {$pull: {groupsInv: groupToReject}}).catch(function(){
+        console.log('Unabled to push group to students');
+        ctx.body = 'Error! Try to reload the page';
+      });
+
+      var group = await Group.findOneAndUpdate({ _id: groupToReject}, {$pull: {studentsInv: userToManage} }).catch(function(err){
+        console.log('Unable to push students to group!');
+        console.log(err);
+        ctx.body = 'Error! Try to reload the page';
+      });
+
+    }
+    if(groupToApprove && userToManage)  {
+      console.log('groupToApprove : '+groupToApprove);
+      console.log('userToManage : '+userToManage);
+
+      var student = await User.findOneAndUpdate({ _id:  userToManage},  {$pull: {groupsInv: groupToApprove}, $addToSet: {groupsIn: groupToApprove}}).catch(function(){
+        console.log('Unabled to push group to students');
+        ctx.body = 'Error! Try to reload the page';
+      });
+
+      var group = await Group.findOneAndUpdate({ _id: groupToApprove}, {$pull: {studentsInv: userToManage}, $addToSet: {studentsIn: userToManage} }).catch(function(err){
+        console.log('Unable to push students to group!');
+        console.log(err);
+        ctx.body = 'Error! Try to reload the page';
+      });
+
+    }
+    if(groupToCancel && userToManage) {
+      console.log('groupToCancel : '+groupToCancel);
+      console.log('userToManage : '+userToManage);
+
+      var student = await User.findOneAndUpdate({ _id:  userToManage},  {$pull: {groupsAsk: groupToCancel}}).catch(function(){
+        console.log('Unabled to push group to students');
+        ctx.body = 'Error! Try to reload the page';
+      });
+
+      var group = await Group.findOneAndUpdate({ _id: groupToCancel}, {$pull: {studentsAsk: userToManage} }).catch(function(err){
+        console.log('Unable to push students to group!');
+        console.log(err);
+        ctx.body = 'Error! Try to reload the page';
+      });
+    }
+
+    ctx.body = 'SUCCESS';
 }
