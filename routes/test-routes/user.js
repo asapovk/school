@@ -41,7 +41,15 @@ exports.get = async (ctx) => {
           var myPage = false
         }
 
-        await ctx.render('user', {pageOwner: pageOwner, groupsIn: groupsIn, groupsAsk: groupsAsk, groupsInv: groupsInv, myPage: myPage});
+        var myGroups = null;
+        if(myPage && user.isAdmin) {
+          myGroups = await Group.find({teacher: userId}).catch(function(){
+            console.log('Error happened when tried to find students in database!');
+            ctx.body = 'Error! Try to reload the page';
+          });
+        }
+
+        await ctx.render('user', {pageOwner: pageOwner, groupsIn: groupsIn, groupsAsk: groupsAsk, groupsInv: groupsInv, myPage: myPage, myGroups: myGroups});
         return;
       }
       else {

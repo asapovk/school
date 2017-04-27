@@ -7,6 +7,20 @@
 {{#if myPage}}
 
 {{#if user.isAdmin}}
+{{#if myGroups}}
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>Ваши группы</p>
+    <ul class= "list-group">
+      {{#each myGroups}}
+        <li class ="list-group-item">
+          <a href="/group/{{this._id}}">{{this.groupName}}</a>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+{{/if}}
 <a href="/group" class="btn btn-default">Создать группу</a>
 {{else}}
 
@@ -65,18 +79,18 @@
 
 <script>
 $('.leaveButton').on('click', function(){
-  var groupToleave = $(this).attr("id");
+  var groupToLeave = $(this).attr("id");
   var userToManage = $('.userInfo').attr("id");
   var xhr = new XMLHttpRequest();
   xhr.open('POST', '/group-manage', true);
   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xhr.send(JSON.stringify({groupToleave: groupToleave, userToManage: userToManage}));
-  console.log(JSON.stringify({groupToleave: groupToleave, userToManage: userToManage}));
+  xhr.send(JSON.stringify({groupToLeave: groupToLeave, userToManage: userToManage}));
+  console.log(JSON.stringify({groupToLeave: groupToLeave, userToManage: userToManage}));
   xhr.onload = function () {
     if(xhr.status === 200) {
       var responseText = xhr.responseText;
       console.log(responseText);
-      //location.reload();
+      location.reload();
     }
     else {
       console.log(responseText);
@@ -96,7 +110,7 @@ $('.rejectButton').on('click', function(){
     if(xhr.status === 200) {
       var responseText = xhr.responseText;
       console.log(responseText);
-      //location.reload();
+      location.reload();
     }
     else {
       console.log(responseText);
@@ -116,7 +130,7 @@ $('.approveButton').on('click', function (){
     if(xhr.status === 200) {
       var responseText = xhr.responseText;
       console.log(responseText);
-      //location.reload();
+      location.reload();
     }
     else {
       console.log(responseText);
@@ -136,7 +150,7 @@ $('.cancelButton').on('click', function (){
     if(xhr.status === 200) {
       var responseText = xhr.responseText;
       console.log(responseText);
-      //location.reload();
+      location.reload();
     }
     else {
       console.log(responseText);
@@ -144,5 +158,5 @@ $('.cancelButton').on('click', function (){
   };
 });
 </script>
-{{/if}} 
+{{/if}}
 {{/if}}

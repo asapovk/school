@@ -54,7 +54,26 @@ exports.get = async (ctx) => {
             });
 
             //console.log(students);
-            await ctx.render('group', {teacher: teacher, studentsIn: studentsIn, studentsAsk: studentsAsk, studentsInv: studentsInv});
+
+            if(userId == group.teacher) {
+              var myGroup = true;
+            }
+
+            else {
+              var myGroup = false;
+            }
+
+            if ( studentsIn.indexOf(userId) > -1) {
+              var inGroup = true
+            }
+            else {
+              var inGroup = false
+            }
+
+          //  console.log('myGroup'+myGroup);
+          //  console.log(userId);
+          //  console.log(group.teacher);
+            await ctx.render('group', {teacher: teacher, studentsIn: studentsIn, studentsAsk: studentsAsk, studentsInv: studentsInv, myGroup: myGroup, inGroup: inGroup});
       }
       else {
             console.log('group whith such id is not exist');

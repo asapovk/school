@@ -5,7 +5,7 @@
 </div>
 
 
-{{#if user.isAdmin}}
+{{#if myGroup}}
 
 {{#if studentsIn}}
 <div class="panel panel-default">
@@ -212,13 +212,13 @@
   }
 </script>
 
-{{else}}
+{{/if}}
 
-
+{{#if inGroup}}
 <div class="panel panel-default">
   <div class="panel-body">
     <ul class="list-group">
-      {{#each students}}
+      {{#each studentsIn}}
           <li class="list-group-item">
             <a href = "/user/{{this._id}}">{{this.firstName}} {{this.lastName}}</a>
           </li>
@@ -226,5 +226,4 @@
     </ul>
   </div>
 </div>
-
 {{/if}}
