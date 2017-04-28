@@ -173,11 +173,11 @@
     xhr.onload = function () {
       if(xhr.status === 200) {
         var responseText = xhr.responseText;
-        console.log(responseText);
         location.reload();
+        alert(responseText);
       }
       else {
-        console.log(responseText);
+        alert(responseText);
       }
     }
 
