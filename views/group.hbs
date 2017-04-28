@@ -75,7 +75,7 @@
   <div class="panel-body">
     <a class="btn btn-default" href="/user-index?manage={{group._id}}">Пригласить студентов</a>
     <a class="btn btn-default" href="/group/{{group._id}}?edit=true">Редактировать группу</a>
-    <button class="btn btn-danger deleteButton" id="{{group._id}}">Удалить группу</button>
+    <button class="btn btn-danger deleteButton" id="{{group._id}}" onclick="deleteGroup()">Удалить группу</button>
   </div>
 </div>
 <script>
@@ -169,8 +169,19 @@
     xhr.open('POST', '/group-delete', true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.send(JSON.stringify({groupToDelete: groupToDelete}));
+    console.log(JSON.stringify({groupToDelete: groupToDelete}));
+    xhr.onload = function () {
+      if(xhr.status === 200) {
+        var responseText = xhr.responseText;
+        console.log(responseText);
+        location.reload();
+      }
+      else {
+        console.log(responseText);
+      }
+    }
 
-  }
+  };
 
 
 

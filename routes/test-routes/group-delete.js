@@ -7,5 +7,5 @@ exports.post = async (ctx) => {
   var deletedGroup = await Group.findByIdAndRemove(groupToDelete);
   console.log(groupToDelete);
 
-  ctx.body  = 'Successfuly deleted group';
+  ctx.body  ='Successfuly deleted group';
 }

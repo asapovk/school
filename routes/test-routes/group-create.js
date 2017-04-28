@@ -11,5 +11,6 @@ exports.post = async (ctx) => {
                   teacher: groupTeacher });
   console.log(newGroup);
   await newGroup.save();
-  ctx.body  = 'Successfuly created new group';
+  console.log('Successfuly created new group');
+  ctx.redirect('/');
 }

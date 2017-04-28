@@ -10,10 +10,12 @@ exports.post = async (ctx) => {
   var newGroup = await Group.findOneAndUpdate({_id: groupId}, {$set: {time: groupTime, groupName: groupTitle, teacher: groupTeacher}}, {new: true})
 
   if(newGroup) {
-    ctx.body  = 'Successfuly edited group';
+    console.log('Successfuly edited group');
+    ctx.redirect('/group/'+groupId);
   }
   else {
-    ctx.body  = 'Error on edit group';
+    console.log('Error on edit group');
+    ctx.redirect('/');
   }
 
 }
