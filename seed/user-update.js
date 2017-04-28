@@ -3,17 +3,17 @@ var mongoose = require('mongoose');
 
 (async function () {
 
-mongoose.connect('localhost:27017/appTest', {
-  user: 'astapovk.ru',
-  pass: 'Tgdhzq2AQuUn7l55smDu',
-  auth: {authdb:"appTest"},
-  server: {
-  socketOptions: {
-      keepAlive: 1
-    },
-    poolSize:      5
-  }
-});
+  mongoose.connect('mongodb://localhost/app', {
+    user: 'lk.akadplus.ru',
+    pass: 'CWWUwXFXOOw1UCJXIjef',
+    auth: {authdb:"app"},
+    server: {
+    socketOptions: {
+        keepAlive: 1
+      },
+      poolSize:      5
+    }
+  });
 
 await User.findOneAndUpdate({vkId: '19681019'}, {$set: {role: 'admin'}}, {new: true})
 

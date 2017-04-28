@@ -1,6 +1,7 @@
 var User = require('../models/user');
 var mongoose = require('mongoose');
 var rp = require('request-promise');
+//var config = require('../config');
 
 async function dosmth () {
 
@@ -45,10 +46,10 @@ async function dosmth () {
 dosmth().then(usersToSave=>{
 //  console.log(result[1]);
 
-  mongoose.connect('localhost:27017/appTest', {
-    user: 'astapovk.ru',
-    pass: 'Tgdhzq2AQuUn7l55smDu',
-    auth: {authdb:"appTest"},
+  mongoose.connect('mongodb://localhost/app', {
+    user: 'lk.akadplus.ru',
+    pass: 'CWWUwXFXOOw1UCJXIjef',
+    auth: {authdb:"app"},
     server: {
     socketOptions: {
         keepAlive: 1
