@@ -63,13 +63,13 @@ exports.get = async (ctx) => {
               var myGroup = false;
             }
 
-            if ( studentsIn.indexOf(userId) > -1) {
+            if (group.studentsIn.indexOf(userId) > -1) {
               var inGroup = true
             }
             else {
               var inGroup = false
             }
-
+              console.log(inGroup);
           //  console.log('myGroup'+myGroup);
           //  console.log(userId);
           //  console.log(group.teacher);
