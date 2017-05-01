@@ -4,8 +4,8 @@
 {{else}}
   <form action="/group-create" method="POST" name="groupCreate" id="groupCreate">
 {{/if}}
-    <input type="hidden" name="groupTeacher" value="{{user._id}}">
-    <input type="hidden" name="groupId" value={{group._id}}>
+    <input type="hidden" name="actionUser" value="{{user._id}}">
+    <input type="hidden" name="actionGroup" value={{group._id}}>
     <div class="form-group row">
       <label for="groupTitle" class="col-sm-2 col-form-label">Название группы</label>
       <div class="col-sm-8">

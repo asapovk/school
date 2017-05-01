@@ -5,10 +5,12 @@ exports.post = async (ctx) => {
 
   var errors = [];
 
-  var groupToDelete = ctx.request.body.groupToDelete;
+  var groupToDelete = ctx.request.body.actionGroup;
+  var actionUser = ctx.request.body.actionUser;
   var group = await Group.findById(groupToDelete);
+  var user = await User.findById(actionUser);
 
-  if(group) {
+  if(user && group && group.teacher == user.id) {
     var studentsIn = group.studentsIn;
     var studentsAsk = group.studentsAsk;
     var studentsInv = group.studentsInv;

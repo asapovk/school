@@ -161,14 +161,14 @@
 
 
   function deleteGroup () {
-
-    var groupToDelete = $('.deleteButton').attr("id");
-    console.log(groupToDelete);
+    var actionUser = '{{user._id}}'
+    //var groupToDelete = $('.deleteButton').attr("id");
+    var actionGroup = '{{group._id}}'
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/group-delete', true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify({groupToDelete: groupToDelete}));
-    console.log(JSON.stringify({groupToDelete: groupToDelete}));
+    xhr.send(JSON.stringify({actionGroup: actionGroup, actionUser: actionUser}));
+    console.log(JSON.stringify({actionGroup: actionGroup, actionUser: actionUser}));
     xhr.onload = function () {
       if(xhr.status === 200) {
         var responseText = xhr.responseText;
