@@ -1,0 +1,58 @@
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <button class="btn btn-primary" onclick="applyChange()">Отправить запрос на вступление</button>
+  </div>
+</div>
+
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <ul class="list-group">
+      {{#each allGroups}}
+        <li class="list-group-item">
+          <a href="/group/{{this._id}}">{{this.groupName}} {{this.time}} </a>
+          {{#unless this.status}}<input type="checkbox" autocomplete="off" id="{{this._id}}" class="pull-right">{{/unless}}
+          <span class ="pull-right"> &nbsp{{this.status}}  &nbsp </span>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+
+
+
+<script>
+  function applyChange () {;
+    var groupsToAsk = [];
+    $("input[type='checkbox']").each(function(){
+      if($(this).is(":checked")) {
+        groupsToAsk.push($(this).attr("id"))
+      }
+    });
+
+    var userToIncome = '{{user._id}}';
+    console.log(userToIncome);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/group-manage', true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+    xhr.send(JSON.stringify({userToIncome: userToIncome,  groupsToAsk: groupsToAsk}));
+    console.log(JSON.stringify({userToIncome: userToIncome, groupsToAsk: groupsToAsk}));
+
+    xhr.onload = function () {
+      if(xhr.status === 200) {
+        var responseText = xhr.responseText;
+        console.log(responseText);
+        location.reload();
+      }
+      else {
+        console.log(responseText);
+      }
+    };
+
+
+  }
+</script>

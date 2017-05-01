@@ -9,9 +9,9 @@ exports.get = async (ctx) => {
       ctx.body = 'Error! Try to reload the page';
     });
 
-    if (user) {
+    if (user && user.isAdmin) {
       ctx.state.user = user;
-      ctx.render('group/group-create-edit-form');
+      ctx.render('group/teacher/group-create-edit-form');
     }
     else {
       console.log('user whith such id is not exist');

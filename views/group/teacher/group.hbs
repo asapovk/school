@@ -5,7 +5,6 @@
 </div>
 
 
-{{#if myGroup}}
 
 {{#if studentsIn}}
 <div class="panel panel-default">
@@ -222,19 +221,3 @@
 
   }
 </script>
-
-{{/if}}
-
-{{#if inGroup}}
-<div class="panel panel-default">
-  <div class="panel-body">
-    <ul class="list-group">
-      {{#each studentsIn}}
-          <li class="list-group-item">
-            <a href = "/user/{{this._id}}">{{this.firstName}} {{this.lastName}}</a>
-          </li>
-      {{/each}}
-    </ul>
-  </div>
-</div>
-{{/if}}

@@ -49,7 +49,7 @@ exports.get = async (ctx) => {
           });
         }
 
-        await ctx.render('user/user', {pageOwner: pageOwner, groupsIn: groupsIn, groupsAsk: groupsAsk, groupsInv: groupsInv, myPage: myPage, myGroups: myGroups});
+        await ctx.render('user/teacher/user', {pageOwner: pageOwner, groupsIn: groupsIn, groupsAsk: groupsAsk, groupsInv: groupsInv, myPage: myPage, myGroups: myGroups});
         return;
       }
       else {

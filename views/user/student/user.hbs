@@ -6,24 +6,6 @@
 
 {{#if myPage}}
 
-{{#if user.isAdmin}}
-{{#if myGroups}}
-<div class="panel panel-default">
-  <div class="panel-body">
-    <p>Ваши группы</p>
-    <ul class= "list-group">
-      {{#each myGroups}}
-        <li class ="list-group-item">
-          <a href="/group/{{this._id}}">{{this.groupName}}</a>
-        </li>
-      {{/each}}
-    </ul>
-  </div>
-</div>
-{{/if}}
-<a href="/group" class="btn btn-default">Создать группу</a>
-{{else}}
-
 {{#if groupsIn}}
 <div class="panel panel-default">
   <div class="panel-body">
@@ -158,5 +140,4 @@ $('.cancelButton').on('click', function (){
   };
 });
 </script>
-{{/if}}
 {{/if}}

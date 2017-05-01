@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+        {{group.groupName}}. {{group.time}} Преподаватель: <a href="/user/{{teacher._id}}"  class="teacherLink" id="{{teacher._id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
+  </div>
+</div>
+
+
+{{#if inGroup}}
+<div class="panel panel-default">
+  <div class="panel-body">
+    <ul class="list-group">
+      {{#each studentsIn}}
+          <li class="list-group-item">
+            <a href = "/user/{{this._id}}">{{this.firstName}} {{this.lastName}}</a>
+          </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+{{/if}}
