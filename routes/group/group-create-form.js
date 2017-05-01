@@ -11,7 +11,7 @@ exports.get = async (ctx) => {
 
     if (user) {
       ctx.state.user = user;
-      ctx.render('group-create-edit-form');
+      ctx.render('group/group-create-edit-form');
     }
     else {
       console.log('user whith such id is not exist');

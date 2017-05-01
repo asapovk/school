@@ -17,7 +17,7 @@ exports.get = async (ctx) => {
       //  }
       });
         //console.log('statused user is '+allUsers[1]);
-      await ctx.render('group-index', {allGroups: allGroups});
+      await ctx.render('group/group-index', {allGroups: allGroups});
       return;
     }
     else {

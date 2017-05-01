@@ -26,12 +26,12 @@ exports.get = async (ctx) => {
         //  }
         });
         console.log('statused user is '+allUsers[1]);
-        await ctx.render('user-index', {allUsers: allUsers, manageGroup: manageGroup});
+        await ctx.render('user/user-index', {allUsers: allUsers, manageGroup: manageGroup});
         return;
       }
 
       console.log(allUsers[5]);
-      ctx.render('user-index', {allUsers: allUsers});
+      ctx.render('user/user-index', {allUsers: allUsers});
 
     }
     else {

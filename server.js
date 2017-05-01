@@ -24,23 +24,34 @@ Code here ...
 
 */
 
+// user authentication routes
+
 router.get('/', require('./routes/home.js').get);
 router.get('/login',require('./routes/login.js').get);
 router.get('/logout', require('./routes/logout.js').get);
 
 //Test routes
-router.post('/payment', require('./routes/test-routes/payment.js').post);
-router.get('/test-login', require('./routes/test-routes/test-login.js').get);
-router.get('/user/:id', require('./routes/test-routes/user.js').get);
-router.get('/group/:id', require('./routes/test-routes/group.js').get);
-router.post('/group-charge', require('./routes/test-routes/group-charge.js').post);
-router.get('/group', require('./routes/test-routes/group-create-form.js').get);
-router.post('/group-create', require('./routes/test-routes/group-create.js').post);
-router.post('/group-edit', require('./routes/test-routes/group-edit.js').post);
-router.post('/group-delete', require('./routes/test-routes/group-delete.js').post);
-router.get('/user-index', require('./routes/test-routes/user-index.js').get);
-router.post('/group-manage', require('./routes/test-routes/group-manage.js').post);
-router.get('/group-index', require('./routes/test-routes/group-index.js').get);
+router.post('/payment', require('./routes/test-routes/payment.js').post); // payment to yandex
+router.get('/test-login', require('./routes/test-routes/test-login.js').get); // to login as TEST STUDENT
+
+//user routes
+router.get('/user/:id', require('./routes/user/user.js').get); // single user page
+router.get('/user-index', require('./routes/user/user-index.js').get); // multi user page
+
+
+//group routes
+router.get('/group/:id', require('./routes/group/group.js').get); //single group page
+router.get('/group-index', require('./routes/group/group-index.js').get); //multi group page
+
+router.post('/group-manage', require('./routes/group/group-manage.js').post); // to invite/kickout/accept users to the group
+router.post('/group-charge', require('./routes/group/group-charge.js').post); // to charge group members by some value, that will be added to teacher's balance
+
+router.get('/group', require('./routes/group/group-create-form.js').get); // to render group create/edit form
+
+router.post('/group-create', require('./routes/group/group-create.js').post);
+router.post('/group-edit', require('./routes/group/group-edit.js').post);
+router.post('/group-delete', require('./routes/group/group-delete.js').post);
+
 
 
 //Yandex payment group

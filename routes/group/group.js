@@ -30,7 +30,7 @@ exports.get = async (ctx) => {
             var isGroupEdit = ctx.request.query.edit
           } catch(e) {}
           if(isGroupEdit) {
-            await ctx.render('group-create-edit-form');
+            await ctx.render('group/group-create-edit-form');
             return;
           }
 
@@ -73,7 +73,7 @@ exports.get = async (ctx) => {
           //  console.log('myGroup'+myGroup);
           //  console.log(userId);
           //  console.log(group.teacher);
-            await ctx.render('group', {teacher: teacher, studentsIn: studentsIn, studentsAsk: studentsAsk, studentsInv: studentsInv, myGroup: myGroup, inGroup: inGroup});
+            await ctx.render('group/group', {teacher: teacher, studentsIn: studentsIn, studentsAsk: studentsAsk, studentsInv: studentsInv, myGroup: myGroup, inGroup: inGroup});
       }
       else {
             console.log('group whith such id is not exist');
