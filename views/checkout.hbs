@@ -1,32 +1,29 @@
 <div class="container">
-  <form action="/payment" method="POST" name="myform" id="myform">
-    <input type="hidden" id="paymentType" name="paymentType" class="form-control" value="">
-    <input type="hidden" id="shopId" name="shopId" class="form-control" value="96984">
-    <input type="hidden" id="scid" name="scid" class="form-control" value="89254">
-    <input type="hidden" id="customerNumber" name="customerNumber" class="form-control" value = {{user.vkId}}>
+  <form name="TinkoffPayForm">
+    <input type="hidden" name="payDesc" placeholder="ФИО плательщика" class="form-control tinkoffPayRow" value="Order">
+    <input type="hidden" name="payOrder" placeholder="ФИО плательщика" class="form-control tinkoffPayRow" value=user12.vkId+'@'+currentTime>
+    <input type="hidden" name="payName" placeholder="ФИО плательщика" class="form-control tinkoffPayRow" value=user12.vkId>
     <div class="form-group row">
-      <label for="email" class="col-sm-2 col-form-label"> Email</label>
+      <label for="payEmail" class="col-sm-2 col-form-label"> Email</label>
       <div class="col-sm-8">
-        <input type="email" id="email" name="email" placeholder="name@example.com" class="form-control">
+        <input type="email" name="payEmail" placeholder="name@example.com" class="form-control tinkoffPayRow">
         <small class="form-text text-muted"> E-mail для уведомления об оплате.</small>
       </div>
     </div>
     <div class ="form-group row">
-      <label for="phone" class="col-sm-2 col-form-label"> Телефон</label>
+      <label for="payPhone" class="col-sm-2 col-form-label"> Телефон</label>
       <div class="col-sm-8">
-        <input type="phone" id="phone" name="phone" placeholder="+71234567890" class="form-control">
+        <input type="phone"  name="payPhone" placeholder="+71234567890" class="form-control tinkoffPayRow">
         <small class="form-text text-muted"> Мобильный телефон для подтверждения оплаты.</small>
       </div>
     </div>
     <div class="form-group row">
       <label for="sum" class="col-sm-2 col-form-label"> Сумма</label>
       <div class="col-sm-3">
-        <input type="sum" id="sum"  name="sum" class="form-control">
+        <input type="sum"  name="paySum" class="form-control tinkoffPayRow">
         <small class="form-text text-muted"> Сумма в рублях зачисляемая на счет.</small>
       </div>
     </div>
-    <button type="submit" class="btn btn-default">Пополнить баланс</button>
+    <inptut type="button" onclick="makePayment(document.TinkoffPayForm.paySum.value.replace(/,/ig,'.') * 100, document.TinkoffPayForm.payOrder.value, document.TinkoffPayForm.payDesc.value, document.TinkoffPayForm.payName.value, document.TinkoffPayForm.payEmail.value, document.TinkoffPayForm.payPhone.value)" class="btn btn-default tinkoffPayRow"> Пополнить баланс
   </form>
 </div>
-<div id="myform_errorloc" class="error_strings"></div>
-<!--<script src = "/public/js/form-validator.js"></script>-->
