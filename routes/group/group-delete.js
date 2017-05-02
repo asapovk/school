@@ -4,11 +4,19 @@ var User = require('../../models/user');
 exports.post = async (ctx) => {
 
   var errors = [];
+  try {
+    var groupToDelete = ctx.request.body.actionGroup;
+    var actionUser = ctx.request.body.actionUser;
+  } catch (e) {
+    errors.push(e);
+  }
 
-  var groupToDelete = ctx.request.body.actionGroup;
-  var actionUser = ctx.request.body.actionUser;
-  var group = await Group.findById(groupToDelete);
-  var user = await User.findById(actionUser);
+  var group = await Group.findById(groupToDelete).catch(function(err){
+      errors.push(err);
+  });
+  var user = await User.findById(actionUser).catch(function(err){
+      errors.push(err);
+  });
 
   if(user && group && group.teacher == user.id) {
     var studentsIn = group.studentsIn;

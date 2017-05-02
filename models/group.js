@@ -11,7 +11,8 @@ const groupSchema = new mongoose.Schema({
   },
 
   time: {
-    type: String
+    type: String,
+    required: true
   },
 
   teacher: {
