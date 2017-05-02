@@ -21,13 +21,19 @@ exports.post = async (ctx) => {
 
   if (user && group && group.teacher == user.id) {
 
-    var newGroup = await Group.findOneAndUpdate({_id: groupToEdit}, {$set: {time: groupTime, groupName: groupTitle, teacher: groupTeacher}}, {new: true});
-    if(newGroup) {
-      ctx.redirect('/group/'+groupToEdit);
-      return;
+    if(groupTitle && groupTime) {
+      var newGroup = await Group.findOneAndUpdate({_id: groupToEdit}, {$set: {time: groupTime, groupName: groupTitle, teacher: groupTeacher}}, {new: true});
+      if(newGroup) {
+        ctx.redirect('/group/'+groupToEdit);
+        return;
+      }
+      else {
+        var error = 'Не удалось обновить группу';
+        errors.push(error);
+      }
     }
     else {
-      var error = 'Не удалось обновить группу';
+      var error = 'Не корректные данные';
       errors.push(error);
     }
   }
