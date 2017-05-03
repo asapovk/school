@@ -23,5 +23,8 @@ await User.findOneAndUpdate({vkId: '223412231'}, {$set: {role: 'admin'}}, {new: 
 
 await User.findOneAndUpdate({vkId: '18373257'}, {$set: {role: 'admin'}}, {new: true})
 
+await User.findOneAndUpdate({vkId: '43313100'}, {$set: {role: 'admin'}}, {new: true})
+
+
 mongoose.disconnect();
 }) ()

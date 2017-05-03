@@ -54,6 +54,27 @@ const userSchema = new mongoose.Schema({
     default: ' '
   },
 
+  city: {
+    type: String,
+    default: ' '
+  },
+
+  country: {
+    type: String,
+    default: ' '
+  },
+
+  school: {
+    type: String
+  },
+
+  year: {
+    type: String
+  },
+
+  interests: {
+    type: String
+  },
 
   groupsIn: [ {type: Schema.Types.ObjectId, ref: Group} ],
   groupsInv: [{type: Schema.Types.ObjectId, ref: Group} ],

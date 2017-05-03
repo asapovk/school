@@ -1,7 +1,12 @@
 <div class="panel panel-default">
   <div class="panel-body user userInfo" id="{{pageOwner._id}}">
-      {{pageOwner.firstName}} {{pageOwner.lastName}}
+      {{pageOwner.firstName}} {{pageOwner.lastName}} {{pageOwner.role}}
+  </div>
+  <div class="panel-body user userInfo" id="{{pageOwner._id}}">
       <img src="{{pageOwner.photo_100}}">
+  </div>
+  <div class="panel-body user userInfo" id="{{pageOwner._id}}">
+    {{pageOwner.city}}, {{pageOwner.country}}
   </div>
 </div>
 
