@@ -44,6 +44,17 @@ const userSchema = new mongoose.Schema({
     default: ' '
   },
 
+  photo_100: {
+    type: String,
+    default: ' '
+  },
+
+  photo_200: {
+    type: String,
+    default: ' '
+  },
+
+
   groupsIn: [ {type: Schema.Types.ObjectId, ref: Group} ],
   groupsInv: [{type: Schema.Types.ObjectId, ref: Group} ],
   groupsAsk: [{type: Schema.Types.ObjectId, ref: Group} ]
