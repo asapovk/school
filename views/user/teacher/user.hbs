@@ -8,6 +8,11 @@
   <div class="panel-body user userInfo" id="{{pageOwner._id}}">
     {{pageOwner.city}}, {{pageOwner.country}}
   </div>
+  {{#if user.isAdmin}}
+  <div class="panel-body user userInfo" id="{{pageOwner._id}}">
+    {{pageOwner.email}}, {{pageOwner.phone}}
+  </div>
+  {{/if}}
 </div>
 
 {{#if myPage}}

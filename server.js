@@ -37,7 +37,7 @@ router.get('/test-login', require('./routes/test-routes/test-login.js').get); //
 //user routes
 router.get('/user/:id', require('./routes/user/user.js').get); // single user page
 router.get('/user-index', require('./routes/user/user-index.js').get); // multi user page
-
+router.post('/user-edit', require('./routes/user/user-edit.js').post);
 
 //group routes
 router.get('/group/:id', require('./routes/group/group.js').get); //single group page

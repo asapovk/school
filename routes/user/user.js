@@ -12,6 +12,15 @@ exports.get = async (ctx) => {
     if(user) {
       ctx.state.user = user;
 
+
+      try {
+        var isUserEdit = ctx.request.query.edit
+      } catch(e) {}
+      if(isUserEdit) {
+        await ctx.render('user/student/user-edit-form');
+        return;
+      }
+
       var pageOwnerId = ctx.params.id;
       var pageOwner = await User.findById(pageOwnerId).catch(function(){
         console.log('Error happened when tried to find user in database!');
