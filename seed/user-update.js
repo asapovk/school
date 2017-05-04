@@ -3,10 +3,10 @@ var mongoose = require('mongoose');
 
 (async function () {
 
-  mongoose.connect('mongodb://localhost/appTest', {
-    user: 'astapovk.ru',
-    pass: 'Tgdhzq2AQuUn7l55smDu',
-    auth: {authdb:"appTest"},
+  mongoose.connect('mongodb://localhost/app', {
+    user: 'lk.akadplus.ru',
+    pass: 'CWWUwXFXOOw1UCJXIjef',
+    auth: {authdb:"app"},
     server: {
     socketOptions: {
         keepAlive: 1
