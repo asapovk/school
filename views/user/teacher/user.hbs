@@ -1,18 +1,27 @@
 <div class="panel panel-default">
-  <div class="panel-body user userInfo" id="{{pageOwner._id}}">
-      {{pageOwner.firstName}} {{pageOwner.lastName}} {{pageOwner.role}}
+  <div class="panel-body userInfo" id="{{pageOwner._id}}">
+      <p>{{pageOwner.firstName}} {{pageOwner.lastName}} {{pageOwner.role}}</p>
   </div>
-  <div class="panel-body user userInfo" id="{{pageOwner._id}}">
-      <img src="{{pageOwner.photo_100}}">
+  <div class="panel-body userInfo" id="{{pageOwner._id}}">
+      <img src="{{pageOwner.photo_100}}" height="100" width="100">
   </div>
-  <div class="panel-body user userInfo" id="{{pageOwner._id}}">
-    {{pageOwner.city}}, {{pageOwner.country}}
+  <div class="panel-body userInfo" id="{{pageOwner._id}}">
+    <p>{{pageOwner.city}}, {{pageOwner.country}}</p>
   </div>
+
   {{#if user.isAdmin}}
-  <div class="panel-body user userInfo" id="{{pageOwner._id}}">
-    {{pageOwner.email}}, {{pageOwner.phone}}
+  {{#if pageOwner.email}}
+  <div class="panel-body userInfo" id="{{pageOwner._id}}">
+    <p>{{pageOwner.email}}</p>
   </div>
   {{/if}}
+  {{#if pageOwner.phone}}
+  <div class="panel-body userInfo" id="{{pageOwner._id}}">
+    <p>{{pageOwner.phone}}</p>
+  </div>
+  {{/if}}
+  {{/if}}
+
 </div>
 
 {{#if myPage}}

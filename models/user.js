@@ -45,23 +45,19 @@ const userSchema = new mongoose.Schema({
   },
 
   photo_100: {
-    type: String,
-    default: ' '
+    type: String
   },
 
   photo_200: {
-    type: String,
-    default: ' '
+    type: String
   },
 
   city: {
-    type: String,
-    default: ' '
+    type: String
   },
 
   country: {
-    type: String,
-    default: ' '
+    type: String
   },
 
   school: {
