@@ -72,6 +72,8 @@ const userSchema = new mongoose.Schema({
     type: String
   },
 
+  payhistory: [{type: String}],
+
   groupsIn: [ {type: Schema.Types.ObjectId, ref: Group} ],
   groupsInv: [{type: Schema.Types.ObjectId, ref: Group} ],
   groupsAsk: [{type: Schema.Types.ObjectId, ref: Group} ]
