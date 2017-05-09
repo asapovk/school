@@ -19,8 +19,8 @@
 
   <form name="TinkoffPayForm">
     <input type="hidden" name="payDesc" placeholder="ФИО плательщика" class="form-control tinkoffPayRow" value="Order">
-    <input type="hidden" name="payOrder" placeholder="ФИО плательщика" class="form-control tinkoffPayRow" value=user12.vkId+'@'+currentTime>
-    <input type="hidden" name="payName" placeholder="ФИО плательщика" class="form-control tinkoffPayRow" value=user12.vkId>
+    <input type="hidden" name="payOrder" placeholder="ФИО плательщика" class="form-control tinkoffPayRow" value="{{user.vkId}}@{{currentTime}}">
+    <input type="hidden" name="payName" placeholder="ФИО плательщика" class="form-control tinkoffPayRow" value="user12.vkId">
     <div class="form-group row">
       <label for="payEmail" class="col-sm-2 col-form-label"> Email</label>
       <div class="col-sm-8">

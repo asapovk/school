@@ -3,8 +3,8 @@ var User = require('../../models/user');
 
 exports.get = async (ctx) => {
 
-//  var date = new Date();
-//  var dateString = date.toISOString();
+  var date = new Date();
+  var dateString = date.toISOString();
 
   var userSession = ctx.session.user || null;
   var userId = userSession._id;
@@ -16,7 +16,7 @@ exports.get = async (ctx) => {
   if (user) {
     ctx.state.user = user;
     //ctx.body = ctx.renderPug('tinkoff-checkout', {user12: user, currentTime: dateString});
-    ctx.render('checkout');
+    ctx.render('checkout', {currentTime: dateString});
   }
   else {
     ctx.redirect('/');

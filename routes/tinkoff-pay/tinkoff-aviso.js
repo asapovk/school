@@ -52,7 +52,7 @@ exports.post = async (ctx) => {
 
     var date = new Date();
     var dateString = date.toUTCString();
-    var payInfo = dateString+' Пополнение баланса на сумму '+orderSumAmount+' руб.';
+    var payInfo = 'Пополнение баланса на сумму '+orderSumAmount+' руб. '+dateString;
 
     await User.findOneAndUpdate({vkId: userId}, {$inc: {balance: orderSumAmount}, $addToSet: {payhistory: payInfo}}, {new: true}).then(function (result){
         if(result) {
