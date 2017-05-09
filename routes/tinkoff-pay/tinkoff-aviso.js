@@ -50,7 +50,11 @@ exports.post = async (ctx) => {
 
   if(Status === 'CONFIRMED') {
 
-    await User.findOneAndUpdate({vkId: userId}, {$inc: {balance: orderSumAmount}}, {new: true}).then(function (result){
+    var date = new Date();
+    var dateString = date.toUTCString();
+    var payInfo = dateString+' Пополнение баланса на сумму '+orderSumAmount+' руб.';
+
+    await User.findOneAndUpdate({vkId: userId}, {$inc: {balance: orderSumAmount}, $addToSet: {payhistory: payInfo}}, {new: true}).then(function (result){
         if(result) {
 
           //Can not update session with post request!!!

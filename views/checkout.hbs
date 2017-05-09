@@ -1,4 +1,22 @@
 <div class="container">
+
+  {{#if user.payhistory}}
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <p>История счета</p>
+      <ul class="list-group">
+        {{#each user.payhistory}}
+        <li class="list-group-item">
+          <p>{{this}}</p>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  {{/if}}
+
+
+
   <form name="TinkoffPayForm">
     <input type="hidden" name="payDesc" placeholder="ФИО плательщика" class="form-control tinkoffPayRow" value="Order">
     <input type="hidden" name="payOrder" placeholder="ФИО плательщика" class="form-control tinkoffPayRow" value=user12.vkId+'@'+currentTime>
