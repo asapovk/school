@@ -1,4 +1,5 @@
 var User = require('../../models/user');
+var Group = require('../../models/group');
 
 exports.post = async (ctx) => {
     var usersToCharge = ctx.request.body.usersToCharge;
@@ -6,21 +7,35 @@ exports.post = async (ctx) => {
     var teacherToAccept = ctx.request.body.teacherToAccept;
     var chargeValue = ctx.request.body.chargeValue;
     var totalSumAmount = chargeValue*numberOfUsers;
+    var groupToCharge = ctx.request.body.groupToCharge;
 
-    var teacher = await User.findOneAndUpdate({ _id: teacherToAccept}, {$inc: {balance: totalSumAmount}}, {new: true}).catch(function(){
-      console.log('Error happened when tried to find students in database!');
+    var group = await Group.findById(groupToCharge).catch(function(){
+      console.log('Error happened when tried to find group in database!');
       ctx.body = 'Error! Try to reload the page';
     });
 
-    var date = new Date();
-    var dateString = date.toUTCString();
-    var chargeInfo = dateString+' Списание средств '+chargeValue+' руб. в счет оплаты занятия с '+teacher.firstName+' '+teacher.lastName;
+    if(group) {
+      var date = new Date();
+      var dateString = date.toUTCString();
 
-    var students = await User.update({'_id' :{$in: usersToCharge} },  {$inc: {balance: -1*chargeValue},  $addToSet: {payhistory: chargeInfo}}, {multi: true} ).catch(function(){
-      console.log('Error happened when tried to find students in database!');
-      ctx.body = 'Error! Try to reload the page';
-    });
+      var teacherChargeInfo = 'Прием оплаты на сумму '+totalSumAmount+' руб. с группы '+group.groupName+' '+dateString;
+
+      var teacher = await User.findOneAndUpdate({ _id: teacherToAccept}, {$inc: {balance: totalSumAmount}, $addToSet: {payhistory: teacherChargeInfo}}, {new: true}).catch(function(){
+        console.log('Error happened when tried to find students in database!');
+        ctx.body = 'Error! Try to reload the page';
+      });
 
 
-    ctx.body = 'Successful charge by '+chargeValue;
+      var studentChargeInfo = 'Списание '+chargeValue+' руб. в счет оплаты занятия в группе '+group.groupName+' '+dateString;
+
+      var students = await User.update({'_id' :{$in: usersToCharge} },  {$inc: {balance: -1*chargeValue},  $addToSet: {payhistory: studentChargeInfo}}, {multi: true} ).catch(function(){
+        console.log('Error happened when tried to find students in database!');
+        ctx.body = 'Error! Try to reload the page';
+      });
+      ctx.body = 'Succsessfully charged group';
+      return;
+    }
+    else {
+      ctx.body = 'Error happened! failed to find group';
+    }
 }

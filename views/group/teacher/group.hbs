@@ -196,7 +196,7 @@
         usersToCharge.push($(this).attr("id"))
       }
     });
-
+    var groupToCharge = '{{group._id}}';
     var teacherToAccept = $('.teacherLink').attr("id");
     console.log(teacherToAccept);
 
@@ -204,8 +204,8 @@
     xhr.open('POST', '/group-charge', true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     console.log(chargeValue);
-    xhr.send(JSON.stringify({usersToCharge: usersToCharge, chargeValue: chargeValue, teacherToAccept: teacherToAccept}));
-    console.log(JSON.stringify({usersToCharge: usersToCharge, chargeValue: chargeValue, teacherToAccept: teacherToAccept}));
+    xhr.send(JSON.stringify({usersToCharge: usersToCharge, chargeValue: chargeValue, teacherToAccept: teacherToAccept, groupToCharge: groupToCharge}));
+    console.log(JSON.stringify({usersToCharge: usersToCharge, chargeValue: chargeValue, teacherToAccept: teacherToAccept, groupToCharge: groupToCharge}));
 
     xhr.onload = function () {
       if(xhr.status === 200) {
