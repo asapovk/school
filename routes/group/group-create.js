@@ -9,10 +9,20 @@ exports.post = async (ctx) => {
 
     var groupTitle = ctx.request.body.groupTitle;
     var groupTime = ctx.request.body.groupTime;
+
+    var groupDay = 'Mod';
+    var groupHour = 12;
+    var groupMinute = 45;
   } catch(e) {
     errors.push(e);
   }
   console.log('Group time is '+groupTime);
+
+  var groupTime = {
+    day: groupDay,
+    hour: groupHour,
+    minute: groupMinute
+  }
 
   var user = await User.findById(actionUser).catch(function(err){
       errors.push(err);
@@ -24,14 +34,14 @@ exports.post = async (ctx) => {
       await newGroup.save()
       .then(function (result) {
         if (result) {
-          ctx.body = 'Группа '+result.groupName+' успешно создана.'
+          ctx.body = 'Группа '+result.groupName+' успешно создана.';
+          return;
         }
       })
       .catch(function(err){
         errors.push(err);
-        console.log(err);
+      //  console.log(err);
       });
-      return;
     }
     else {
       var error = 'Пустые поля не допустимы!';
