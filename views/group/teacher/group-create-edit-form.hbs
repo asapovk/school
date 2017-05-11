@@ -16,7 +16,9 @@
     <div class ="form-group row">
       <label for="time" class="col-sm-2 col-form-label">Время занятий</label>
       <div class="col-sm-8">
-        <input type="text" id="groupTime" name="groupTime" placeholder="Пт 18:00 - 18:30" value="{{group.time}}" class="form-control">
+        <input type="text" id="groupTime" name="groupDay" placeholder="Mon" value="{{group.teme.day}}" class="form-control">
+        <input type="text" id="groupTime" name="groupHour" placeholder="18" value="{{group.time.hour}}" class="form-control">
+        <input type="text" id="groupTime" name="groupMinute" placeholder="00" value="{{group.time.minute}}" class="form-control">
         <small class="form-text text-muted">Время проведения занятий</small>
       </div>
     </div>
