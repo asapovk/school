@@ -11,8 +11,31 @@ const groupSchema = new mongoose.Schema({
   },
 
   time: {
-    type: String,
-    required: true
+    day: {
+      type: String,
+      required: true,
+      enum: ['Sun', 'Mon','Tus','Wen','Thu','Fri','Sat']
+    },
+    hour: {
+      type: Number,
+      required: true,
+      min: 0,
+      max: 23,
+      validate : {
+          validator : Number.isInteger,
+          message   : 'Hour must be integer value!'
+      }
+    },
+    minute: {
+      type: Number,
+      required: true,
+      min: 0,
+      max: 59,
+      validate : {
+          validator : Number.isInteger,
+          message   : 'Minute must be integer value!'
+      }
+    }
   },
 
   teacher: {

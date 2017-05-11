@@ -12,6 +12,7 @@ exports.post = async (ctx) => {
   } catch(e) {
     errors.push(e);
   }
+  console.log('Group time is '+groupTime);
 
   var user = await User.findById(actionUser).catch(function(err){
       errors.push(err);
@@ -28,6 +29,7 @@ exports.post = async (ctx) => {
       })
       .catch(function(err){
         errors.push(err);
+        console.log(err);
       });
       return;
     }
