@@ -9,6 +9,7 @@ exports.get = async (ctx) => {
 
     console.log(userSession);
 
+
     if(userSession) {
       await ctx.redirect('/user/'+userSession._id);
     }
@@ -16,5 +17,7 @@ exports.get = async (ctx) => {
     ctx.state.siteUrl = config.server.siteUrl;
     ctx.state.client_id = config.server.client_id;
     //ctx.body = ctx.renderPug('home', {user12: userSession});
+
+
     ctx.render('home');
 }

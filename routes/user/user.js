@@ -58,7 +58,17 @@ exports.get = async (ctx) => {
           });
         }
 
-        await ctx.render('user/teacher/user', {pageOwner: pageOwner, groupsIn: groupsIn, groupsAsk: groupsAsk, groupsInv: groupsInv, myPage: myPage, myGroups: myGroups});
+        try {
+          var message = ctx.session.message
+        } catch (e) {
+          var message = null;
+        }
+        if(message){
+          ctx.session.message = null;
+        }
+        //console.log('message is '+message);
+
+        await ctx.render('user/teacher/user', {pageOwner: pageOwner, groupsIn: groupsIn, groupsAsk: groupsAsk, groupsInv: groupsInv, myPage: myPage, myGroups: myGroups, message: message});
         return;
       }
       else {

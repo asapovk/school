@@ -58,7 +58,11 @@ exports.post = async (ctx) => {
   }
 
   if(errors.length === 0) {
-    ctx.body = 'Группа '+groupTitle+' успешно создана.';
+    //ctx.body = 'Группа '+groupTitle+' успешно создана.';
+    var message = 'Группа '+groupTitle+' успешно создана.';
+    //ctx.redirect('/?message='+message);
+    ctx.session.message = message;
+    ctx.redirect('/');
   }
   else {
     ctx.body  = 'Не удалось создать группу! Произошли ошибки: '+errors;
