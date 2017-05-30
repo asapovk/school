@@ -9,7 +9,7 @@
     <p>{{pageOwner.city}}, {{pageOwner.country}}</p>
   </div>
 
-  {{#if user.isAdmin}}
+
   {{#if pageOwner.email}}
   <div class="panel-body userInfo" id="{{pageOwner._id}}">
     <p>{{pageOwner.email}}</p>
@@ -20,18 +20,17 @@
     <p>{{pageOwner.phone}}</p>
   </div>
   {{/if}}
-  {{/if}}
+
 
 </div>
 
-{{#if myPage}}
 
-{{#if myGroups}}
+{{#if hisGroups}}
 <div class="panel panel-default">
   <div class="panel-body">
-    <p>Ваши группы</p>
+    <p>Преподает в группах</p>
     <ul class= "list-group">
-      {{#each myGroups}}
+      {{#each hisGroups}}
         <li class ="list-group-item">
           <a href="/group/{{this._id}}">{{this.groupName}}</a>
         </li>
@@ -40,17 +39,15 @@
   </div>
 </div>
 {{/if}}
-<a href="/group" class="btn btn-default">Создать группу</a>
 
 {{#if groupsIn}}
 <div class="panel panel-default">
   <div class="panel-body">
-    <p>Группы в которых Вы состоите</p>
+    <p>Состоит в группах</p>
     <ul class= "list-group">
       {{#each groupsIn}}
         <li class ="list-group-item">
           <a href="/group/{{this._id}}">{{this.groupName}}</a>
-          <button class="btn btn-danger pull-right leaveButton" id="{{this._id}}">Покинуть группу</button>
         </li>
       {{/each}}
     </ul>
@@ -61,13 +58,11 @@
 {{#if groupsInv}}
 <div class="panel panel-default">
   <div class="panel-body">
-    <p>Группы в которые Вас пригласили</p>
+    <p>Приглашен в группы</p>
     <ul class= "list-group">
       {{#each groupsInv}}
         <li class ="list-group-item">
           <a href="/group/{{this._id}}">{{this.groupName}}</a>
-          <button class="btn btn-warning pull-right rejectButton" id="{{this._id}}">Отклонить приглашение</button>
-          <button class="btn btn-success pull-right approveButton" id="{{this._id}}">Принять приглашение</button>
         </li>
       {{/each}}
     </ul>
@@ -78,108 +73,14 @@
 {{#if groupsAsk}}
 <div class="panel panel-default">
   <div class="panel-body">
-    <p>Группы в которые Вы отправили запросы на вступление</p>
+    <p>Отправил заявку на вступление в </p>
     <ul class= "list-group">
       {{#each groupsAsk}}
         <li class ="list-group-item">
           <a href="/group/{{this._id}}">{{this.groupName}}</a>
-            <button class="btn btn-warning pull-right cancelButton" id="{{this._id}}">Отменить запрос</button>
         </li>
       {{/each}}
     </ul>
   </div>
 </div>
-{{/if}}
-
-<a href="/group-index" class="btn btn-default">Добавить группы</a>
-
-
-<script>
-{{#if message}}
-alert('{{message}}')
-{{/if}}
-</script>
-
-
-<script>
-$('.leaveButton').on('click', function(){
-  var groupToLeave = $(this).attr("id");
-  var userToManage = $('.userInfo').attr("id");
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/group-manage', true);
-  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xhr.send(JSON.stringify({groupToLeave: groupToLeave, userToManage: userToManage}));
-  console.log(JSON.stringify({groupToLeave: groupToLeave, userToManage: userToManage}));
-  xhr.onload = function () {
-    if(xhr.status === 200) {
-      var responseText = xhr.responseText;
-      console.log(responseText);
-      location.reload();
-    }
-    else {
-      console.log(responseText);
-    }
-  };
-});
-
-$('.rejectButton').on('click', function(){
-  var groupToReject = $(this).attr("id");
-  var userToManage = $('.userInfo').attr("id");
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/group-manage', true);
-  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xhr.send(JSON.stringify({groupToReject: groupToReject, userToManage: userToManage}));
-  console.log(JSON.stringify({groupToReject: groupToReject, userToManage: userToManage}));
-  xhr.onload = function () {
-    if(xhr.status === 200) {
-      var responseText = xhr.responseText;
-      console.log(responseText);
-      location.reload();
-    }
-    else {
-      console.log(responseText);
-    }
-  };
-});
-
-$('.approveButton').on('click', function (){
-  var groupToApprove = $(this).attr("id");
-  var userToManage = $('.userInfo').attr("id");
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/group-manage', true);
-  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xhr.send(JSON.stringify({groupToApprove: groupToApprove, userToManage: userToManage}));
-  console.log(JSON.stringify({groupToApprove: groupToApprove, userToManage: userToManage}));
-  xhr.onload = function () {
-    if(xhr.status === 200) {
-      var responseText = xhr.responseText;
-      console.log(responseText);
-      location.reload();
-    }
-    else {
-      console.log(responseText);
-    }
-  };
-});
-
-$('.cancelButton').on('click', function (){
-  var groupToCancel = $(this).attr("id");
-  var userToManage = $('.userInfo').attr("id");
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/group-manage', true);
-  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xhr.send(JSON.stringify({groupToCancel: groupToCancel, userToManage: userToManage}));
-  console.log(JSON.stringify({groupToCancel: groupToCancel, userToManage: userToManage}));
-  xhr.onload = function () {
-    if(xhr.status === 200) {
-      var responseText = xhr.responseText;
-      console.log(responseText);
-      location.reload();
-    }
-    else {
-      console.log(responseText);
-    }
-  };
-});
-</script>
 {{/if}}

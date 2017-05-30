@@ -26,7 +26,8 @@ Code here ...
 
 // user authentication routes
 
-router.get('/', require('./routes/home.js').get);
+//router.get('/', require('./routes/home.js').get);
+router.get('/', require('./routes/home-new.js').get);
 router.get('/login',require('./routes/login.js').get);
 router.get('/logout', require('./routes/logout.js').get);
 
@@ -35,7 +36,8 @@ router.post('/payment', require('./routes/test-routes/payment.js').post); // pay
 router.get('/test-login', require('./routes/test-routes/test-login.js').get); // to login as TEST STUDENT
 
 //user routes
-router.get('/user/:id', require('./routes/user/user.js').get); // single user page
+//router.get('/user/:id', require('./routes/user/user.js').get); // single user page
+router.get('/user/:id', require('./routes/user/user-new.js').get);
 router.get('/user-index', require('./routes/user/user-index.js').get); // multi user page
 router.post('/user-edit', require('./routes/user/user-edit.js').post);
 
