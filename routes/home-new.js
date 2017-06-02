@@ -7,7 +7,7 @@ exports.get = async (ctx) => {
   var user = ctx.state.user || null;
 
   if(user) {
-    console.log(user);
+  //  console.log(user);
     var userId = user._id;
     var groupsIn = await Group.find({'_id' :{$in: user.groupsIn} }).catch(function(err){
       console.log('Error happened when tried to find students in database!');
