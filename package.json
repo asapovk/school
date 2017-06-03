@@ -1,6 +1,6 @@
 {
   "name": "lk.akadplus.ru",
-  "version": "0.3.1",
+  "version": "0.3.3",
   "description": "User account app for akadplus.ru",
   "main": "server.js",
   "dependencies": {

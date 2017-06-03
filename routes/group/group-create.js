@@ -4,6 +4,7 @@ var User = require('../../models/user');
 exports.post = async (ctx) => {
 
   var errors = [];
+  var access = 0;
   try {
     var actionUser = ctx.request.body.actionUser;
 
@@ -28,28 +29,35 @@ exports.post = async (ctx) => {
     minute: groupMinute
   }
 
-  var user = await User.findById(actionUser).catch(function(err){
-      errors.push(err);
-  });
-
+  var user = ctx.state.user || null;
   if (user) {
-    if (groupTitle && groupTime) {
-      var newGroup = new Group({groupName: groupTitle, time: groupTime, teacher: actionUser });
-      await newGroup.save()
-      //.then(function (result) {
-      //  if (result) {
-      //    ctx.body = 'Группа '+result.groupName+' успешно создана.';
-      //    return;
-      //  }
-      //})
-      .catch(function(err){
-        errors.push(err);
-      //  console.log(err);
-      });
+    if (user.role === 'admin' || user.role === 'superuser') {
+      access = 1;
+    }
+    if (access >= 1) {
+      if (groupTitle && groupTime) {
+        var newGroup = new Group({groupName: groupTitle, time: groupTime, teacher: actionUser });
+        await newGroup.save()
+        //.then(function (result) {
+        //  if (result) {
+        //    ctx.body = 'Группа '+result.groupName+' успешно создана.';
+        //    return;
+        //  }
+        //})
+        .catch(function(err){
+          errors.push(err);
+        //  console.log(err);
+        });
+      }
+      else {
+        var error = 'Пустые поля не допустимы!';
+        errors.push(error);
+      }
     }
     else {
-      var error = 'Пустые поля не допустимы!';
-      errors.push(error);
+      var accessError = 'ACCESS DENIED!'
+      console.log('ACCESS DENIED!');
+      errors.push(accessError);
     }
   }
   else {
@@ -59,6 +67,10 @@ exports.post = async (ctx) => {
 
   if(errors.length === 0) {
     ctx.body = 'Группа '+groupTitle+' успешно создана.';
+    //var message = 'Группа '+groupTitle+' успешно создана.';
+    //ctx.redirect('/?message='+message);
+    //ctx.session.message = message;
+    //ctx.redirect('/');
   }
   else {
     ctx.body  = 'Не удалось создать группу! Произошли ошибки: '+errors;

@@ -19,14 +19,15 @@ const handlers = fs.readdirSync(path.join(__dirname,'middlewares')).sort();
 handlers.forEach( handler => require('./middlewares/' + handler).init(app));
 
 /*
-
+/sss
 Code here ...
 
 */
 
 // user authentication routes
 
-router.get('/', require('./routes/home.js').get);
+//router.get('/', require('./routes/home.js').get);
+router.get('/', require('./routes/home-new.js').get);
 router.get('/login',require('./routes/login.js').get);
 router.get('/logout', require('./routes/logout.js').get);
 
@@ -35,12 +36,14 @@ router.post('/payment', require('./routes/test-routes/payment.js').post); // pay
 router.get('/test-login', require('./routes/test-routes/test-login.js').get); // to login as TEST STUDENT
 
 //user routes
-router.get('/user/:id', require('./routes/user/user.js').get); // single user page
+//router.get('/user/:id', require('./routes/user/user.js').get); // single user page
+router.get('/user/:id', require('./routes/user/user-new.js').get);
 router.get('/user-index', require('./routes/user/user-index.js').get); // multi user page
 router.post('/user-edit', require('./routes/user/user-edit.js').post);
 
 //group routes
-router.get('/group/:id', require('./routes/group/group.js').get); //single group page
+//router.get('/group/:id', require('./routes/group/group.js').get); //single group page
+router.get('/group/:id', require('./routes/group/group-new.js').get); //single group page
 router.get('/group-index', require('./routes/group/group-index.js').get); //multi group page
 
 router.post('/group-manage', require('./routes/group/group-manage.js').post); // to invite/kickout/accept users to the group

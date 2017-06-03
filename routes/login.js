@@ -64,14 +64,14 @@ exports.get = async (ctx) => {
         console.log('now user is created');
         ctx.session.user = user;
         var userId = user.id;
-        ctx.redirect('/'+userId);
+        ctx.redirect('/');
         return;
       }
       else {
         console.log('User is registered');
         ctx.session.user = result;
         user = result;
-        ctx.redirect('/user/'+userId);
+        ctx.redirect('/');
         return;
       }
     }).catch(function(){
@@ -79,7 +79,7 @@ exports.get = async (ctx) => {
     });
 
 
-    ctx.redirect('/user/'+user.id);
+    ctx.redirect('/');
   }
 
 }
