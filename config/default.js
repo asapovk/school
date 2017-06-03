@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
 //Production server
-/*
+
   server: {
     siteUrl: 'https://lk.akadplus.ru',
     appHost: '127.0.0.1',
@@ -25,9 +25,9 @@ module.exports = {
       }
     }
   },
-*/
-//Test server
 
+//Test server
+/*
   server: {
     siteUrl: 'http://astapovk.ru',
     appHost: '127.0.0.1',
@@ -49,7 +49,7 @@ module.exports = {
       }
     }
   },
-
+*/
 /*
   mailer: {
     transport: 'gmail',

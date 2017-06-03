@@ -67,8 +67,8 @@ const lessonSchema = new mongoose.Schema({
                   min: 0,
                   max: 5,
                   validate: {
-                    validator : Number.isInteger,
-                    message   : 'Stars must be integer value!'
+                    validator: Number.isInteger,
+                    message: 'Stars must be integer value!'
                   }
                 }
     }
