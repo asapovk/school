@@ -7,6 +7,14 @@ exports.get = async (ctx) => {
   var user = ctx.state.user || null;
 
   if(user) {
+
+    try {
+      var isUserEdit = ctx.request.query.edit
+    } catch(e) {}
+    if(isUserEdit) {
+      await ctx.render('user/student/user-edit-form');
+      return;
+    }
   //  console.log(user);
     var userId = user._id;
     var groupsIn = await Group.find({'_id' :{$in: user.groupsIn} }).catch(function(err){

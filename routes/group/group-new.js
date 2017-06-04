@@ -72,28 +72,30 @@ exports.get = async (ctx) => {
                       ctx.body = 'Error! Try to reload the page';
                     });
                     if( access < 4) {
+
                       studentsAsk.forEach(function(student) {
                         if (student.balance > 0) {
-                            student.balance = 'positive';
+                            student.balance = null;
                         }
                         else {
-                            student.balance = 'negative';
+                            student.balance = -1;
                         }
                       });
                       studentsInv.forEach(function(student) {
                         if (student.balance > 0) {
-                            student.balance = 'positive';
+                            student.balance = null;
                         }
                         else {
-                            student.balance = 'negative';
+                            student.balance = -1;
                         }
                       });
                       studentsIn.forEach(function(student) {
+                        console.log('students in chancge baaknce!');
                         if (student.balance > 0) {
-                            student.balance = 'positive';
+                            student.balance = null;
                         }
                         else {
-                            student.balance = 'negative';
+                            student.balance = -1;
                         }
                       });
                     }
