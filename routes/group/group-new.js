@@ -52,7 +52,14 @@ exports.get = async (ctx) => {
                     console.log('Error happened when tried to find students in database!');
                     ctx.body = 'Error! Try to reload the page';
                   });
+                  studentsIn.forEach(function(student) {
+                    student.balance = null;
+                  });
                   if (access >= 3) {
+                    var studentsIn = await User.find({'_id' :{$in: group.studentsIn} }).catch(function(){
+                      console.log('Error happened when tried to find students in database!');
+                      ctx.body = 'Error! Try to reload the page';
+                    });
                     var studentsAsk = await User.find({'_id' :{$in: group.studentsAsk} }).catch(function(){
                       console.log('Error happened when tried to find students in database!');
                       ctx.body = 'Error! Try to reload the page';

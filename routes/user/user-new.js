@@ -16,7 +16,7 @@ exports.get = async (ctx) => {
         errors.push(err);
       });
       if (pageOwner) {
-          if (user.role === 'admin' || 'superuser') {
+          if (user.role === 'admin' || user.role === 'superuser') {
             var myGroups = await Group.find({teacher: userId}).catch(function(){
               console.log('Error happened when tried to find students in database!');
               errors.push(err);
