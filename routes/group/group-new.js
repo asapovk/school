@@ -35,15 +35,18 @@ exports.get = async (ctx) => {
           });
           var teacherId = group.teacher.toString();
           console.log('teacher id is '+teacher._id);
-          if (userId == group.teacher) {
-            console.log('Now access should be 3');
-            access = 3;
+          if(studentsInvId.indexOf(userId) > -1) {
+            access = 1;
           }
           if(studentsInId.indexOf(userId) > -1) {
             access = 2;
           }
-          if(studentsInvId.indexOf(userId) > -1) {
-            access = 1;
+          if (userId == group.teacher) {
+            console.log('Now access should be 3');
+            access = 3;
+          }
+          if(user.role === 'superuser') {
+            access = 4;
           }
 
           if(access >= 1) {
@@ -68,6 +71,32 @@ exports.get = async (ctx) => {
                       console.log('Error happened when tried to find students in database!');
                       ctx.body = 'Error! Try to reload the page';
                     });
+                    if( access < 4) {
+                      studentsAsk.forEach(function(student) {
+                        if (student.balance > 0) {
+                            student.balance = 'positive';
+                        }
+                        else {
+                            student.balance = 'negative';
+                        }
+                      });
+                      studentsInv.forEach(function(student) {
+                        if (student.balance > 0) {
+                            student.balance = 'positive';
+                        }
+                        else {
+                            student.balance = 'negative';
+                        }
+                      });
+                      studentsIn.forEach(function(student) {
+                        if (student.balance > 0) {
+                            student.balance = 'positive';
+                        }
+                        else {
+                            student.balance = 'negative';
+                        }
+                      });
+                    }
                   }
               }
           }
