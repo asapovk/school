@@ -8,8 +8,7 @@ exports.post = async (ctx) => {
     var userEmail = ctx.request.body.userEmail;
     var userPhone = ctx.request.body.userPhone;
     var userToEdit = ctx.request.body.actionUser;
-
-  }catch(e) {
+  } catch(e) {
     var error = 'Не верный формат тела запроса';
     errors.push(error);
   }
@@ -18,7 +17,7 @@ exports.post = async (ctx) => {
 
   if (user) {
 
-    var newUser = await User.findOneAndUpdate({_id: userToEdit}, {$set: {email: userEmail, phone: userPhone}}, {new: true}).catch(function(err){
+    var newUser = await User.findOneAndUpdate({_id: userToEdit}, {$set: {email: userEmail, phone: userPhone}}, {new: true, runValidators: true}).catch(function(err){
       errors.push(err);
     });
   }
@@ -30,6 +29,7 @@ exports.post = async (ctx) => {
       ctx.body  = 'Не удалось изменить параметры группы! Произошли ошибки: '+errors;
   }
   else {
-    ctx.body  = 'Данные профиля успешно изменены';
+    //ctx.body  = 'Данные профиля успешно изменены';
+      ctx.redirect('/');
   }
 }

@@ -45,7 +45,7 @@ exports.post = async (ctx) => {
         }
 
         if(groupTitle && groupTime) {
-          var newGroup = await Group.findOneAndUpdate({_id: groupToEdit}, {$set: {time: groupTime, groupName: groupTitle, teacher: groupTeacher}}, {new: true});
+          var newGroup = await Group.findOneAndUpdate({_id: groupToEdit}, {$set: {time: groupTime, groupName: groupTitle, teacher: groupTeacher}}, {new: true, runValidators: true});
           if(newGroup) {
             ctx.redirect('/group/'+groupToEdit);
             return;

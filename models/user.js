@@ -27,7 +27,13 @@ const userSchema = new mongoose.Schema({
   },
 
   email:   {
-    type: String
+    type: String,
+    validate: {
+          validator: async function checkEmail(value) {
+            return /^[-.\w]+@gmail.com/.test(value);
+          },
+          msg:       'Укажите, пожалуйста, корректную почту на  gmail.'
+    }
   },
 
   phone: {

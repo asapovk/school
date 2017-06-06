@@ -27,7 +27,7 @@ module.exports = {
   },
 */
 //Test server
-
+/*
   server: {
     siteUrl: 'http://astapovk.ru',
     appHost: '127.0.0.1',
@@ -49,6 +49,30 @@ module.exports = {
       }
     }
   },
+*/
+//localServer
+
+server: {
+  siteUrl: 'http://localhost',
+  appHost: '127.0.0.1',
+  appPort: '3001',
+  client_secret: '8JUIkbn7k2HCWx6vkNVC',
+  client_id: '6061723',
+  mongoose: {
+    uri:     'mongodb://localhost/appLocal',
+    options: {
+    //  user: 'localhost',
+    //  pass: 'Tgdhzq2AQuUn7l55smDu',
+    //  auth: {authdb:"appLocal"},
+      server: {
+      socketOptions: {
+          keepAlive: 1
+        },
+        poolSize:      5
+      }
+    }
+  }
+},
 
 /*
   mailer: {

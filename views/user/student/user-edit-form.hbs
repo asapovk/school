@@ -1,11 +1,12 @@
 <div class="container">
   <form action="/user-edit" method="POST">
     <input type="hidden" name="actionUser" value="{{user._id}}">
+    <p>Введите номер своего мобильного телефона и адрес электронной почты на gmail.com</p>
     <div class="form-group row">
       <label for="groupTitle" class="col-sm-2 col-form-label">E-mail</label>
       <div class="col-sm-8">
         <input type="text"  name="userEmail" placeholder="example@mail.com" value="{{user.email}}" class="form-control">
-        <small class="form-text text-muted">Электронная почта</small>
+        <small class="form-text text-muted">Электронная почта на gmail.com</small>
       </div>
     </div>
     <div class ="form-group row">

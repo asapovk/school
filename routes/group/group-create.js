@@ -66,7 +66,8 @@ exports.post = async (ctx) => {
   }
 
   if(errors.length === 0) {
-    ctx.body = 'Группа '+groupTitle+' успешно создана.';
+    //ctx.body = 'Группа '+groupTitle+' успешно создана.';
+    ctx.redirect('/');
     //var message = 'Группа '+groupTitle+' успешно создана.';
     //ctx.redirect('/?message='+message);
     //ctx.session.message = message;

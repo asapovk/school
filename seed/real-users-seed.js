@@ -46,10 +46,10 @@ async function dosmth () {
 dosmth().then(usersToSave=>{
 //  console.log(result[1]);
 
-  mongoose.connect('mongodb://localhost/appTest', {
-    user: 'astapovk.ru',
-    pass: 'Tgdhzq2AQuUn7l55smDu',
-    auth: {authdb:"appTest"},
+  mongoose.connect('mongodb://localhost/appLocal', {
+  //  user: 'astapovk.ru',
+  //  pass: 'Tgdhzq2AQuUn7l55smDu',
+  //  auth: {authdb:"appTest"},
     server: {
     socketOptions: {
         keepAlive: 1

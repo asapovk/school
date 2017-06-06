@@ -8,6 +8,11 @@ exports.get = async (ctx) => {
 
   if(user) {
 
+    if(!user.email) {
+      await ctx.render('user/student/user-edit-form');
+      return;
+    }
+
     try {
       var isUserEdit = ctx.request.query.edit
     } catch(e) {}
