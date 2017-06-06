@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
 //Production server
-/*
+
   server: {
     siteUrl: 'https://lk.akadplus.ru',
     appHost: '127.0.0.1',
@@ -25,7 +25,7 @@ module.exports = {
       }
     }
   },
-*/
+
 //Test server
 /*
   server: {
@@ -51,7 +51,7 @@ module.exports = {
   },
 */
 //localServer
-
+/*
 server: {
   siteUrl: 'http://localhost',
   appHost: '127.0.0.1',
@@ -73,7 +73,7 @@ server: {
     }
   }
 },
-
+*/
 /*
   mailer: {
     transport: 'gmail',
