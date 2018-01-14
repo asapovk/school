@@ -90,16 +90,16 @@ exports.get = async (ctx) => {
     if (userObject) {
       var user = null;
     }
-    if(response3.response === 1 || response4.response === 1){
+  //  if(response3.response === 1 || response4.response === 1){
       await User.findOne({vkId: userObject.vkId}).then( async function(result){
         if(!result) {
                 console.log('user is not in database');
-                if(response4.response === 1) {
-                  userObject.role = 'admin';
-                }
-                else {
+                //if(response4.response === 1) {
+                //  userObject.role = 'admin';
+              //  }
+                //else {
                   userObject.role = 'student';
-                }
+              //  }
                 user = new User(userObject);
                 await user.save().catch(function(){
                   console.log('unable to save in database');
@@ -124,11 +124,11 @@ exports.get = async (ctx) => {
       });
       ctx.redirect('/');
 
-    }
+    //}
 
-    else {
-      console.log('YOU ARE NOT IN THE GROUP!');
-      ctx.body = 'Вы не являетесь участнком группы VK, для входа в личный кабинет вступите в группу https://vk.com/akadplus';
-    }
+    //else {
+    //  console.log('YOU ARE NOT IN THE GROUP!');
+    //  ctx.body = 'Вы не являетесь участнком группы VK, для входа в личный кабинет вступите в группу https://vk.com/akadplus';
+    //}
   }
 }

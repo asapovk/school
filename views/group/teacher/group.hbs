@@ -74,9 +74,29 @@
   <div class="panel-body">
     <a class="btn btn-default" href="/user-index?manage={{group._id}}">Пригласить студентов</a>
     <a class="btn btn-default" href="/group/{{group._id}}?edit=true">Редактировать группу</a>
+    <a class="btn btn-default" href="/group-addlesson-form?groupId={{group._id}}">Добавить урок</a>
     <button class="btn btn-danger deleteButton" id="{{group._id}}" onclick="deleteGroup()">Удалить группу</button>
   </div>
 </div>
+
+
+{{#if lessons}}
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>Уроки</p>
+    <ul class="list-group">
+      {{#each  lessons}}
+          <li class="list-group-item">
+            <a href = "/lesson/{{this._id}}">{{this.title}}</a>
+            <button class="btn btn-danger pull-right kickoutButton" id="{{this._id}}">Удалить урок</button>
+          </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+{{/if}}
+
+
 <script>
 
   $('.kickoutButton').on('click', function(){

@@ -1,5 +1,6 @@
 var User = require('../../models/user');
 var Group = require('../../models/group');
+var Lesson = require('../../models/lesson');
 exports.get = async (ctx) => {
 
     var user = ctx.state.user || null;
@@ -35,6 +36,12 @@ exports.get = async (ctx) => {
           });
           var teacherId = group.teacher.toString();
           console.log('teacher id is '+teacher._id);
+//
+          var groupLessons = await Lesson.find({group: group._id}).catch(function(){
+            console.log('Error happened when tried to find lessons in database!');
+            ctx.body = 'Error! Try to reload the page';
+          });
+//
           if(studentsInvId.indexOf(userId) > -1) {
             access = 1;
           }
@@ -106,7 +113,8 @@ exports.get = async (ctx) => {
             teacher: teacher,
             studentsIn: studentsIn,
             studentsInv: studentsInv,
-            studentsAsk: studentsAsk
+            studentsAsk: studentsAsk,
+            lessons: groupLessons
           };
           console.log('access is '+access);
           //console.log(groupOtions);

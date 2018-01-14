@@ -50,6 +50,11 @@ router.post('/group-manage', require('./routes/group/group-manage.js').post); //
 router.post('/group-charge', require('./routes/group/group-charge.js').post); // to charge group members by some value, that will be added to teacher's balance
 
 router.get('/group', require('./routes/group/group-create-form.js').get); // to render group create/edit form
+///lessons manage
+router.get('/group-addlesson-form', require('./routes/group/group-addlesson-form.js').get);
+router.post('/group-addlesson', require('./routes/group/group-addlesson.js').post);
+router.get('/lesson/:id', require('./routes/group/lesson').get);
+
 
 router.post('/group-create', require('./routes/group/group-create.js').post);
 router.post('/group-edit', require('./routes/group/group-edit.js').post);

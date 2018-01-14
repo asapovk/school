@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 //const config = require('config');
 
 var User = require('./user');
+var Lesson = require('./lesson');
 
 const groupSchema = new mongoose.Schema({
   groupName:   {
@@ -42,6 +43,8 @@ const groupSchema = new mongoose.Schema({
     type: Schema.Types.ObjectId,
     ref: User
   },
+
+  lessons: [{type: Schema.Types.ObjectId, ref: Lesson}],
 
   status: {
     type: String,

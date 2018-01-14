@@ -8,16 +8,21 @@ var Comment = require('./comment');
 
 const lessonSchema = new mongoose.Schema({
   title: {
-    type: String
+    type: String,
+    required: true
   },
-  description: {
+  content: {
+    type: String,
+    required: true
+  },
+  hometask: {
     type: String
   },
   links: [{ source: {type: String},
             desc: {type: String}
           }],
   comments: [{type: Schema.Types.ObjectId, ref: Comment}],
-
+/*
   time: {
     month: {
       type: String,
@@ -60,19 +65,8 @@ const lessonSchema = new mongoose.Schema({
       }
     }
   },
-  group: {type: Schema.Types.ObjectId, ref: Group, required: true},
-  participants : [
-    {   student: {type: Schema.Types.ObjectId, ref: User},
-        stars: {  type: Number,
-                  min: 0,
-                  max: 5,
-                  validate: {
-                    validator: Number.isInteger,
-                    message: 'Stars must be integer value!'
-                  }
-                }
-    }
-  ]
+*/
+  group: {type: Schema.Types.ObjectId, ref: Group, required: true}
 
 }, {
   timestamps: true
