@@ -6,7 +6,83 @@
 </div>
 
 
+<div class='container'>
+    <div class="row">
+      <div class="col-md-12 FilterBackground">
 
+        <div class='col-md-3 FilterBar'>
+          <h4 class="subject">Предмет</h4>
+          <ul>
+            <li class="subsubject" ><a>Математика</a></li>
+            <li class="subsubject"><a>Информатика</a></li>
+            <li class="subsubject"><a>Гуманитарные науки</a></li>
+          </ul>
+        </div>
+
+        <div class='col-md-3 FilterBar'>
+          <h4 class="subject">Язык</h4>
+          <ul>
+            <li class="subsubject" ><a>Русский</a></li>
+            <li class="subsubject"><a>English</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-3 SearchHolder">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Поиск...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+              </span>
+            </div>
+            <div class="dropdown SortDropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Сортировать по:
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#">По релятивности</a></li>
+                <li><a href="#">По рейтенгу</a></li>
+                <li><a href="#">По количеству просмотров</a></li>
+              </ul>
+            </div>
+        </div>
+
+        <div class="col-md-3 CourseCreateButton">
+          <button type="button" class="btn btn-primary btn-lg ButtonCourse1"><h5 class='ButtonCourse2'>Создать группу<h5></button>
+        </div>
+
+      </div>
+<!--Окна курсов-->
+      <div class='col-md-12 CourseIndex'>
+        {{#each allGroups}}
+        <div class='col-md-4'>
+          <div class="card" style="width:300px">
+            <img class="card-img-top" src="/img/index.png" alt="Card image" width="300px" height="200px">
+            <div class="card-body">
+              <h4 class="card-title" style="font-weight:600">{{this.groupName}}</h4>
+              <p class="card-text CourseCardText">Краткое описание группы..</p>
+              <br>
+              <p class="AuthorSign">Автор:{{this.teacher}}</p>
+              <a href="/group/{{this._id}}" class="btn btn-primary">Открыть</a>
+              <span style="float:right;">Рейтинг: 4.8<span class="glyphicon glyphicon-star"></span></span>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+
+      </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!--
 <div class="panel panel-default">
   <div class="panel-body">
     <ul class="list-group">
@@ -21,7 +97,7 @@
   </div>
 </div>
 
-
+-->
 
 <script>
   function applyChange () {;

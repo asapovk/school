@@ -10,7 +10,19 @@ const groupSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-
+  description: {
+    type: String
+  },
+  picture: {
+    type: String
+  }
+  contentText: {
+   type: String
+  },
+ contentVideo: {
+   type: String
+ },
+/*
   time: {
     day: {
       type: String,
@@ -38,7 +50,7 @@ const groupSchema = new mongoose.Schema({
       }
     }
   },
-
+*/
   teacher: {
     type: Schema.Types.ObjectId,
     ref: User

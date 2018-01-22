@@ -11,16 +11,16 @@ const lessonSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  content: {
+  contentText: {
     type: String,
     required: true
+  },
+  contentVideo: {
+    type: String
   },
   hometask: {
     type: String
   },
-  links: [{ source: {type: String},
-            desc: {type: String}
-          }],
   comments: [{type: Schema.Types.ObjectId, ref: Comment}],
 /*
   time: {

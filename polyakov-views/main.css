@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Vollkorn+SC');
+
+html  {
+
+  position:relative;
+
+  min-height:100%;
+
+}
+
+body {
+  font-family: "Lato";
+  background-color: #FFFFFF;
+
+  margin:0;
+  padding:0;
+  height:100%;
+}
+
+h1,h2,h4,h5 {
+  font-family:"Raleway";
+  font-weight:300;
+  color:#333;
+}
+
+h6 {
+  color: #FFFFFF
+
+}
+
+
+
+.HeadEr{
+  background-color: #1E202C;
+}
+#logo{
+  font-family: 'Vollkorn SC', serif;
+  color: #212529;
+  text-decoration: overline;
+  font-size: 30px;
+
+}
+.footer {
+
+   color:#BBBBBB;
+
+   width: 100%;
+   min-height:100px;
+   text-align: center;
+   background-color: #292C2F;
+   bottom: 0;
+   position:absolute;
+   margin-top:-60px;
+   height:60px;
+}
+
+.navbar {
+
+  background-color: #FFFFFF;
+  outline-color: #333333;
+
+
+}
+.welcomeText {
+  font-family:"Raleway";
+  font-size: 50px;
+  color:#FFFFFF;
+}
+#help {
+
+  background-image: url(/img/picture2.png);
+  margin-top: -80px;
+  padding-top: 170px;font-family:"Raleway";
+
+  text-align:center;
+  min-height:500px;
+}
+
+.form-group {
+  text-align:center;
+}
+
+.navbar-default {
+
+
+  min_height:100px;
+}
+
+
+.tpk {
+  min-height: 357px;
+
+
+}
+
+.regp {
+  min-height: 390px;
+
+}
+.logp {
+  min-height:240px;
+}
+.ContainerCourse {
+  min-height:500px;
+  width: 60%;
+  margin-left:10%;
+}
+
+.subject {
+  margin-left:40px;
+  font-family: "Lato";
+  font-size:20px;
+  color:#333;
+}
+
+.FilterBackground {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  margin-bottom: 20px;
+}
+
+.FilterBar {
+  padding-bottom:20px;
+}
+
+.subsubject {
+  list-style-type: none;
+}
+
+.SearchHolder {
+  margin-top:20px;
+}
+
+.SortDropdown {
+  margin-top:20px;
+
+}
+
+.CourseIndex {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  padding-top:20px;
+  padding-bottom: 50px;
+  margin-bottom:300px;
+}
+
+.CourseCreateButton{
+  margin-top: 30px;
+
+}
+.ButtonCourse2 {
+  font-weight: 200;
+  color:#FFFFFF;
+  font-size:20px;
+  font-family:"Raleway";
+}
+.ButtonCourse1 {
+  margin-left:40px;
+}
+.CourseCardText {
+  min-height:88px;
+
+}
+
+.AuthorSign {
+  color: grey;
+  font-size:12px;
+}
+
+.BoxShadow {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.GroupName {
+  padding-bottom:15px;
+  margin-bottom:20px;
+
+}
+.GroupNameH {
+
+  text-align:center;
+}
+.AuthorImage {
+  border-radius: 200px 200px 200px 200px;
+  -moz-border-radius: 200px 200px 200px 200px;
+  -webkit-border-radius: 200px 200px 200px 200px;
+  border: 0px solid #000000;
+
+}
+
+.AuthorText {
+  font-family:"Lato";
+  font-size:25px;
+  margin-top:0px;
+  margin-bottom:20px;
+
+}
+
+.ControlPanel {
+  margin-top:20px;
+
+}
+.HoverBox:hover{
+background: #E5E5E5;
+}
+.LiBox {
+  padding:20px;
+  margin: -20px;
+  list-style-type:none
+}
+
+.GroupDesc {
+
+  min-height:300px;
+  margin-left:20px;
+
+
+
+}
+
+.Schedule {
+margin-left:20px;
+margin-right:0px;
+padding-right:330px;
+min-height:400px;
+}
+
+.SchStatus {
+  margin-top:20px;
+  text-align:center;
+}
+.ButtonIncr:hover {
+
+  transform: scale(1.5)
+}
+
+.UchList {
+  min-height:500px;
+}

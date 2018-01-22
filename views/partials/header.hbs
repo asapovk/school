@@ -7,14 +7,17 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/" >akadplus.ru</a>
+        <a class="navbar-brand" href="/" >Masters</a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/group-index">Начать обучение</a>
+          </li>
            {{#if user}}
-            <li>
+          <!--  <li>
               <a href="/tinkoff-checkout">Баланс: {{user.balance}} руб.</a>
-            </li>
+            </li> -->
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-user" aria-hidden="true"></i> {{user.firstName}}
@@ -24,9 +27,11 @@
                 <li>
                   <a href="/?edit=true">Редактировать профиль</a>
                 </li>
+              <!--
                 <li>
                   <a href="/tinkoff-checkout">Пополнить баланс</a>
                 </li>
+              -->
                 <li>
                   <a href="/logout">Выйти</a>
                 </li>

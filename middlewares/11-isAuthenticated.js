@@ -1,5 +1,5 @@
 var User = require('../models/user');
-
+var config = require('config');
 
 exports.init = app => app.use( async (ctx, next) => {
 
@@ -19,7 +19,9 @@ exports.init = app => app.use( async (ctx, next) => {
       ctx.state.user = user;
   }
 
+  ctx.state.siteUrl = config.server.siteUrl;
+  ctx.state.client_id = config.server.client_id;
 
- await next();
+  await next();
 
 });
