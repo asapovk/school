@@ -64,6 +64,8 @@ exports.post = async (ctx) => {
         var error = 'ACCESS DENIED!';
         console.log('ACCESS DENIED!');
         errors.push(error);
+        ctx.render('/group/teacher/error');
+        return;
       }
 
       ctx.body  = 'Не удалось изменить параметры группы! Произошли ошибки: '+errors;
