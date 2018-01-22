@@ -15,7 +15,7 @@ const groupSchema = new mongoose.Schema({
   },
   picture: {
     type: String
-  }
+  },
   contentText: {
    type: String
   },

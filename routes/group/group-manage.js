@@ -4,201 +4,183 @@ var Group = require('../../models/group');
 exports.post = async (ctx) => {
 
     var user = ctx.state.user || null;
-
+    var access =0;
     if (user) {
 
-      console.log('user role is '+user.role);
+      var userId = user._id.toString();
 
-      var userToIncome = ctx.request.body.userToIncome;
-      var groupsToAsk = ctx.request.body.groupsToAsk;
-
-      var userToManage = ctx.request.body.userToManage;
-      var groupToLeave = ctx.request.body.groupToLeave;
-      var groupToReject = ctx.request.body.groupToReject;
-      var groupToApprove = ctx.request.body.groupToApprove;
-      var groupToCancel = ctx.request.body.groupToCancel;
-
-      if (user.role === 'admin' || user.role === 'superuser') {
-
-        var groupToAccept = ctx.request.body.groupToAccept;
-        var usersToInvite = ctx.request.body.usersToInvite;
-
-        var groupToManage = ctx.request.body.groupToManage
-        var userToKickout = ctx.request.body.userToKickout;
-        var userToReject = ctx.request.body.userToReject;
-        var userToApprove = ctx.request.body.userToApprove;
-        var userToCancel = ctx.request.body.userToCancel;
-
+      try {
+        var actionGroupId = ctx.params.id;
+        var actionUserId = ctx.request.body.actionUserId;
+        var action = ctx.request.body.action;
+      } catch (err) {
+        console.log(err);
+        return;
       }
 
+      var group = await Group.findById({'_id': actionGroupId});
+      if (group) {
+
+        var teacherId = group.teacher;
+
+        if (userId == teacherId) {
+          console.log('Now access should be 3');
+          access = 3;
+        }
+        if(user.role === 'superuser') {
+          access = 4;
+        }
 
 
-  /*
-      console.log(groupToAccept);
-      console.log(usersToInvite);
-      console.log(userToIncome);
-      console.log(groupsToAsk);
-  */
-      if(groupToAccept && usersToInvite) {
+        if(action === 'invite' && access >=3) {
 
-        var students = await User.update({'_id' :{$in: usersToInvite} },  {$addToSet: {groupsInv: groupToAccept}}, {multi: true} ).catch(function(){
-          console.log('Unabled to push group to students');
-          ctx.body = 'Error! Try to reload the page';
-        });
+          var usersToInvite = [actionUserId];
+          var students = await User.update({'_id' :{$in: usersToInvite} },  {$addToSet: {groupsInv: actionGroupId}}, {multi: true} ).catch(function(){
+            console.log('Unabled to push group to students');
+            ctx.body = 'Error! Try to reload the page';
+          });
 
-        var group = await Group.findOneAndUpdate({ _id: groupToAccept}, {$addToSet: {studentsInv: {$each: usersToInvite} } }).catch(function(err){
-          console.log('Unable to push students to group!');
-          console.log(err);
-          ctx.body = 'Error! Try to reload the page';
-        });
-      }
+          var group = await Group.findOneAndUpdate({ _id: actionGroupId}, {$addToSet: {studentsInv: {$each: usersToInvite} } }).catch(function(err){
+            console.log('Unable to push students to group!');
+            console.log(err);
+            ctx.body = 'Error! Try to reload the page';
+          });
+        }
 
-      if(userToIncome && groupsToAsk) {
+        if(action === 'ask') {
 
-        var groups = await Group.update({'_id' :{$in: groupsToAsk} },  {$addToSet: {studentsAsk: userToIncome}}, {multi: true} ).catch(function(){
-          console.log('Unabled to push group to students');
-          ctx.body = 'Error! Try to reload the page';
-        });
+          var groupsToAsk = [actionGroupId];
+          var groups = await Group.update({'_id' :{$in: groupsToAsk} },  {$addToSet: {studentsAsk: userId}}, {multi: true} ).catch(function(){
+            console.log('Unabled to push group to students');
+            ctx.body = 'Error! Try to reload the page';
+          });
 
-        var student = await User.findOneAndUpdate({ _id: userToIncome}, {$addToSet: {groupsAsk: {$each: groupsToAsk} } }).catch(function(err){
-          console.log('Unable to push students to group!');
-          console.log(err);
-          ctx.body = 'Error! Try to reload the page';
-        });
-      }
+          var student = await User.findOneAndUpdate({ _id: userId}, {$addToSet: {groupsAsk: {$each: groupsToAsk} } }).catch(function(err){
+            console.log('Unable to push students to group!');
+            console.log(err);
+            ctx.body = 'Error! Try to reload the page';
+          });
+        }
 
-      if(userToKickout && groupToManage) {
-        console.log('userToKickout : '+userToKickout);
-        console.log('groupToManage : '+groupToManage);
+        if(action === 'kickout' && access >=3) {
+          console.log('kickout works');
+          console.log(actionUserId);
+          console.log(actionGroupId);
+          var group = await Group.findOneAndUpdate({ _id:  actionGroupId},  {$pull: {studentsIn: actionUserId}}).catch(function(){
+            console.log('Unabled to push group to students');
+            ctx.body = 'Error! Try to reload the page';
+          });
 
-        var group = await Group.findOneAndUpdate({ _id:  groupToManage},  {$pull: {studentsIn: userToKickout}}).catch(function(){
-          console.log('Unabled to push group to students');
-          ctx.body = 'Error! Try to reload the page';
-        });
-
-        var student = await User.findOneAndUpdate({ _id: userToKickout}, {$pull: {groupsIn: groupToManage} }).catch(function(err){
-          console.log('Unable to push students to group!');
-          console.log(err);
-          ctx.body = 'Error! Try to reload the page';
-        });
+          var student = await User.findOneAndUpdate({ _id: actionUserId}, {$pull: {groupsIn: actionGroupId} }).catch(function(err){
+            console.log('Unable to push students to group!');
+            console.log(err);
+            ctx.body = 'Error! Try to reload the page';
+          });
 
 
-      }
-      if(userToReject && groupToManage) {
-        console.log('userToReject : '+userToReject);
-        console.log('groupToManage : '+groupToManage);
+        }
+        if( action === 'reject-user' && access >=3) {
 
-        var group = await Group.findOneAndUpdate({ _id:  groupToManage},  {$pull: {studentsAsk: userToReject}}).catch(function(){
-          console.log('Unabled to push group to students');
-          ctx.body = 'Error! Try to reload the page';
-        });
+          var group = await Group.findOneAndUpdate({ _id:  actionGroupId},  {$pull: {studentsAsk: actionUserId}}).catch(function(){
+            console.log('Unabled to push group to students');
+            ctx.body = 'Error! Try to reload the page';
+          });
 
-        var student = await User.findOneAndUpdate({ _id: userToReject}, {$pull: {groupsAsk: groupToManage} }).catch(function(err){
-          console.log('Unable to push students to group!');
-          console.log(err);
-          ctx.body = 'Error! Try to reload the page';
-        });
+          var student = await User.findOneAndUpdate({ _id: actionUserId}, {$pull: {groupsAsk: actionGroupId} }).catch(function(err){
+            console.log('Unable to push students to group!');
+            console.log(err);
+            ctx.body = 'Error! Try to reload the page';
+          });
 
-      }
-      if(userToApprove && groupToManage) {
-        console.log('userToApprove : '+userToApprove);
-        console.log('groupToManage : '+groupToManage);
+        }
+        if( action === 'approve-user' && access >=3) {
 
-        var group = await Group.findOneAndUpdate({ _id:  groupToManage},  {$pull: {studentsAsk: userToApprove}, $addToSet: {studentsIn: userToApprove}}).catch(function(){
-          console.log('Unabled to push group to students');
-          ctx.body = 'Error! Try to reload the page';
-        });
+          var group = await Group.findOneAndUpdate({ _id:  actionGroupId},  {$pull: {studentsAsk: actionUserId}, $addToSet: {studentsIn: actionUserId}}).catch(function(){
+            console.log('Unabled to push group to students');
+            ctx.body = 'Error! Try to reload the page';
+          });
 
-        var student = await User.findOneAndUpdate({ _id: userToApprove}, {$pull: {groupsAsk: groupToManage}, $addToSet: {groupsIn: groupToManage} }).catch(function(err){
-          console.log('Unable to push students to group!');
-          console.log(err);
-          ctx.body = 'Error! Try to reload the page';
-        });
+          var student = await User.findOneAndUpdate({ _id: actionUserId}, {$pull: {groupsAsk: actionGroupId}, $addToSet: {groupsIn: actionGroupId} }).catch(function(err){
+            console.log('Unable to push students to group!');
+            console.log(err);
+            ctx.body = 'Error! Try to reload the page';
+          });
 
-      }
-      if(userToCancel && groupToManage) {
-        console.log('userToCancel : '+userToCancel);
-        console.log('groupToManage : '+groupToManage);
+        }
+        if(action === 'cancel-invite' && access >=3) {
+          console.log('cansel-invite works')
+          // This cancels ask of group's teacher to certain user for his membership in this group
+          var group = await Group.findOneAndUpdate({ _id:  actionGroupId},  {$pull: {studentsInv: actionUserId}}).catch(function(){
+            console.log('Unabled to push group to students');
+            ctx.body = 'Error! Try to reload the page';
+          });
 
-        var group = await Group.findOneAndUpdate({ _id:  groupToManage},  {$pull: {studentsInv: userToCancel}}).catch(function(){
-          console.log('Unabled to push group to students');
-          ctx.body = 'Error! Try to reload the page';
-        });
+          var student = await User.findOneAndUpdate({ _id: actionUserId}, {$pull: {groupsInv: actionGroupId} }).catch(function(err){
+            console.log('Unable to push students to group!');
+            console.log(err);
+            ctx.body = 'Error! Try to reload the page';
+          });
 
-        var student = await User.findOneAndUpdate({ _id: userToCancel}, {$pull: {groupsInv: groupToManage} }).catch(function(err){
-          console.log('Unable to push students to group!');
-          console.log(err);
-          ctx.body = 'Error! Try to reload the page';
-        });
+        }
 
-      }
+        if(action === 'leave')  {
 
-      if(groupToLeave && userToManage)  {
-        console.log('groupToLeave : '+groupToLeave);
-        console.log('userToManage : '+userToManage);
+          var student = await User.findOneAndUpdate({ _id:  userId},  {$pull: {groupsIn: actionGroupId}}).catch(function(){
+            console.log('Unabled to push group to students');
+            ctx.body = 'Error! Try to reload the page';
+          });
 
-        var student = await User.findOneAndUpdate({ _id:  userToManage},  {$pull: {groupsIn: groupToLeave}}).catch(function(){
-          console.log('Unabled to push group to students');
-          ctx.body = 'Error! Try to reload the page';
-        });
+          var group = await Group.findOneAndUpdate({ _id: actionGroupId}, {$pull: {studentsIn: userId} }).catch(function(err){
+            console.log('Unable to push students to group!');
+            console.log(err);
+            ctx.body = 'Error! Try to reload the page';
+          });
+        }
 
-        var group = await Group.findOneAndUpdate({ _id: groupToLeave}, {$pull: {studentsIn: userToManage} }).catch(function(err){
-          console.log('Unable to push students to group!');
-          console.log(err);
-          ctx.body = 'Error! Try to reload the page';
-        });
-      }
+        if (action === 'reject-group') {
+          console.log('reject group works');
+          var student = await User.findOneAndUpdate({ _id:  userId},  {$pull: {groupsInv: actionGroupId}}).catch(function(){
+            console.log('Unabled to push group to students');
+            ctx.body = 'Error! Try to reload the page';
+          });
 
-      if (groupToReject && userToManage) {
-        console.log('groupToReject : '+groupToReject);
-        console.log('userToManage : '+userToManage);
+          var group = await Group.findOneAndUpdate({ _id: actionGroupId}, {$pull: {studentsInv: userId} }).catch(function(err){
+            console.log('Unable to push students to group!');
+            console.log(err);
+            ctx.body = 'Error! Try to reload the page';
+          });
 
-        var student = await User.findOneAndUpdate({ _id:  userToManage},  {$pull: {groupsInv: groupToReject}}).catch(function(){
-          console.log('Unabled to push group to students');
-          ctx.body = 'Error! Try to reload the page';
-        });
+        }
+        if(action==='approve-group')  {
+          var student = await User.findOneAndUpdate({ _id:  userId},  {$pull: {groupsInv: actionGroupId}, $addToSet: {groupsIn: actionGroupId}}).catch(function(){
+            console.log('Unabled to push group to students');
+            ctx.body = 'Error! Try to reload the page';
+          });
 
-        var group = await Group.findOneAndUpdate({ _id: groupToReject}, {$pull: {studentsInv: userToManage} }).catch(function(err){
-          console.log('Unable to push students to group!');
-          console.log(err);
-          ctx.body = 'Error! Try to reload the page';
-        });
+          var group = await Group.findOneAndUpdate({ _id: actionGroupId}, {$pull: {studentsInv: userId}, $addToSet: {studentsIn: userId} }).catch(function(err){
+            console.log('Unable to push students to group!');
+            console.log(err);
+            ctx.body = 'Error! Try to reload the page';
+          });
 
-      }
-      if(groupToApprove && userToManage)  {
-        console.log('groupToApprove : '+groupToApprove);
-        console.log('userToManage : '+userToManage);
+        }
+        if(action === 'cancel-ask') {
+        // This cancels user's ask for membership of certain group  by user himself
+          var student = await User.findOneAndUpdate({ _id:  userId},  {$pull: {groupsAsk: actionGroupId}}).catch(function(){
+            console.log('Unabled to push group to students');
+            ctx.body = 'Error! Try to reload the page';
+          });
 
-        var student = await User.findOneAndUpdate({ _id:  userToManage},  {$pull: {groupsInv: groupToApprove}, $addToSet: {groupsIn: groupToApprove}}).catch(function(){
-          console.log('Unabled to push group to students');
-          ctx.body = 'Error! Try to reload the page';
-        });
+          var group = await Group.findOneAndUpdate({ _id: actionGroupId}, {$pull: {studentsAsk: userId} }).catch(function(err){
+            console.log('Unable to push students to group!');
+            console.log(err);
+            ctx.body = 'Error! Try to reload the page';
+          });
+        }
 
-        var group = await Group.findOneAndUpdate({ _id: groupToApprove}, {$pull: {studentsInv: userToManage}, $addToSet: {studentsIn: userToManage} }).catch(function(err){
-          console.log('Unable to push students to group!');
-          console.log(err);
-          ctx.body = 'Error! Try to reload the page';
-        });
+        ctx.body = access;
 
-      }
-      if(groupToCancel && userToManage) {
-        console.log('groupToCancel : '+groupToCancel);
-        console.log('userToManage : '+userToManage);
-
-        var student = await User.findOneAndUpdate({ _id:  userToManage},  {$pull: {groupsAsk: groupToCancel}}).catch(function(){
-          console.log('Unabled to push group to students');
-          ctx.body = 'Error! Try to reload the page';
-        });
-
-        var group = await Group.findOneAndUpdate({ _id: groupToCancel}, {$pull: {studentsAsk: userToManage} }).catch(function(err){
-          console.log('Unable to push students to group!');
-          console.log(err);
-          ctx.body = 'Error! Try to reload the page';
-        });
-      }
-
-      ctx.body = 'SUCCESS';
-    }
-
-
+      } //end of group
+    } //end of user
+    return;
 }

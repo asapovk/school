@@ -44,6 +44,7 @@ router.post('/user-edit', require('./routes/user/user-edit.js').post);
 //group routes
 //router.get('/group/:id', require('./routes/group/group.js').get); //single group page
 router.get('/group/:id', require('./routes/group/group-new.js').get); //single group page
+router.post('/group/:id', require('./routes/group/group-manage.js').post);
 router.get('/group-index', require('./routes/group/group-index.js').get); //multi group page
 
 router.post('/group-manage', require('./routes/group/group-manage.js').post); // to invite/kickout/accept users to the group

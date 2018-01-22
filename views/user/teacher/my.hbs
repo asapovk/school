@@ -105,10 +105,10 @@ $('.leaveButton').on('click', function(){
   var groupToLeave = $(this).attr("id");
   var userToManage = $('.userInfo').attr("id");
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/group-manage', true);
+  xhr.open('POST', '/group/'+groupToLeave, true);
   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xhr.send(JSON.stringify({groupToLeave: groupToLeave, userToManage: userToManage}));
-  console.log(JSON.stringify({groupToLeave: groupToLeave, userToManage: userToManage}));
+  xhr.send(JSON.stringify({action: 'leave'}));
+  console.log(JSON.stringify({action: 'leave'}));
   xhr.onload = function () {
     if(xhr.status === 200) {
       var responseText = xhr.responseText;
@@ -125,10 +125,10 @@ $('.rejectButton').on('click', function(){
   var groupToReject = $(this).attr("id");
   var userToManage = $('.userInfo').attr("id");
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/group-manage', true);
+  xhr.open('POST', '/group/'+groupToReject, true);
   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xhr.send(JSON.stringify({groupToReject: groupToReject, userToManage: userToManage}));
-  console.log(JSON.stringify({groupToReject: groupToReject, userToManage: userToManage}));
+  xhr.send(JSON.stringify({action: 'reject-group'}));
+  console.log(JSON.stringify({action: 'reject-group'}));
   xhr.onload = function () {
     if(xhr.status === 200) {
       var responseText = xhr.responseText;
@@ -145,10 +145,10 @@ $('.approveButton').on('click', function (){
   var groupToApprove = $(this).attr("id");
   var userToManage = $('.userInfo').attr("id");
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/group-manage', true);
+  xhr.open('POST', '/group/'+groupToApprove, true);
   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xhr.send(JSON.stringify({groupToApprove: groupToApprove, userToManage: userToManage}));
-  console.log(JSON.stringify({groupToApprove: groupToApprove, userToManage: userToManage}));
+  xhr.send(JSON.stringify({action: 'approve-group'}));
+  console.log(JSON.stringify({action: 'approve-group'}));
   xhr.onload = function () {
     if(xhr.status === 200) {
       var responseText = xhr.responseText;
@@ -165,10 +165,10 @@ $('.cancelButton').on('click', function (){
   var groupToCancel = $(this).attr("id");
   var userToManage = $('.userInfo').attr("id");
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/group-manage', true);
+  xhr.open('POST', '/group/'+groupToCancel, true);
   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xhr.send(JSON.stringify({groupToCancel: groupToCancel, userToManage: userToManage}));
-  console.log(JSON.stringify({groupToCancel: groupToCancel, userToManage: userToManage}));
+  xhr.send(JSON.stringify({action: 'cancel-ask'}));
+  console.log(JSON.stringify({action: 'cancel-ask'}));
   xhr.onload = function () {
     if(xhr.status === 200) {
       var responseText = xhr.responseText;

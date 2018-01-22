@@ -72,6 +72,12 @@
 <!--</form>-->
 <div class="panel panel-default">
   <div class="panel-body">
+    <button class="btn btn-default askButton" id="{{group._id}}">Вступить в группу</button>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
     <a class="btn btn-default" href="/user-index?manage={{group._id}}">Пригласить студентов</a>
     <a class="btn btn-default" href="/group/{{group._id}}?edit=true">Редактировать группу</a>
     <a class="btn btn-default" href="/group-addlesson-form?groupId={{group._id}}">Добавить урок</a>
@@ -103,10 +109,10 @@
     var userToKickout = $(this).attr("id");
     var groupToManage = $('.deleteButton').attr("id");
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/group-manage', true);
+    xhr.open('POST', '/group/'+groupToManage, true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify({userToKickout: userToKickout, groupToManage: groupToManage}));
-    console.log(JSON.stringify({userToKickout: userToKickout, groupToManage: groupToManage}));
+    xhr.send(JSON.stringify({actionUserId: userToKickout, action: 'kickout'}));
+    console.log(JSON.stringify({actionUserId: userToKickout, action: 'kickout'}));
     xhr.onload = function () {
       if(xhr.status === 200) {
         var responseText = xhr.responseText;
@@ -123,10 +129,10 @@
     var userToReject = $(this).attr("id");
     var groupToManage = $('.deleteButton').attr("id");
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/group-manage', true);
+    xhr.open('POST', '/group/'+groupToManage, true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify({userToReject: userToReject, groupToManage: groupToManage}));
-    console.log(JSON.stringify({userToReject: userToReject, groupToManage: groupToManage}));
+    xhr.send(JSON.stringify({actionUserId: userToReject, action: 'reject-user'}));
+    console.log(JSON.stringify({actionUserId: userToReject, action: 'reject-user'}));
     xhr.onload = function () {
       if(xhr.status === 200) {
         var responseText = xhr.responseText;
@@ -143,10 +149,10 @@
     var userToApprove = $(this).attr("id");
     var groupToManage = $('.deleteButton').attr("id");
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/group-manage', true);
+    xhr.open('POST', '/group/'+groupToManage, true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify({userToApprove: userToApprove, groupToManage: groupToManage}));
-    console.log(JSON.stringify({userToApprove: userToApprove, groupToManage: groupToManage}));
+    xhr.send(JSON.stringify({actionUserId: userToApprove, action: 'approve-user'}));
+    console.log(JSON.stringify({actionUserId: userToApprove, action: 'approve-user'}));
     xhr.onload = function () {
       if(xhr.status === 200) {
         var responseText = xhr.responseText;
@@ -163,15 +169,34 @@
     var userToCancel = $(this).attr("id");
     var groupToManage = $('.deleteButton').attr("id");
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/group-manage', true);
+    xhr.open('POST', '/group/'+groupToManage, true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify({userToCancel: userToCancel, groupToManage: groupToManage}));
-    console.log(JSON.stringify({userToCancel: userToCancel, groupToManage: groupToManage}));
+    xhr.send(JSON.stringify({actionUserId: userToCancel, action: 'cancel-invite'}));
+    console.log(JSON.stringify({actionUserId: userToCancel, action: 'cancel-invite'}));
     xhr.onload = function () {
       if(xhr.status === 200) {
         var responseText = xhr.responseText;
         console.log(responseText);
         location.reload();
+      }
+      else {
+        console.log(responseText);
+      }
+    };
+  });
+
+  $('.askButton').on('click', function (){
+    var groupToManage = $(this).attr("id");
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/group/'+groupToManage, true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify({action: 'ask'}));
+    console.log(JSON.stringify({action: 'ask'}));
+    xhr.onload = function () {
+      if(xhr.status === 200) {
+        var responseText = xhr.responseText;
+        console.log(responseText);
+        //location.reload();
       }
       else {
         console.log(responseText);

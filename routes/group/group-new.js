@@ -18,7 +18,6 @@ exports.get = async (ctx) => {
       if(group) {
           ctx.state.group = group;
           var studentsInId = group.studentsIn;
-          console.log('studentsInId is '+studentsInId);
           var studentsInvId = group.studentsInv;
           var studentsAskId = group.studentsAsk;
           try {
