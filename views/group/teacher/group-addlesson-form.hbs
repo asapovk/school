@@ -1,26 +1,37 @@
 <div class="container">
-  <form action="/group-addlesson" method="POST" name="groupAddlesson" id="groupAddlesson">
+{{#if lesson}}
+  <form action="/lesson/{{lesson._id}}" method="POST" name="editLesson" id="editLesson">
+{{else}}
+  <form action="/lesson-add" method="POST" name="groupAddlesson" id="groupAddlesson">
+{{/if}}
     <input type="hidden" name="actionUser" value="{{user._id}}">
     <input type="hidden" name="actionGroup" value="{{groupId}}">
+    {{#if lesson}}
+      <input type="hidden" name="action" value="edit">
+    {{/if}}
     <div class="form-group row">
       <label for="lessonTitle" class="col-sm-2 col-form-label">Название урока</label>
       <div class="col-sm-8">
-        <input type="text" id="lessonTitle" name="lessonTitle"  class="form-control">
+        <input type="text" id="lessonTitle" name="lessonTitle"  class="form-control" value="{{lesson.title}}">
       </div>
     </div>
     <div class="form-group row">
       <label for="lessonContent" class="col-sm-2 col-form-label">Содержание</label>
       <div class="col-sm-8">
-        <textarea id="lessonContent"  rows="10" name="lessonContent"   class="form-control"></textarea>
+        <textarea id="lessonContent"  rows="10" name="lessonContent"   class="form-control">{{lesson.contentText}}</textarea>
       </div>
     </div>
     <div class="form-group row">
       <label for="lessonHometask" class="col-sm-2 col-form-label">Домашнее задание</label>
       <div class="col-sm-8">
-        <textarea id="lessonHometask" rows="5" name="lessonHometask"  class="form-control"></textarea>
+        <textarea id="lessonHometask" rows="5" name="lessonHometask"  class="form-control">{{lesson.hometask}}</textarea>
       </div>
     </div>
+    {{#if lesson}}
+    <button type="submit" class="btn btn-default">Редактировать урок</button>
+    {{else}}
     <button type="submit" class="btn btn-default">Создать урок</button>
+    {{/if}}
   </form>
 </div>
 <div id="myform_errorloc" class="error_strings"></div>

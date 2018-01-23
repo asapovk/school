@@ -26,7 +26,6 @@ Code here ...
 
 // user authentication routes
 
-//router.get('/', require('./routes/home.js').get);
 router.get('/', require('./routes/home-new.js').get);
 router.get('/login',require('./routes/login.js').get);
 router.get('/logout', require('./routes/logout.js').get);
@@ -36,25 +35,23 @@ router.post('/payment', require('./routes/test-routes/payment.js').post); // pay
 router.get('/test-login', require('./routes/test-routes/test-login.js').get); // to login as TEST STUDENT
 
 //user routes
-//router.get('/user/:id', require('./routes/user/user.js').get); // single user page
-router.get('/user/:id', require('./routes/user/user-new.js').get);
-router.get('/user-index', require('./routes/user/user-index.js').get); // multi user page
+router.get('/user/:id', require('./routes/user/user.js').get);
+router.get('/users', require('./routes/user/user-index.js').get); // multi user page
 router.post('/user-edit', require('./routes/user/user-edit.js').post);
 
 //group routes
-//router.get('/group/:id', require('./routes/group/group.js').get); //single group page
-router.get('/group/:id', require('./routes/group/group-new.js').get); //single group page
-router.post('/group/:id', require('./routes/group/group-manage.js').post);
-router.get('/group-index', require('./routes/group/group-index.js').get); //multi group page
 
-router.post('/group-manage', require('./routes/group/group-manage.js').post); // to invite/kickout/accept users to the group
-router.post('/group-charge', require('./routes/group/group-charge.js').post); // to charge group members by some value, that will be added to teacher's balance
+router.get('/group/:id', require('./routes/group/group.js').get); //single group page
+router.post('/group/:id', require('./routes/group/group-manage-members.js').post); //manage group members
+router.get('/groups', require('./routes/group/group-index.js').get); //multi group page
+router.get('/group', require('./routes/group/group-form.js').get); // to render group create/edit form
 
-router.get('/group', require('./routes/group/group-create-form.js').get); // to render group create/edit form
+
 ///lessons manage
-router.get('/group-addlesson-form', require('./routes/group/group-addlesson-form.js').get);
-router.post('/group-addlesson', require('./routes/group/group-addlesson.js').post);
+router.get('/lesson-form', require('./routes/group/lesson-form.js').get);
+router.post('/lesson-add', require('./routes/group/lesson-add.js').post);
 router.get('/lesson/:id', require('./routes/group/lesson').get);
+router.post('/lesson/:id', require('./routes/group/lesson-edit-delete').post)
 
 
 router.post('/group-create', require('./routes/group/group-create.js').post);
@@ -63,16 +60,6 @@ router.post('/group-delete', require('./routes/group/group-delete.js').post);
 
 
 
-//Yandex payment group
-router.get('/checkout', require('./routes/yandex-pay/checkout.js').get);
-router.post('/check', require('./routes/yandex-pay/check.js').post);
-router.post('/aviso', require('./routes/yandex-pay/aviso.js').post);
-
-//Tinkoff paymet group
-router.get('/tinkoff-checkout', require('./routes/tinkoff-pay/tinkoff-checkout.js').get);
-router.post('/tinkoff-aviso', require('./routes/tinkoff-pay/tinkoff-aviso.js').post);
-router.get('/tinkoff-success', require('./routes/tinkoff-pay/tinkoff-success.js').get);
-router.get('/tinkoff-fail', require('./routes/tinkoff-pay/tinkoff-fail.js').get);
 
 app.use(router.routes());
 

@@ -1,17 +1,39 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-        {{lesson.title}}
+<div class ="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+          <a href="/lesson/{{lesson._id}}?edit=true">Редактировать урок</a>
+          <button class = "btn btn-danger" id="deleteLessonButton">Удалить урок</button>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+          {{lesson.title}}
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+          {{lesson.contentText}}
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+          {{lesson.hometask}}
+    </div>
   </div>
 </div>
 
-<div class="panel panel-default">
-  <div class="panel-body">
-        {{lesson.content}}
-  </div>
-</div>
-
-<div class="panel panel-default">
-  <div class="panel-body">
-        {{lesson.hometask}}
-  </div>
-</div>
+<script>
+$('#deleteLessonButton').on('click', function() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST','/lesson/{{lesson._id}}', true)
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.send(JSON.stringify({action: 'delete'}));
+  xhr.onload = function () {
+    console.log(xhr.responseText);
+    location.reload();
+  }
+});
+</script>

@@ -85,7 +85,7 @@ exports.post = async (ctx) => {
         // 3) kickout all members
 
         // 4) Remove for teacher's own groups list
-        if (group.studentsIn === [] && group.studentsAsk ===[] && group.studentsIn === [] && group.lessons === []) {
+        if (group.studentsIn === [] && group.studentsAsk ===[] && group.studentsInv === [] && group.lessons === []) {
           var deletedGroup = await Group.findByIdAndRemove(groupToDelete);
           ctx.body  = 'Группа '+group.groupName+' успешно удалена';
           return;

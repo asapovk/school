@@ -38,11 +38,11 @@ exports.post = async (ctx) => {
       if (access >= 1) {
 
         if(lessonTitle && lessonContent) {
-          var newLesson = new Lesson({title: lessonTitle, content: lessonContent, hometask: lessonHometask, group: actionGroup});
+          var newLesson = new Lesson({title: lessonTitle, contentText: lessonContent, hometask: lessonHometask, group: actionGroup});
           await newLesson.save();
 
           if(newLesson) {
-            ctx.redirect('/group/'+group._id);
+            ctx.body = 'урок успешно создан';
             return;
           }
           else {

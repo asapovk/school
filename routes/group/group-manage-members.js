@@ -156,31 +156,26 @@ exports.post = async (ctx) => {
         }
 
         if (action === 'reject-group') {
-          console.log('reject group works');
           var student = await User.findOneAndUpdate({ _id:  userId},  {$pull: {groupsInv: actionGroupId}}).catch(function(){
             console.log('Unabled to push group to students');
             ctx.body = 'Error! Try to reload the page';
           });
-
           var group = await Group.findOneAndUpdate({ _id: actionGroupId}, {$pull: {studentsInv: userId} }).catch(function(err){
             console.log('Unable to push students to group!');
             console.log(err);
             ctx.body = 'Error! Try to reload the page';
           });
-
         }
-        if(action==='approve-group')  {
+        if(action ==='approve-group')  {
           var student = await User.findOneAndUpdate({ _id:  userId},  {$pull: {groupsInv: actionGroupId}, $addToSet: {groupsIn: actionGroupId}}).catch(function(){
             console.log('Unabled to push group to students');
             ctx.body = 'Error! Try to reload the page';
           });
-
           var group = await Group.findOneAndUpdate({ _id: actionGroupId}, {$pull: {studentsInv: userId}, $addToSet: {studentsIn: userId} }).catch(function(err){
             console.log('Unable to push students to group!');
             console.log(err);
             ctx.body = 'Error! Try to reload the page';
           });
-
         }
         if(action === 'cancel-ask') {
         // This cancels user's ask for membership of certain group  by user himself
@@ -188,16 +183,13 @@ exports.post = async (ctx) => {
             console.log('Unabled to push group to students');
             ctx.body = 'Error! Try to reload the page';
           });
-
           var group = await Group.findOneAndUpdate({ _id: actionGroupId}, {$pull: {studentsAsk: userId} }).catch(function(err){
             console.log('Unable to push students to group!');
             console.log(err);
             ctx.body = 'Error! Try to reload the page';
           });
         }
-
         ctx.body = access;
-
       } //end of group
     } //end of user
     return;

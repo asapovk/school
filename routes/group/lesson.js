@@ -18,6 +18,15 @@ exports.get = async (ctx) => {
       if(lesson) {
           ctx.state.lesson = lesson;
 
+          try {
+            var isLessonEdit = ctx.request.query.edit
+          } catch(e) {}
+          if(isLessonEdit) {
+            await ctx.render('group/teacher/group-addlesson-form');
+            return;
+          }
+
+
           var groupId = lesson.group
           var group = await Group.findById(groupId).catch(function(){
             console.log('Error happened when tried to find user in database!');
@@ -65,15 +74,19 @@ exports.get = async (ctx) => {
           };
           console.log('access is '+access);
           //console.log(groupOtions);
-          await ctx.render('group/teacher/lesson', lessonOptions);
+          if(lessonOptions.isOwner || lessonOptions.isMember) {
+            await ctx.render('group/teacher/lesson', lessonOptions);
+          }
+          else {
+            await ctx.render('group/teacher/error');
+          }
+
       }
       else {
-            console.log('lesson whith such id is not exist');
-            await ctx.redirect('/');
+            ctx.body = 'страница не найдена';
       }
     }
     else {
-      console.log('NOT LOGGED IN!');
-      await ctx.redirect('/');
+      ctx.body = 'Пожалуйста авторизуйтесь для просмотра данной страницы!';
     }
 }
