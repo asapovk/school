@@ -1,5 +1,6 @@
 var Group = require('../../models/group');
 var User = require('../../models/user');
+var Lesson = require('../../models/lesson');
 
 exports.post = async (ctx) => {
 
@@ -72,9 +73,27 @@ exports.post = async (ctx) => {
 
 
       if (errors.length === 0) {
-        var deletedGroup = await Group.findByIdAndRemove(groupToDelete);
-        ctx.body  = 'Группа '+group.groupName+' успешно удалена';
-        return;
+        //First we need to get rid of all the lessons of the groups
+        //The we have to remove from all members of the group, all invited users and
+        // all the users asked for membership this group from corrsponding lists
+        //Finally we delete the group itself.
+
+        // 1) Cancel all invites
+
+        // 2) Reject all asks
+
+        // 3) kickout all members
+
+        // 4) Remove for teacher's own groups list
+        if (group.studentsIn === [] && group.studentsAsk ===[] && group.studentsIn === [] && group.lessons === []) {
+          var deletedGroup = await Group.findByIdAndRemove(groupToDelete);
+          ctx.body  = 'Группа '+group.groupName+' успешно удалена';
+          return;
+        }
+        else {
+          ctx.body = 'Вы не можете удалить группу, в которой есть уроки и учащиеся либо приглашенные лица и лица ожидающие обработки запроса на вступление'
+        }
+
       }
       else {
         console.log(errors);

@@ -56,6 +56,10 @@ const groupSchema = new mongoose.Schema({
     ref: User
   },
 
+  teacherName: {
+    type: String
+  },
+
   lessons: [{type: Schema.Types.ObjectId, ref: Lesson}],
 
   status: {
