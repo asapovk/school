@@ -16,6 +16,7 @@ exports.post = async (ctx) => {
       var lessonTitle = ctx.request.body.lessonTitle;
       var lessonContent = ctx.request.body.lessonContent;
       var lessonHometask = ctx.request.body.lessonHometask || null;
+      var lessonVideo = ctx.request.body.lessonVideo || null;
 
     } catch(e) {
       var error = 'Не верный формат тела запроса';
@@ -38,7 +39,7 @@ exports.post = async (ctx) => {
       if (access >= 1) {
 
         if(lessonTitle && lessonContent) {
-          var newLesson = new Lesson({title: lessonTitle, contentText: lessonContent, hometask: lessonHometask, group: actionGroup});
+          var newLesson = new Lesson({title: lessonTitle, contentText: lessonContent, contentVideo: lessonVideo,  hometask: lessonHometask, group: actionGroup});
           await newLesson.save();
 
           if(newLesson) {

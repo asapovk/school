@@ -2,10 +2,19 @@
 <div class="row">
 <div class="panel panel-default">
   <div class="panel-body">
-        {{group.groupName}}. {{group.time}} Преподаватель: <a href="/user/{{teacher._id}}"  class="teacherLink" id="{{teacher._id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
+        <h1>{{group.groupName}}</h1>
+        <h4>Преподаватель <a href="/user/{{teacher._id}}"  class="teacherLink" id="{{teacher._id}}">{{teacher.firstName}} {{teacher.lastName}}</a></h4>
   </div>
 </div>
 
+<div class="panel panel-default">
+  <div class="panel-body">
+    <a class="btn btn-default" href="/users?manage={{group._id}}">Пригласить студентов</a>
+    <a class="btn btn-default" href="/group/{{group._id}}?edit=true">Редактировать группу</a>
+    <a class="btn btn-default" href="/lesson-form?groupId={{group._id}}">Добавить урок</a>
+    <button class="btn btn-danger deleteButton" id="{{group._id}}" onclick="deleteGroup()">Удалить группу</button>
+  </div>
+</div>
 
 
 {{#if studentsIn}}
@@ -59,23 +68,6 @@
   </div>
 </div>
 {{/if}}
-
-<!--<form onsubmit="charge()">-->
-<!--</form>-->
-<div class="panel panel-default">
-  <div class="panel-body">
-    <button class="btn btn-default askButton" id="{{group._id}}">Вступить в группу</button>
-  </div>
-</div>
-
-<div class="panel panel-default">
-  <div class="panel-body">
-    <a class="btn btn-default" href="/users?manage={{group._id}}">Пригласить студентов</a>
-    <a class="btn btn-default" href="/group/{{group._id}}?edit=true">Редактировать группу</a>
-    <a class="btn btn-default" href="/lesson-form?groupId={{group._id}}">Добавить урок</a>
-    <button class="btn btn-danger deleteButton" id="{{group._id}}" onclick="deleteGroup()">Удалить группу</button>
-  </div>
-</div>
 
 
 {{#if lessons}}

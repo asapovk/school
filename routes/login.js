@@ -98,7 +98,7 @@ exports.get = async (ctx) => {
                 //  userObject.role = 'admin';
               //  }
                 //else {
-                  userObject.role = 'student';
+                  userObject.role = 'admin';
               //  }
                 user = new User(userObject);
                 await user.save().catch(function(){

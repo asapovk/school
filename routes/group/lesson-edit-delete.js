@@ -29,12 +29,13 @@ exports.post = async (ctx) => {
                   try{
                     var lessonTitle = ctx.request.body.lessonTitle;
                     var lessonContent = ctx.request.body.lessonContent;
+                    var lessonVideo = ctx.request.body.lessonVideo || null;
                     var lessonHometask = ctx.request.body.lessonHometask || null;
                   } catch (err) {
                     ctx.body = err;
                     return;
                   }
-                  var newLesson = await Lesson.findOneAndUpdate({ _id: actionLessonId}, {$set:{title: lessonTitle, contentText: lessonContent, hometask: lessonHometask, group: actionGroupId}}, {new: true});
+                  var newLesson = await Lesson.findOneAndUpdate({ _id: actionLessonId}, {$set:{title: lessonTitle, contentText: lessonContent, contentVideo: lessonVideo, hometask: lessonHometask, group: actionGroupId}}, {new: true});
                   if(newLesson) {
                     ctx.body  = 'Урок успешно изменен!';
                     return;

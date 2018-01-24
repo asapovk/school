@@ -40,6 +40,10 @@ exports.get = async (ctx) => {
             console.log('Error happened when tried to find lessons in database!');
             ctx.body = 'Error! Try to reload the page';
           });
+
+          if (studentsAskId.indexOf(userId) > -1) {
+            access = -1;
+          }
 //
           if(studentsInvId.indexOf(userId) > -1) {
             access = 1;
@@ -108,7 +112,7 @@ exports.get = async (ctx) => {
                   }
               }
           }
-          var groupOtions = {
+          var groupOptions = {
             teacher: teacher,
             studentsIn: studentsIn,
             studentsInv: studentsInv,
@@ -117,7 +121,26 @@ exports.get = async (ctx) => {
           };
           console.log('access is '+access);
           //console.log(groupOtions);
-          await ctx.render('group/teacher/group', groupOtions);
+          if(access >=3) {
+            await ctx.render('group/teacher/group', groupOptions);
+          }
+          else if (access === 2) {
+            groupOptions.member = true;
+            await ctx.render('group/student/group', groupOptions);
+          }
+          else if (access === 1) {
+            groupOptions.invited = true;
+            await ctx.render('group/student/group', groupOptions);
+          }
+          else if (access === -1) {
+
+            groupOptions.asked = true;
+            await ctx.render('group/student/group', groupOptions);
+          }
+          else {
+            groupOptions.alient = true;
+            await ctx.render('group/student/group', groupOptions);
+          }
       }
       else {
             console.log('group whith such id is not exist');

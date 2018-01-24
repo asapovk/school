@@ -1,28 +1,44 @@
 <div class ="container">
+  <div class="row">
   <div class="panel panel-default">
     <div class="panel-body">
-          <a href="/lesson/{{lesson._id}}?edit=true">Редактировать урок</a>
+          <h1>{{lesson.title}}</h1>
+    </div>
+  </div>
+{{#if isOwner}}
+  <div class="panel panel-default">
+    <div class="panel-body">
           <button class = "btn btn-danger" id="deleteLessonButton">Удалить урок</button>
+          <a href="/lesson/{{lesson._id}}?edit=true" class="btn btn-default">Редактировать урок</a>
     </div>
   </div>
+{{/if}}
 
-  <div class="panel panel-default">
-    <div class="panel-body">
-          {{lesson.title}}
-    </div>
+{{#if lesson.contentVideo}}
+<div class="panel panel-default">
+  <div class="panel-body">
+    <iframe id="video" width="420" height="315" src="{{lesson.contentVideo}}" frameborder="0" allowfullscreen></iframe>
   </div>
+</div>
+{{/if}}
 
-  <div class="panel panel-default">
-    <div class="panel-body">
-          {{lesson.contentText}}
-    </div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+        <h4>Содержание урока</h4>
+        {{lesson.contentText}}
   </div>
+</div>
 
+{{#if lesson.hometask}}
   <div class="panel panel-default">
     <div class="panel-body">
+          <h4>Домашнее задание</h4>
           {{lesson.hometask}}
     </div>
   </div>
+{{/if}}
+</div>
 </div>
 
 <script>

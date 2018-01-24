@@ -1,29 +1,27 @@
 <div class ="container">
 <div class ="row">
 <div class="panel panel-default">
-  <div class="panel-body userInfo" id="{{user._id}}">
-      <p>{{user.firstName}} {{user.lastName}} {{user.role}}</p>
+  <div class="panel-body">
+    <div class="userInfo" id="{{user._id}}">
+        <p>{{user.firstName}} {{user.lastName}}</p>
+    </div>
+    <div class="userInfo" id="{{user._id}}">
+        <img src="{{user.photo_100}}" height="100" width="100">
+    </div>
+    <div class="userInfo" id="{{user._id}}">
+      <p>{{user.city}}, {{user.country}}</p>
+    </div>
+    {{#if user.email}}
+    <div class="userInfo" id="{{user._id}}">
+      <p>{{user.email}}</p>
+    </div>
+    {{/if}}
+    {{#if user.phone}}
+    <div class="userInfo" id="{{user._id}}">
+      <p>{{user.phone}}</p>
+    </div>
+    {{/if}}
   </div>
-  <div class="panel-body userInfo" id="{{user._id}}">
-      <img src="{{user.photo_100}}" height="100" width="100">
-  </div>
-  <div class="panel-body userInfo" id="{{user._id}}">
-    <p>{{user.city}}, {{user.country}}</p>
-  </div>
-
-
-  {{#if user.email}}
-  <div class="panel-body userInfo" id="{{user._id}}">
-    <p>{{user.email}}</p>
-  </div>
-  {{/if}}
-  {{#if user.phone}}
-  <div class="panel-body userInfo" id="{{user._id}}">
-    <p>{{user.phone}}</p>
-  </div>
-  {{/if}}
-
-
 </div>
 
 
@@ -91,8 +89,6 @@
   </div>
 </div>
 {{/if}}
-
-<a href="/group-index" class="btn btn-default">Добавить группы</a>
 
 
 

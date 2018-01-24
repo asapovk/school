@@ -1,13 +1,52 @@
+<div class="container">
+<div class="row">
 <div class="panel panel-default">
   <div class="panel-body">
-        {{group.groupName}}. {{group.time}} Преподаватель: <a href="/user/{{teacher._id}}"  class="teacherLink" id="{{teacher._id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
+        <h1>{{group.groupName}}</h1>
+        <h4>Преподаватель  <a href="/user/{{teacher._id}}"  class="teacherLink" id="{{teacher._id}}">{{teacher.firstName}} {{teacher.lastName}}</a></h4>
   </div>
 </div>
 
 
-{{#if inGroup}}
+{{#if alient}}
 <div class="panel panel-default">
   <div class="panel-body">
+    <button class="btn btn-default askButton" id="{{group._id}}">Вступить в группу</button>
+  </div>
+</div>
+{{/if}}
+
+{{#if member}}
+<div class="panel panel-default">
+  <div class="panel-body">
+    <button class="btn btn-default leaveButton" id="{{group._id}}">Покинуть группу</button>
+  </div>
+</div>
+{{/if}}
+
+{{#if asked}}
+<div class="panel panel-default">
+  <div class="panel-body">
+    <button class="btn btn-default cancelButton" id="{{group._id}}">Отменить запрос</button>
+  </div>
+</div>
+{{/if}}
+
+
+{{#if invited}}
+<div class="panel panel-default">
+  <div class="panel-body">
+    <button class="btn btn-default approveButton" id="{{group._id}}">Принять приглашение</button>
+    <button class="btn btn-default rejectButton" id="{{group._id}}">Отклонить приглашение</button>
+  </div>
+</div>
+{{/if}}
+
+
+{{#if studentsIn}}
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>Участники группы</p>
     <ul class="list-group">
       {{#each studentsIn}}
           <li class="list-group-item">
@@ -18,3 +57,121 @@
   </div>
 </div>
 {{/if}}
+
+
+{{#if lessons}}
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>Уроки</p>
+    <ul class="list-group">
+      {{#each  lessons}}
+          <li class="list-group-item">
+            <a href = "/lesson/{{this._id}}">{{this.title}}</a>
+          </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+{{/if}}
+
+</div>
+</div>
+<script>
+
+  $('.leaveButton').on('click', function(){
+    var groupToManage = $('.leaveButton').attr("id");
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/group/'+groupToManage, true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify({ action: 'leave'}));
+    console.log(JSON.stringify({action: 'leave'}));
+    xhr.onload = function () {
+      if(xhr.status === 200) {
+        var responseText = xhr.responseText;
+        console.log(responseText);
+        location.reload();
+      }
+      else {
+        console.log(responseText);
+      }
+    };
+  });
+
+  $('.rejectButton').on('click', function(){
+    var groupToManage = $('.rejectButton').attr("id");
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/group/'+groupToManage, true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify({ action: 'reject-group'}));
+    console.log(JSON.stringify({action: 'reject-group'}));
+    xhr.onload = function () {
+      if(xhr.status === 200) {
+        var responseText = xhr.responseText;
+        console.log(responseText);
+        location.reload();
+      }
+      else {
+        console.log(responseText);
+      }
+    };
+  });
+
+  $('.approveButton').on('click', function (){
+    var groupToManage = $('.approveButton').attr("id");
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/group/'+groupToManage, true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify({action: 'approve-group'}));
+    console.log(JSON.stringify({action: 'approve-group'}));
+    xhr.onload = function () {
+      if(xhr.status === 200) {
+        var responseText = xhr.responseText;
+        console.log(responseText);
+        location.reload();
+      }
+      else {
+        console.log(responseText);
+      }
+    };
+  });
+
+  $('.cancelButton').on('click', function (){
+    var groupToManage = $('.cancelButton').attr("id");
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/group/'+groupToManage, true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify({action: 'cancel-ask'}));
+    console.log(JSON.stringify({action: 'cancel-ask'}));
+    xhr.onload = function () {
+      if(xhr.status === 200) {
+        var responseText = xhr.responseText;
+        console.log(responseText);
+        location.reload();
+      }
+      else {
+        console.log(responseText);
+      }
+    };
+  });
+
+  $('.askButton').on('click', function (){
+    var groupToManage = $(this).attr("id");
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/group/'+groupToManage, true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify({action: 'ask'}));
+    console.log(JSON.stringify({action: 'ask'}));
+    xhr.onload = function () {
+      if(xhr.status === 200) {
+        var responseText = xhr.responseText;
+        console.log(responseText);
+        location.reload();
+      }
+      else {
+        console.log(responseText);
+      }
+    };
+  });
+
+
+</script>
