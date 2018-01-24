@@ -3,19 +3,19 @@ const path = require('path');
 
 module.exports = {
 //Production server
-/*
+
   server: {
-    siteUrl: 'https://lk.akadplus.ru',
+    siteUrl: 'https://polyakov.astapovk.ru',
     appHost: '127.0.0.1',
-    appPort: '3000',
+    appPort: '3001',
     client_secret: 'CWWUwXFXOOw1UCJXIjef',
     client_id: '5895475',
     mongoose: {
       uri:     'mongodb://localhost/app',
       options: {
-        user: 'lk.akadplus.ru',
-        pass: 'CWWUwXFXOOw1UCJXIjef',
-        auth: {authdb:"app"},
+//        user: 'lk.akadplus.ru',
+//        pass: 'CWWUwXFXOOw1UCJXIjef',
+//        auth: {authdb:"app"},
         server: {
         socketOptions: {
             keepAlive: 1
@@ -25,7 +25,7 @@ module.exports = {
       }
     }
   },
-*/
+
 //Test server
 /*
   server: {
@@ -51,7 +51,7 @@ module.exports = {
   },
 */
 //localServer
-
+/*
 server: {
   siteUrl: 'http://localhost',
   appHost: '127.0.0.1',
@@ -73,7 +73,7 @@ server: {
     }
   }
 },
-
+*/
 /*
   mailer: {
     transport: 'gmail',
