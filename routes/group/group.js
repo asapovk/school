@@ -28,6 +28,11 @@ exports.get = async (ctx) => {
             return;
           }
 
+          var members = false;
+          try {
+            members = ctx.request.query.members
+          } catch(e) {}
+
 
           var teacher = await User.findById(group.teacher).catch(function(){
             console.log('Error happened when tried to find user in database!');
@@ -122,6 +127,10 @@ exports.get = async (ctx) => {
           console.log('access is '+access);
           //console.log(groupOtions);
           if(access >=3) {
+            if(members) {
+              await ctx.render('group/teacher/members', groupOptions);
+              return;
+            }
             await ctx.render('group/teacher/group', groupOptions);
           }
           else if (access === 2) {

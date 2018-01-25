@@ -15,9 +15,8 @@ exports.post = async (ctx) => {
       var groupToEdit = ctx.request.body.actionGroup;
       var groupTeacher = ctx.request.body.actionUser;
 
-      var groupDay = ctx.request.body.groupDay;
-      var groupHour = ctx.request.body.groupHour;
-      var groupMinute = ctx.request.body.groupMinute;
+      var groupDescription = ctx.request.body.description;
+      var groupContent = ctx.request.body.contentText;
     } catch(e) {
       var error = 'Не верный формат тела запроса';
       errors.push(error);
@@ -38,14 +37,9 @@ exports.post = async (ctx) => {
 
       if (access >= 1) {
 
-        var groupTime = {
-          day: groupDay,
-          hour: groupHour,
-          minute: groupMinute
-        }
 
-        if(groupTitle && groupTime) {
-          var newGroup = await Group.findOneAndUpdate({_id: groupToEdit}, {$set: {time: groupTime, groupName: groupTitle, teacher: groupTeacher}}, {new: true, runValidators: true});
+        if(groupTitle) {
+          var newGroup = await Group.findOneAndUpdate({_id: groupToEdit}, {$set: {contentText: groupContent, description: groupDescription, groupName: groupTitle, teacher: groupTeacher}}, {new: true, runValidators: true});
           if(newGroup) {
             ctx.redirect('/group/'+groupToEdit);
             return;

@@ -11,23 +11,12 @@ exports.post = async (ctx) => {
     var groupTitle = ctx.request.body.groupTitle;
     //var groupTime = ctx.request.body.groupTime;
 
-    var groupDay = ctx.request.body.groupDay;
-    var groupHour = ctx.request.body.groupHour;
-    var groupMinute = ctx.request.body.groupMinute;
+    var groupDescription = ctx.request.body.description;
+    var groupContent = ctx.request.body.contentText;
   } catch(e) {
     errors.push(e);
   }
-  console.log('Group time is '+groupMinute);
-  console.log('Group time is '+groupHour);
-  console.log('Group time is '+groupDay);
 
-
-
-  var groupTime = {
-    day: groupDay,
-    hour: groupHour,
-    minute: groupMinute
-  }
 
   var user = ctx.state.user || null;
   if (user) {
@@ -35,19 +24,9 @@ exports.post = async (ctx) => {
       access = 1;
     }
     if (access >= 1) {
-      if (groupTitle && groupTime) {
-        var newGroup = new Group({groupName: groupTitle, time: groupTime, teacher: actionUser });
+      if (groupTitle) {
+        var newGroup = new Group({groupName: groupTitle, description: groupDescription, teacher: actionUser, contentText: groupContent});
         await newGroup.save()
-        //.then(function (result) {
-        //  if (result) {
-        //    ctx.body = 'Группа '+result.groupName+' успешно создана.';
-        //    return;
-        //  }
-        //})
-        .catch(function(err){
-          errors.push(err);
-        //  console.log(err);
-        });
       }
       else {
         var error = 'Пустые поля не допустимы!';

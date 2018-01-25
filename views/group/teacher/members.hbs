@@ -1,0 +1,173 @@
+<div class='container'>
+  <div class="row">
+    <a href="/group/{{group._id}}" class="btn btn-primary btn-sm" style="margin-bottom:10px;float:right;">Вернуться на страницу группы</a>
+
+
+    <div class="col-md-12 BoxShadow UchList">
+      <ul class="nav nav-tabs">
+        <li id="studentsIn" class="studentsTab active"><a>Мои ученики</a></li>
+        <li id ="studentsAsk" class="studentsTab"><a>Заявки в ученики</a></li>
+        <li id="studentsInv" class="studentsTab"><a>Приглашения</a></li>
+      </ul>
+
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Ссылка на профиль</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        {{#if studentsInv}}
+        {{#each studentsInv}}
+        <tbody>
+          <tr class="studentsInv">
+            <th scope="row"><a href = "/user/{{this._id}}">ссылка</a></th>
+            <td>{{this.firstName}}</td>
+            <td>{{this.lastName}}</td>
+            <td><button class="btn btn-warning pull-right cancelButton" id="{{this._id}}">Отменить приглашение</button></td>
+          </tr>
+        {{/each}}
+        {{/if}}
+        {{#if studentsIn}}
+        {{#each studentsIn}}
+          <tr class="studentsIn">
+            <th scope="row"><a href = "/user/{{this._id}}">ссылка</a></th>
+            <td>{{this.firstName}}</td>
+            <td>{{this.lastName}}</td>
+            <td><button class="btn btn-danger pull-right kickoutButton" id="{{this._id}}">Исключить из группы</button></td>
+          </tr>
+        {{/each}}
+        {{/if}}
+        {{#if studentsAsk}}
+        {{#each studentsAsk}}
+          <tr class="studentsAsk">
+            <th scope="row"><a href = "/user/{{this._id}}">ссылка</a></th>
+            <td>{{this.firstName}}</td>
+            <td>{{this.lastName}}</td>
+            <td><button class="btn btn-warning pull-right rejectButton" id="{{this._id}}">Отклонить заявку</button>
+            <button class="btn btn-success pull-right approveButton" id="{{this._id}}">Принять в группу</button></td>
+          </tr>
+        {{/each}}
+        {{/if}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+
+$('.studentsInv').hide();
+$('.studentsAsk').hide();
+
+
+
+$('#studentsIn').on('click', function(){
+  $('.studentsTab').removeClass('active');
+  $(this).addClass('active');
+  $('.studentsIn').show();
+  $('.studentsInv').hide();
+  $('.studentsAsk').hide();
+});
+
+$('#studentsAsk').on('click', function(){
+  $('.studentsTab').removeClass('active');
+  $(this).addClass('active');
+  $('.studentsIn').hide();
+  $('.studentsInv').hide();
+  $('.studentsAsk').show();
+});
+$('#studentsInv').on('click', function(){
+  $('.studentsTab').removeClass('active');
+  $(this).addClass('active');
+  $('.studentsIn').hide();
+  $('.studentsInv').show();
+  $('.studentsAsk').hide();
+});
+
+
+$('.kickoutButton').on('click', function(){
+  var userToKickout = $('.kickoutButton').attr("id");
+  var groupToManage = "{{group._id}}";
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/group/'+groupToManage, true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.send(JSON.stringify({actionUserId: userToKickout, action: 'kickout'}));
+  console.log(JSON.stringify({actionUserId: userToKickout, action: 'kickout'}));
+  xhr.onload = function () {
+    if(xhr.status === 200) {
+      var responseText = xhr.responseText;
+      console.log(responseText);
+      location.reload();
+    }
+    else {
+      console.log(responseText);
+    }
+  };
+});
+
+$('.rejectButton').on('click', function(){
+  var userToReject = $('.rejectButton').attr("id");
+  var groupToManage = "{{group._id}}";
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/group/'+groupToManage, true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.send(JSON.stringify({actionUserId: userToReject, action: 'reject-user'}));
+  console.log(JSON.stringify({actionUserId: userToReject, action: 'reject-user'}));
+  xhr.onload = function () {
+    if(xhr.status === 200) {
+      var responseText = xhr.responseText;
+      console.log(responseText);
+      location.reload();
+    }
+    else {
+      console.log(responseText);
+    }
+  };
+});
+
+$('.approveButton').on('click', function (){
+  var userToApprove = $('.approveButton').attr("id");
+  var groupToManage = "{{group._id}}";
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/group/'+groupToManage, true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.send(JSON.stringify({actionUserId: userToApprove, action: 'approve-user'}));
+  console.log(JSON.stringify({actionUserId: userToApprove, action: 'approve-user'}));
+  xhr.onload = function () {
+    if(xhr.status === 200) {
+      var responseText = xhr.responseText;
+      console.log(responseText);
+      location.reload();
+    }
+    else {
+      console.log(responseText);
+    }
+  };
+});
+
+$('.cancelButton').on('click', function (){
+  var userToCancel = $('.cancelButton').attr("id");
+  var groupToManage = "{{group._id}}";
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/group/'+groupToManage, true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.send(JSON.stringify({actionUserId: userToCancel, action: 'cancel-invite'}));
+  console.log(JSON.stringify({actionUserId: userToCancel, action: 'cancel-invite'}));
+  xhr.onload = function () {
+    if(xhr.status === 200) {
+      var responseText = xhr.responseText;
+      console.log(responseText);
+      location.reload();
+    }
+    else {
+      console.log(responseText);
+    }
+  };
+});
+
+
+
+</script>

@@ -3,171 +3,85 @@
 <div class="panel panel-default">
   <div class="panel-body">
         <h1>{{group.groupName}}</h1>
-        <h4>Преподаватель <a href="/user/{{teacher._id}}"  class="teacherLink" id="{{teacher._id}}">{{teacher.firstName}} {{teacher.lastName}}</a></h4>
+        <h3>Преподаватель: <a href="/user/{{teacher._id}}"  class="teacherLink" id="{{teacher._id}}">{{teacher.firstName}} {{teacher.lastName}}</a></h3>
   </div>
 </div>
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <a class="btn btn-default" href="/users?manage={{group._id}}">Пригласить студентов</a>
-    <a class="btn btn-default" href="/group/{{group._id}}?edit=true">Редактировать группу</a>
-    <a class="btn btn-default" href="/lesson-form?groupId={{group._id}}">Добавить урок</a>
-    <button class="btn btn-danger deleteButton" id="{{group._id}}" onclick="deleteGroup()">Удалить группу</button>
+      <h3 class="AuthorText">Панель управления</h3>
+      <a class="btn btn-default" href="/group/{{group._id}}?members=true">Список участников</a>
+      <a class="btn btn-default" href="/users?manage={{group._id}}">Пригласить студентов</a>
+      <a class="btn btn-default" href="/group/{{group._id}}?edit=true">Редактировать группу</a>
+      <a class="btn btn-default" href="/lesson-form?groupId={{group._id}}">Добавить урок</a>
+      <button class="btn btn-danger deleteButton" id="{{group._id}}" onclick="deleteGroup()">Удалить группу</button>
   </div>
 </div>
 
 
-{{#if studentsIn}}
-<div class="panel panel-default">
-  <div class="panel-body">
-    <p>Участники группы</p>
-    <ul class="list-group">
-      {{#each studentsIn}}
-          <li class="list-group-item">
-            <a href = "/user/{{this._id}}">{{this.firstName}} {{this.lastName}}</a>
-            <!--  <label class="btn btn-primary pull-right"> -->
-                <input type="checkbox" autocomplete="off" id="{{this._id}}" class="pull-right">
-                <button class="btn btn-danger pull-right kickoutButton" id="{{this._id}}">Исключить из группы</button>
-            <!--  </label> -->
-          </li>
-      {{/each}}
-    </ul>
-  </div>
-</div>
-{{/if}}
-
-{{#if studentsAsk}}
-<div class="panel panel-default">
-  <div class="panel-body">
-    <p>Хотят вступить в группу</p>
-    <ul class="list-group">
-      {{#each studentsAsk}}
-          <li class="list-group-item">
-            <a href = "/user/{{this._id}}">{{this.firstName}} {{this.lastName}}</a>
-            <button class="btn btn-warning pull-right rejectButton" id="{{this._id}}">Отклонить заявку</button>
-            <button class="btn btn-success pull-right approveButton" id="{{this._id}}">Принять в группу</button>
-          </li>
-      {{/each}}
-    </ul>
-  </div>
-</div>
-{{/if}}
-
-{{#if studentsInv}}
-<div class="panel panel-default">
-  <div class="panel-body">
-    <p>Приглашенные в группу</p>
-    <ul class="list-group">
-      {{#each studentsInv}}
-          <li class="list-group-item">
-            <a href = "/user/{{this._id}}">{{this.firstName}} {{this.lastName}}</a>
-            <button class="btn btn-warning pull-right cancelButton" id="{{this._id}}">Отменить приглашение</button>
-          </li>
-      {{/each}}
-    </ul>
-  </div>
-</div>
-{{/if}}
 
 
-{{#if lessons}}
-<div class="panel panel-default">
-  <div class="panel-body">
-    <p>Уроки</p>
-    <ul class="list-group">
-      {{#each  lessons}}
-          <li class="list-group-item">
-            <a href = "/lesson/{{this._id}}">{{this.title}}</a>
-          </li>
-      {{/each}}
-    </ul>
-  </div>
-</div>
-{{/if}}
 
+<div class="col-md-6 BoxShadow GroupDesc">
+      <h3>Информация о группе:<span class="glyphicon glyphicon-pencil ButtonIncr" style="float:right;"></span></h3>
+      <p class="GroupDescText">{{group.contentText}}</p>
+      <hr>
+      <center><h3>Список уроков:</h3></center>
+      <table class="table table-hover">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Номер урока</th>
+            <th>Тема</th>
+            <th>Название</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        {{#each  lessons}}
+        <tr>
+          <th scope="row"></th>
+          <td>Тема</td>
+          <td>{{this.title}}</td>
+          <td><a class="btn btn-primary" href="/lesson/{{this._id}}">Отркыть</a></td>
+        </tr>
+        {{/each}}
+        </tbody>
+      </table>
 </div>
+
+<div class="col-md-4 BoxShadow Schedule">
+  <center><h4>Расписание:</h4></center>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Дата:</th>
+      <th>Событие</th>
+      <th>Статус</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">19.05.17\15:00</th>
+        <td>Вебинар по чему-то</td>
+        <td class="bg-primary SchStatus">Ожидается</td>
+      </tr>
+      <tr>
+        <th scope="row">19.05.17\16:00</th>
+        <td>Вопросы по домашнему заданию</td>
+        <td class="bg-success SchStatus" >Уже идёт</td>
+      </tr>
+      <tr>
+        <th scope="row">19.05.17\18:00</th>
+        <td>не знаю</td>
+        <td class="bg-danger SchStatus" >Окончено</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
+
 <script>
 
-  $('.kickoutButton').on('click', function(){
-    var userToKickout = $(this).attr("id");
-    var groupToManage = $('.deleteButton').attr("id");
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/group/'+groupToManage, true);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify({actionUserId: userToKickout, action: 'kickout'}));
-    console.log(JSON.stringify({actionUserId: userToKickout, action: 'kickout'}));
-    xhr.onload = function () {
-      if(xhr.status === 200) {
-        var responseText = xhr.responseText;
-        console.log(responseText);
-        location.reload();
-      }
-      else {
-        console.log(responseText);
-      }
-    };
-  });
-
-  $('.rejectButton').on('click', function(){
-    var userToReject = $(this).attr("id");
-    var groupToManage = $('.deleteButton').attr("id");
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/group/'+groupToManage, true);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify({actionUserId: userToReject, action: 'reject-user'}));
-    console.log(JSON.stringify({actionUserId: userToReject, action: 'reject-user'}));
-    xhr.onload = function () {
-      if(xhr.status === 200) {
-        var responseText = xhr.responseText;
-        console.log(responseText);
-        location.reload();
-      }
-      else {
-        console.log(responseText);
-      }
-    };
-  });
-
-  $('.approveButton').on('click', function (){
-    var userToApprove = $(this).attr("id");
-    var groupToManage = $('.deleteButton').attr("id");
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/group/'+groupToManage, true);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify({actionUserId: userToApprove, action: 'approve-user'}));
-    console.log(JSON.stringify({actionUserId: userToApprove, action: 'approve-user'}));
-    xhr.onload = function () {
-      if(xhr.status === 200) {
-        var responseText = xhr.responseText;
-        console.log(responseText);
-        location.reload();
-      }
-      else {
-        console.log(responseText);
-      }
-    };
-  });
-
-  $('.cancelButton').on('click', function (){
-    var userToCancel = $(this).attr("id");
-    var groupToManage = $('.deleteButton').attr("id");
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/group/'+groupToManage, true);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify({actionUserId: userToCancel, action: 'cancel-invite'}));
-    console.log(JSON.stringify({actionUserId: userToCancel, action: 'cancel-invite'}));
-    xhr.onload = function () {
-      if(xhr.status === 200) {
-        var responseText = xhr.responseText;
-        console.log(responseText);
-        location.reload();
-      }
-      else {
-        console.log(responseText);
-      }
-    };
-  });
 
   $('.askButton').on('click', function (){
     var groupToManage = $(this).attr("id");
@@ -250,3 +164,7 @@
 
   }
 </script>
+
+
+</div>
+</div>

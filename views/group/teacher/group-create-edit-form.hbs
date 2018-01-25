@@ -1,32 +1,58 @@
 <div class="container">
-{{#if group}}
-  <form action="/group-edit" method="POST" name="groupCreate" id="groupCreate">
-{{else}}
-  <form action="/group-create" method="POST" name="groupCreate" id="groupCreate">
-{{/if}}
-    <input type="hidden" name="actionUser" value="{{user._id}}">
-    <input type="hidden" name="actionGroup" value={{group._id}}>
-    <div class="form-group row">
-      <label for="groupTitle" class="col-sm-2 col-form-label">Название группы</label>
-      <div class="col-sm-8">
-        <input type="text" id="groupTitle" name="groupTitle" placeholder="Название группы" value="{{group.groupName}}" class="form-control">
-        <small class="form-text text-muted">Название группы</small>
-      </div>
+  <div class="row">
+      <div class="col-md-6 col-md-offset-3" style="margin-top:10%;">
+        <div class="well well-sm">
+          {{#if group}}
+            <form class="form-horizontal" action="/group-edit" method="POST" name="groupCreate" id="groupCreate">
+          {{else}}
+            <form class="form-horizontal" action="/group-create" method="POST" name="groupCreate" id="groupCreate">
+          {{/if}}
+              <fieldset>
+                <legend class="text-center">Создание группы</legend>
+                <input type="hidden" name="actionUser" value="{{user._id}}">
+                <input type="hidden" name="actionGroup" value={{group._id}}>
+                <div class="form-group">
+                  <label for="groupTitle" class="col-sm-2 col-form-label">Название группы</label>
+                  <div class="col-sm-8">
+                    <input type="text" id="groupTitle" name="groupTitle"  value="{{group.groupName}}" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-3 control-label" for="email">Краткое описание группы:</label>
+                  <div class="col-md-9">
+                    <textarea id="email" name="description" type="text" rows="5" class="form-control">{{group.description}}</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-3 control-label" for="message">Подробная информация о группе:</label>
+                  <div class="col-md-9">
+                    <textarea class="form-control" id="message" name="contentText"  rows="15">{{group.contentText}}</textarea>
+                  </div>
+                </div>
+                <p>Язык:</p>
+                <select class="form-control form-control-lg">
+                  <option>Русский</option>
+                  <option>English</option>
+                </select>
+                <p>Предмет:</p>
+                <select class="form-control form-control-lg">
+                  <option>Математика</option>
+                  <option>Информатика</option>
+                  <option>Гуманитарные науки</option>
+                  <option>Другое</option>
+                </select>
+                <div class="form-group" style="margin-top:20px;">
+                  <div class="col-md-12 text-right">
+                    {{# if group}}
+                    <button type="submit" class="btn btn-primary btn-lg">Подвердить изменения</button>
+                    {{else}}
+                    <button type="submit" class="btn btn-primary btn-lg">Создать</button>
+                    {{/if}}
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+        </div>
     </div>
-    <div class ="form-group row">
-      <label for="time" class="col-sm-2 col-form-label">Время занятий</label>
-      <div class="col-sm-8">
-        <input type="text" id="groupTime" name="groupDay" placeholder="Mon" value="{{group.teme.day}}" class="form-control">
-        <input type="text" id="groupTime" name="groupHour" placeholder="18" value="{{group.time.hour}}" class="form-control">
-        <input type="text" id="groupTime" name="groupMinute" placeholder="00" value="{{group.time.minute}}" class="form-control">
-        <small class="form-text text-muted">Время проведения занятий</small>
-      </div>
-    </div>
-    {{# if group}}
-    <button type="submit" class="btn btn-default">Редактировать группу</button>
-    {{else}}
-    <button type="submit" class="btn btn-default">Создать группу</button>
-    {{/if}}
-  </form>
+  </div>
 </div>
-<div id="myform_errorloc" class="error_strings"></div>
