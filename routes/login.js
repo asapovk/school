@@ -58,8 +58,8 @@ exports.get = async (ctx) => {
       firstName: response.response[0].first_name,
       lastName: response.response[0].last_name,
       vkId: response.response[0].id.toString(),
-      city: response.response[0].city.title,
-      country: response.response[0].country.title,
+      city: response.response[0].city.title || null,
+      country: response.response[0].country.title || null,
       photo_100: response.response[0].photo_100,
       photo_200: response.response[0].photo_200,
       balance: 0.0
