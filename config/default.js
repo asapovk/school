@@ -5,7 +5,7 @@ module.exports = {
 //Production server
 
   server: {
-    siteUrl: 'https://polyakov.astapovk.ru',
+    siteUrl: 'http://polyakov.astapovk.ru',
     appHost: '127.0.0.1',
     appPort: '3001',
     client_secret: 'CWWUwXFXOOw1UCJXIjef',
